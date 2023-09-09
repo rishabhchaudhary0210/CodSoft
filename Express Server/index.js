@@ -62,7 +62,7 @@ app.get("/flight", async (req, res) => {
         currencyCode: "INR",
     };
     if (returnExp != null) {
-        queryObj[returnDate] = returnExp;
+        queryObj.returnDate = returnExp;
     }
     const response = await amadeus.shopping.flightOffersSearch
         .get(queryObj)
@@ -82,13 +82,13 @@ app.get("/flight", async (req, res) => {
 app.post("/flight-booking", async (req, res) => {
 
     const inputFlight = await req.body;
-    console.log(req.body);
+    // console.log(inputFlight);
     const responsePricing = await amadeus.shopping.flightOffers.pricing
         .post(
             JSON.stringify({
                 data: {
                     type: "flight-offers-pricing",
-                    flightOffers: [inputFlight],
+                    flightOffers: inputFlight,
                 },
             })
         )
