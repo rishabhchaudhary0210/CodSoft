@@ -2,10 +2,6 @@
 /* eslint-disable react/jsx-key */
 
 
-
-
-
-
 import { useEffect, useState } from "react";
 
 export default function AirportSearch(props) {
@@ -24,42 +20,57 @@ export default function AirportSearch(props) {
             console.log(apidata.data);
         }, 500)
 
-        return () => clearTimeout(getApiData);
+        return () => { clearTimeout(getApiData); }
     }, [searchParam]);
 
     const handleInputChange = (e) => {
         setShow(false);
-        setSearchParam(e.target.value);
+        setSearchParam(e.target.value.toString().toUpperCase());
         // console.log(searchParam);
     }
 
+    const handleListClick = (val) => {
+        setSearchParam(val);
+        setShow(false);
+    }
+
     return (
-        <>
-            <input type="text" value={searchParam} onChange={handleInputChange} name={props.name}/>
-            {!show && <h2>Loading</h2>}
+        <div>
+            <label htmlFor={props.name}>{props.label}</label>
+            <input 
+                type="text" 
+                value={searchParam} 
+                onChange={handleInputChange} 
+                name={props.name} 
+                id={props.name}
+                autoComplete="off"
+                />
+
             {
                 show &&
                 <div>
                     <div>{searchParam}</div>
-                    <div>
-                        {
-                            searchResult.map(ele =>
-                                <div>
-                                    <h3>Name = {ele.name} </h3>
-                                    <h3>IataCode = {ele.iataCode}</h3> 
-                                    <div>
-                                        Address =
-                                        <h4>{ele.address.cityName + "   " + ele.address.cityCode}</h4>
-                                        <h5>{ele.address.countryName + "   " + ele.address.countryCode}</h5>
+                        <div>
+                            {
+                                searchResult.map(ele =>
+                                    (ele.name.startsWith(searchParam) || ele.iataCode.startsWith(searchParam)) && 
+                                    <div onClick={() => handleListClick(ele.iataCode)}
+                                        style={{
+                                            display:'flex',
+                                            gap:'10px'
+                                    }}>
+                                        <h4>Name = {ele.name} </h4>
+                                        <h5>IataCode = {ele.iataCode}</h5>
+                                        <div style={{display:'flex', gap:'5px'}}>
+                                            <h4>{ele.address.cityName}</h4>
+                                            <h5>{ele.address.countryName}</h5>
+                                        </div>
                                     </div>
-                                    <hr />
-                                </div>
-                                
-                            )
-                        }
-                    </div>
+                                )
+                            }
+                        </div>
                 </div>
             }
-        </>
+        </div>
     );
 }

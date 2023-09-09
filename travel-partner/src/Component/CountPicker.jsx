@@ -6,8 +6,9 @@ export const CountPicker = (props) => {
     const [count, setCount] = useState(0);
   return (
     <div>
+        <label htmlFor={props.name}>{props.label}</label>
         <input type="button" value="-" onClick={()=>setCount(count-1)} disabled={count == 0}/>
-        <input type="text" name={props.name} value={count}/>
+        <input type="text" name={props.name} id={props.name} value={count}/>
         <input type="button" value="+" onClick={()=>setCount(count+1)} disabled={count == 9}/>
     </div>
   )

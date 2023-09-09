@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AirportSearch from "./AirportSearch";
 import { DatePicker } from "../../Component/DatePicker";
 import { CountPicker } from "../../Component/CountPicker";
+import { FlightResults } from "./FlightResults";
 // const {originCode, destinationCode, departDate, returnDate, adultCount, childCount} = req.body;
 
 export default function FlightSearch() {
@@ -35,7 +36,6 @@ export default function FlightSearch() {
 
     const handleFormSubmit = (eve) => {
         eve.preventDefault();
-        console.log("Form Submitted");
         setShow(false);
         setQuery({
             originCode: eve.target.originCode.value.toString().toUpperCase(),
@@ -46,8 +46,6 @@ export default function FlightSearch() {
             childCount: eve.target.childCount.value.toString(),
             infantCount: eve.target.infantCount.value.toString(),
         })
-        console.log(query);
-
     }
 
     return (
@@ -55,19 +53,19 @@ export default function FlightSearch() {
 
             <form action="" onSubmit={handleFormSubmit}>
 
-                <AirportSearch name="originCode" placeholder="Origin" />
+                <AirportSearch name="originCode" label="From" placeholder="Origin" />
 
-                <AirportSearch name="destinationCode" placeholder="Destination" />
+                <AirportSearch name="destinationCode" label="To" placeholder="Destination" />
 
-                <DatePicker name="departDate" placeholder="Departure Date" />
+                <DatePicker name="departDate" label="Depart" placeholder="Departure Date" />
 
-                <DatePicker name="returnDate" placeholder="Arrival Date" />
+                <DatePicker name="returnDate" label="Return" placeholder="Arrival Date" />
 
-                <CountPicker name="adultCount" placeholer="Enter Adult Count" />
+                <CountPicker name="adultCount" label="Adults" placeholer="Enter Adult Count" />
 
-                <CountPicker name="childCount" placeholer="Enter Child Count" />
+                <CountPicker name="childCount" label="Children (2-12years)" placeholer="Enter Child Count" />
 
-                <CountPicker name="infantCount" placeholer="Enter Infant Count" />
+                <CountPicker name="infantCount" label="Infants (age < 2years)" placeholer="Enter Infant Count" />
 
                 <button onClick={console.log("Clicked")} type="submit">Submit Here</button>
             </form>
@@ -75,63 +73,13 @@ export default function FlightSearch() {
             {
                 show &&
                 <div>
-                    {
-                        searchResult.data.map(ele =>
-                            <div>
-                                <hr />
-                                {
-                                    ele.itineraries.map(m =>
-                                        <div>
-                                            <div>
-                                                <h3>{m.segments[0].arrival.iataCode}</h3>
-                                                <h4>
-                                                    <span>{m.segments[0].arrival.terminal}</span>
-
-                                                    <span>
-                                                        <div>
-                                                            {m.segments[0].arrival.at.substring(0, 10)}
-                                                        </div>
-                                                        <div>
-                                                            {m.segments[0].arrival.at.substring(11)}
-                                                        </div>
-
-                                                    </span>
-                                                </h4>
-                                            </div>
-
-                                            <div>
-                                                <h3>{searchResult.dictionaries.carriers[m.segments[0].carrierCode]}</h3>
-                                                <h5>Duration : {m.duration.substring(2)}</h5>
-                                                <h5>{searchResult.dictionaries.aircraft[m.segments[0].aircraft.code]}</h5>
-                                            </div>
-
-                                            <div>
-                                                <h3>{m.segments[0].departure.iataCode}</h3>
-                                                <h4>
-                                                    <span>{m.segments[0].departure.terminal}</span>
-
-                                                    <span>
-                                                        <div>
-                                                            {m.segments[0].departure.at.substring(0, 10)}
-                                                        </div>
-                                                        <div>
-                                                            {m.segments[0].departure.at.substring(11)}
-                                                        </div>
-
-                                                    </span>
-                                                </h4>
-                                            </div>
-
-                                            <div>
-                                                {ele.price.currency + ' ' + ele.price.total}
-                                            </div>
-                                        </div>
-                                    )
-                                }
-                            <hr />
-                            </div>
-                        )
-                    }
+                    {searchResult.data.map(ele =>
+                        <FlightResults
+                            ele={ele}
+                            dict={searchResult.dictionaries}
+                            key={ele.id}
+                        />
+                    )}
                 </div>}
         </div>
     );
