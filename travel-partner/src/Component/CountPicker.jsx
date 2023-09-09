@@ -3,7 +3,8 @@ import { useState } from "react"
 
 
 export const CountPicker = (props) => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(props.val || 0);
+    
   return (
     <div>
         <label htmlFor={props.name}>{props.label}</label>

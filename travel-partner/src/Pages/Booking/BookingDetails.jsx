@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams, useSearchParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 
 
 export const BookingDetails = () => {

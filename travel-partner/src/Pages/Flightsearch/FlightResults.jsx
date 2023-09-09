@@ -39,7 +39,7 @@ export const FlightResults = ({ ele, dict}) => {
                                 }</h3>
 
                                 <h5>{
-                                    'Duration : ' + m.duration.substring(2)
+                                    'Duration : ' + m.segments[0].duration.substring(2)
                                 }</h5>
 
                                 {/* <h5>{

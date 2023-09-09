@@ -19,6 +19,11 @@ const router = createBrowserRouter([
     path:"/flight-booking/:id",
     element:<BookingDetails />,
     errorElement: <div>Booking Details error</div>
+  },
+  {
+    path:"/test",
+    element: <h1>App Working Fine !!!</h1>,
+    errorElement: <div>Errorrrrrrr!!!</div>
   }
 
 ]);
