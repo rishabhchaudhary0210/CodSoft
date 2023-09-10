@@ -51,26 +51,26 @@ export default function AirportSearch(props) {
             {
                 show &&
                 <div>
-                    <div>{searchParam}</div>
-                    <div>
-                        {
-                            searchResult.map(ele =>
-                                (ele.name.startsWith(searchParam) || ele.iataCode.startsWith(searchParam)) &&
-                                <div onClick={() => handleListClick(ele.iataCode)}
-                                    style={{
-                                        display: 'flex',
-                                        gap: '10px'
-                                    }}>
-                                    <h4>Name = {ele.name} </h4>
-                                    <h5>IataCode = {ele.iataCode}</h5>
-                                    <div style={{ display: 'flex', gap: '5px' }}>
-                                        <h4>{ele.address.cityName}</h4>
-                                        <h5>{ele.address.countryName}</h5>
-                                    </div>
+                    {   
+                        searchResult.map(ele =>
+                            ((ele.name.startsWith(searchParam) || ele.iataCode.startsWith(searchParam))) &&
+                            <div
+                                key={ele.iataCode} 
+                                onClick={() => handleListClick(ele.iataCode)}
+                                style={{
+                                    display: 'flex',
+                                    gap: '10px'
+                                }}>
+                                <h4>Name = {ele.name} </h4>
+                                <h5>IataCode = {ele.iataCode}</h5>
+                                <div style={{ display: 'flex', gap: '5px' }}>
+                                    <h4>{ele.address.cityName}</h4>
+                                    <h5>{ele.address.countryName}</h5>
                                 </div>
-                            )
-                        }
-                    </div>
+                            </div>
+                        )
+                    }
+
                 </div>
             }
         </div>

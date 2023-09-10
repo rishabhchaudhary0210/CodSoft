@@ -79,10 +79,15 @@ app.get("/flight", async (req, res) => {
     // console.log(apiData);
 })
 
+
+
 app.post("/flight-booking", async (req, res) => {
 
     const inputFlight = await req.body;
     // console.log(inputFlight);
+    // inputFlight[0].price.total='1231';
+    // inputFlight[0].price.grandTotal='1231';
+    // inputFlight[0].price.base='1231';
     const responsePricing = await amadeus.shopping.flightOffers.pricing
         .post(
             JSON.stringify({
@@ -97,10 +102,46 @@ app.post("/flight-booking", async (req, res) => {
         const responseData = await responsePricing.body;
         res.json(JSON.parse(responseData));
     } catch (err) {
-        res.json(err);
+        console.log(err);
+        res.status(400).json({ "Error": "Error getting Data" });
     }
     // res.json(inputFlight);
 })
+
+
+
+let flightBookingConfirm;
+app.post('/flight-confirm', async (req, res) => {
+    const { flightInfo, travelerInfo } = req.body;
+    // console.log(travelerInfo);
+    const returnBooking = await amadeus.booking.flightOrders
+        .post(
+            JSON.stringify({
+                data: {
+                    type: "flight-order",
+                    flightOffers: flightInfo,
+                    travelers: travelerInfo
+                },
+            })
+        )
+        .catch(x => res.json(x))
+    try {
+        // console.log(returnBooking)
+        const responseData = await returnBooking.result;
+        console.log("Reponse should be recieved");
+        flightBookingConfirm = responseData;
+        res.json(responseData)
+    }catch(err){
+        console.log(err);
+        res.status(400).json({ "Error": "Error getting Data" });
+    }   
+    // res.json({ "trav": travelerInfo, "flight": flightInfo });
+})
+
+app.get('/flight-booking-done', (req, res)=>{
+    res.json(flightBookingConfirm);
+})
+
 
 app.listen(port, () => {
     console.log(`Server started on Port : ${port}`);

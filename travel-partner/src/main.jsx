@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { BookingDetails } from './Pages/Booking/BookingDetails.jsx';
+import { BookingDone } from './Pages/Booking/BookingDone.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
     path:"/test",
     element: <h1>App Working Fine !!!</h1>,
     errorElement: <div>Errorrrrrrr!!!</div>
+  },
+  {
+    path:"/flight-confirm",
+    element: <BookingDone />,
+    errorElement: <div>Confirmation Error</div>
   }
 
 ]);
