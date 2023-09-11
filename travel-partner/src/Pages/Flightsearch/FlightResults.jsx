@@ -1,28 +1,34 @@
 /* eslint-disable react/prop-types */
+import './Stylesheet/flightResults.css';
+import { FaPlane } from 'react-icons/fa';
 
-export const FlightResults = ({ ele, dict }) => {
+export const FlightResults = ({ ele, dict, button }) => {
 
     return (
         <div
-            style={{
-                margin: '10px', padding: '10px', border: '1px solid black', background: 'grey'
-            }}>
+            className='flight-results-container'
+        >
+            <div className='flight-results-single'>
+
             {
+                
                 ele.itineraries.map(m =>
 
-                    <div key={m.id}>
+                    <div key={m.id} className='flight-results-item'>
 
                         <AirlineDetails
-                            val={m.segments[0].arrival}
+                            val={m.segments[0].departure}
                         />
 
-                        <div>
+                        <div className='flight-results-middle-container'>
                             <h3>{
                                 dict?.carriers[m.segments[0].carrierCode]
                             }</h3>
 
+                            <div> <hr/><FaPlane /> </div>
+
                             <h5>{
-                                'Duration : ' + m.segments[0].duration.substring(2)
+                                m.segments[0].duration.substring(2)
                             }</h5>
 
                             {/* <h5>{
@@ -31,14 +37,19 @@ export const FlightResults = ({ ele, dict }) => {
                         </div>
 
                         <AirlineDetails
-                            val={m.segments[0].departure}
-                        />
+                            val={m.segments[0].arrival}
+                            />
+
 
                     </div>
                 )
             }
-            <div>
+
+            </div>
+            <div className={'flight-results-price'}>
+                <hr />
                 {ele.price.currency + ' ' + ele.price.total}
+                {button === true && <button className='flight-results-btn'>Select</button>}
             </div>
         </div >
 
@@ -48,7 +59,7 @@ export const FlightResults = ({ ele, dict }) => {
 
 const AirlineDetails = ({ val }) => {
     return (
-        <div>
+        <div className='airline-details-container'>
             <h3>{val.iataCode}</h3>
             <h4>
                 <span>{'T' + val.terminal}</span>

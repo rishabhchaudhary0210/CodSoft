@@ -15,6 +15,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <div>Error Recieved</div>,
+    children:[
+      
+    ]
   },
   {
     path:"/flight-booking/:id",

@@ -1,0 +1,48 @@
+
+.flight-search-form{
+    background-color: blueviolet;
+    padding: 25px 40px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.flight-search-form .airport-searchBar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-search-form .datepicker-input-container{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: flex-start;
+    height: 90px;
+    padding: 10px 10px;
+}
+
+.flight-search-form .datepicker-input-container .countpicker-input-container{
+    background-color: #fff;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.flight-search-form .flight-search-button{
+    display: block;
+    background-color: #fff;
+    margin: 5px auto;
+    height: 45px;
+    padding: 7px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.flight-search-link-tag{
+    text-decoration: none; 
+}

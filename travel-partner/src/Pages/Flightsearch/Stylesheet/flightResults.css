@@ -1,0 +1,98 @@
+.flight-results-container {
+    /* display: flex; */
+    background-color: #fff;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    margin: 25px auto;
+    padding: 40px 0;
+    width: 75%;
+    height: 100%;
+    min-height: 150px;
+    box-shadow: 1px 1px 5px darkslategray;
+    overflow: hidden;
+}
+
+.flight-results-single{
+    width: 100%;
+}
+
+.flight-results-item {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+}
+.flight-results-item .subDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.airline-details-container {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.airline-details-container h3 {
+    font-size: 1.3rem;
+    color: black;
+}
+.airline-details-container h4{
+    color: #677483;
+    font-weight: 500;
+}
+
+.flight-results-middle-container {
+    text-align: center;
+    width:40%;
+}
+.flight-results-middle-container>div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.flight-results-middle-container>div hr{
+    width: 100%;
+    margin: 0 3px;
+}
+.flight-results-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width:25%;
+    height: 100%;
+    position: relative;
+    font-size: 1.2rem;
+}
+.flight-results-price>hr{
+    position: absolute;
+    height: 300px;
+    left: 0;
+    color: silver;
+}
+.flight-results-price button{
+    margin: 15px 0;
+    font-size: 1rem;
+    padding: 8px 20px;
+    background-color: darkblue;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.flight-results-price button:hover, .flight-results-item:hover .flight-results-price button{
+}
+.flight-results-container:hover{
+    transform: scale(1.01);
+    transition: all 0.2s;
+}

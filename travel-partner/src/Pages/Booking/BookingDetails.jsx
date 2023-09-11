@@ -3,6 +3,8 @@ import { useLocation, useParams } from "react-router-dom"
 import { FlightResults } from "../Flightsearch/FlightResults";
 import { UserInfoForm } from "./UserInfoForm";
 import { Link } from "react-router-dom";
+import './Stylesheet/bookingDetails.css';
+
 
 export const BookingDetails = () => {
 
@@ -90,7 +92,7 @@ export const BookingDetails = () => {
 
     return (
         Object.keys(flightObject).length > 0 &&
-        <div>
+        <div className="booking-details-container">
             <h1>Booking Details</h1>
 
             <FlightResults
@@ -109,7 +111,7 @@ export const BookingDetails = () => {
                 </div>
             )}
 
-            <div>
+            <div className="flight-confirm-button">
                 <Link to={'/flight-confirm'}>
                     <button onClick={handleConfirmBooking}>Confirm Booking</button>
                 </Link>

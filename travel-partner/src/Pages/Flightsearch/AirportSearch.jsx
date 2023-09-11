@@ -3,6 +3,8 @@
 
 
 import { useEffect, useState } from "react";
+import './Stylesheet/airportSearch.css';
+import {FaPlaneDeparture, FaPlaneArrival} from 'react-icons/fa';
 
 export default function AirportSearch(props) {
 
@@ -35,10 +37,10 @@ export default function AirportSearch(props) {
         setSearchParam(val);
         setShow(false);
     }
-
+    const option = (props.label === 'From')? <FaPlaneDeparture/>:<FaPlaneArrival/>
     return (
-        <div>
-            <label htmlFor={props.name}>{props.label}</label>
+        <div className="airport-search-container">
+            <label htmlFor={props.name}>{option}  {props.label}</label>
             <input
                 type="text"
                 value={searchParam}
@@ -46,26 +48,27 @@ export default function AirportSearch(props) {
                 name={props.name}
                 id={props.name}
                 autoComplete="off"
+                required={props.req}
             />
 
             {
                 show &&
-                <div>
+                <div className="search-result-container">
                     {   
                         searchResult.map(ele =>
                             ((ele.name.startsWith(searchParam) || ele.iataCode.startsWith(searchParam))) &&
                             <div
                                 key={ele.iataCode} 
                                 onClick={() => handleListClick(ele.iataCode)}
-                                style={{
-                                    display: 'flex',
-                                    gap: '10px'
-                                }}>
-                                <h4>Name = {ele.name} </h4>
-                                <h5>IataCode = {ele.iataCode}</h5>
-                                <div style={{ display: 'flex', gap: '5px' }}>
-                                    <h4>{ele.address.cityName}</h4>
-                                    <h5>{ele.address.countryName}</h5>
+                                className="search-item"
+                                >
+                                <div>
+                                    <h4>{ele.iataCode}</h4>
+                                    <h5>{ele.name}</h5>
+                                </div>
+                                <div>
+                                    <h7>{ele.address.cityName}</h7>
+                                    <h7>{ele.address.countryName}</h7>
                                 </div>
                             </div>
                         )
