@@ -1,0 +1,45 @@
+
+.user-form-subdiv{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 15px 0;
+}
+
+.user-form-subdiv .form-duo-inputs{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.user-form-subdiv .label-input-container{
+    position: relative;
+    width: 100%;
+    padding: 15px auto;
+}
+
+.user-form-subdiv .label-input-container input, .user-form-subdiv .label-input-container select, #phone{
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid darkblue;
+    padding: 2px 5px;
+    margin-top: 5px;
+}
+.react-tel-input .flag-dropdown {
+    background:#fff;
+    border: none;
+}
+.user-form-subdiv .label-input-container input::placeholder{
+    color: #8b95a1;
+}
+.user-form-subdiv .label-input-container input:focus, .user-form-subdiv .label-input-container select:hover, #phone:focus{
+    outline: 2px solid gray;
+    border-radius: 5px;
+}
+
+.user-form-subdiv .label-input-container label{
+    font-size: 0.9rem;   
+}

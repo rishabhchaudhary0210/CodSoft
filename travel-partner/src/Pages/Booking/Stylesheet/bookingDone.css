@@ -1,0 +1,28 @@
+
+.booking-done-container{
+    text-align: center;
+}
+.booking-done-container .booking-done-info{
+    width: 50%;
+    align-items: center;
+    background-color: #fff;
+    margin: 15px auto;
+    padding: 45px 40px;
+    border: 2px solid darkblue;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.booking-done-container .booking-done-info h1{
+    margin: 0;
+}
+.booking-done-container .booking-done-info h3{
+    font-size: 2rem;
+}
+.booking-done-container .booking-done-info h5{
+    font-size: 1.5rem;
+}
+
+.user-detail{
+}

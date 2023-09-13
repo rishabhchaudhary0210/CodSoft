@@ -24,8 +24,8 @@ export const BookingDetails = () => {
         })
         const apiData = await response.json();
         setFlightObject(apiData);
-        
-        if(apiData.warnings.length>0 && apiData.warnings[0].title === "PricingOrFareBasisDiscrepancyWarning"){
+
+        if (apiData.warnings && apiData.warnings[0].title === "PricingOrFareBasisDiscrepancyWarning") {
             alert("Booking Price Changed ! Kindly Check Before Proceeding")
         }
         console.log(apiData);
@@ -100,20 +100,29 @@ export const BookingDetails = () => {
                 dict={dictionary}
             />
 
-
-            {flightObject.data.flightOffers[0].travelerPricings.map(ele =>
-                <div key={ele.travelerId}>
-                    <h4>{ele.travelerId + '. ' + ele.travelerType}</h4>
-                    <form action="" onSubmit={(e) => handleInfoSubmit(e, ele.travelerId)}>
-                        <UserInfoForm />
-                        <button type="submit">Save</button>
-                    </form>
+            <div className="forms-container">
+                <div className="forms-container-heading">
+                    <h1>Passenger Details</h1>
+                    <h3>Kindly ensure all the details are correct filled and are as per Government issued IDs.</h3>
                 </div>
-            )}
+                {flightObject.data.flightOffers[0].travelerPricings.map(ele =>
+                    <form key={ele.travelerId} className='user-info-form' action="" onSubmit={(e) => handleInfoSubmit(e, ele.travelerId)}>
+                        <h4>{ele.travelerId + '. ' + ele.travelerType}</h4>
+                        <UserInfoForm passAgeGroup={ele.travelerType}/>
+                        <div className="form-buttons">
+                            <button type="submit">Save</button>
+                            <input type="reset" value="Reset" />
+                        </div>
+                    </form>
+                )}
+            </div>
 
             <div className="flight-confirm-button">
                 <Link to={'/flight-confirm'}>
-                    <button onClick={handleConfirmBooking}>Confirm Booking</button>
+                    <button className='confirm-button' onClick={handleConfirmBooking}>Confirm Booking</button>
+                </Link>
+                <Link to={'/'}>
+                    <button className="cancel-button">Cancel</button>
                 </Link>
             </div>
         </div>

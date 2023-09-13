@@ -1,0 +1,94 @@
+
+.booking-details-container h1{
+    margin: 25px auto;
+    text-align: center;
+}
+
+.booking-details-container .forms-container{
+    margin: 0 auto;
+    padding: 25px 0;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+.forms-container-heading{
+    text-align: center;
+}
+.forms-container-heading h1{
+    margin-bottom: 0;
+}
+.forms-container-heading h3{
+    color: gray;
+    font-weight: 100;
+    margin-top: 0;
+}
+.user-info-form{
+    width: 55%;
+    padding: 25px 45px;
+    background-color: #fff;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.user-info-form h4{
+    margin: 10px 0;
+}
+.user-info-form .form-buttons{
+    display: flex;
+    width:100% ;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.user-info-form button, .user-info-form input[type=reset]{
+    background-color: darkblue;
+    color: #fff;
+    font-size: 1.1rem;
+    /* height: 40px; */
+    width:40%;
+    margin: 10px 0px;
+    padding: 15px 25px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.user-info-form input[type=reset]{
+    background-color: #fff;
+    color: darkblue;
+    border: 1px solid darkblue;
+}
+.user-info-form input[type=reset]:hover{
+    background-color: rgb(245, 245, 255);
+}
+.user-info-form button:active, .user-info-form button:hover{
+    background-color: rgb(0, 0, 80);
+}
+
+.flight-confirm-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    gap: 25px;
+}
+
+.flight-confirm-button button{
+    min-width: 150px;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.flight-confirm-button button:hover, .flight-confirm-button button:active{
+    filter: brightness(0.8);
+}
+.flight-confirm-button .confirm-button{
+    background-color: rgb(0, 255, 85);
+    color: #fff;
+}
+
+.flight-confirm-button .cancel-button{
+    background-color: yellow;
+}

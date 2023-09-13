@@ -26,9 +26,11 @@ export const FlightResults = ({ ele, dict, button }) => {
                             }</h3>
 
                             <div> <hr/><FaPlane /> </div>
-
+                            <h5>
+                                {(m.segments[0].numberOfStops === 0)?'Direct':('Stop : '+m.segments[0].numberOfStops)}
+                            </h5>
                             <h5>{
-                                m.segments[0].duration.substring(2)
+                                m.segments[0].duration?.substring(2)
                             }</h5>
 
                             {/* <h5>{

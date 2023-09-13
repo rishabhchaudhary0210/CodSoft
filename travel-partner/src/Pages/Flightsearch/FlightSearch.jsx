@@ -5,7 +5,7 @@ import { DatePicker } from "../../Component/DatePicker";
 import { CountPicker } from "../../Component/CountPicker";
 import { FlightResults } from "./FlightResults";
 import { Link } from "react-router-dom";
-
+import {FaSistrix} from 'react-icons/fa';
 
 import './Stylesheet/flightSearch.css';
 // const {originCode, destinationCode, departDate, returnDate, adultCount, childCount} = req.body;
@@ -132,7 +132,7 @@ export default function FlightSearch() {
                     {/* </div> */}
                 </div>
 
-                <button className="flight-search-button" onClick={console.log("Clicked")} type="submit"><span>Search</span> Search Flights</button>
+                <button className="flight-search-button" onClick={console.log("Clicked")} type="submit"> <FaSistrix /> Search Flights</button>
 
             </form>
 

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { FlightResults } from "../Flightsearch/FlightResults";
+import './Stylesheet/bookingDone.css';
+import {IoCheckmarkDoneCircleOutline} from 'react-icons';
 
 export const BookingDone = () => {
 
@@ -19,9 +21,18 @@ export const BookingDone = () => {
 
     return (
 
-        Object.keys(confirmationObj).length > 0 && 
-        <div>
-            <h1>Booking Done Logo</h1>
+        Object.keys(confirmationObj).length > 0 &&
+        <div className="booking-done-container">
+            <div className="booking-done-info">
+                <h1>Booking Done Logo</h1>
+                <IoCheckmarkDoneCircleOutline />
+                <h3>
+                    {'PNR : ' + confirmationObj.data.associatedRecords[0].reference}
+                </h3>
+                <h5>
+                    {'Ticketing-ID : ' + confirmationObj.data.id}
+                </h5>
+            </div>  
 
             <div>
                 <h1>Booking Details</h1>
@@ -29,26 +40,23 @@ export const BookingDone = () => {
                     ele={confirmationObj.data.flightOffers[0]}
                 />
             </div>
-            <div>
-                {'Ticketing ID = '+confirmationObj.data.id}
 
-            </div>
-            <div>
-                {confirmationObj.data.travelers.map( m => <UserDetail key={m.id} ele={m}/>)}  
-            </div>
+            {/* <div className="booking-done-trav-container">
+                    {confirmationObj.da ta.travelers.map(m => <UserDetail key={m.id} ele={m} />)}
+                </div> */}
         </div>
 
     )
 }
 
-export const UserDetail = ({ele})=>{
+export const UserDetail = ({ ele }) => {
     return (
-        <div>
+        <div className="user-detail">
             <div>
-                {ele.name.lastName+' '+ele.name.firstName+' '}{(ele.gender === 'MALE')?'MR.':'MS.'}
+                {ele.name.lastName + ' ' + ele.name.firstName + ' '}{(ele.gender === 'MALE') ? 'MR.' : 'MS.'}
             </div>
             <div>
-                {'D.O.B. ' + ele.dateOfBirth}
+                {ele.dateOfBirth}
             </div>
             <div>
                 <div>{ele.contact.emailAddress}</div>
