@@ -48,7 +48,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 14px;
+    gap: 8px;
 }
 
 .user-detail .name{
@@ -66,11 +66,6 @@
 } 
 
 .user-detail .contact{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 15px;
     color: #5d6670;
 }
 

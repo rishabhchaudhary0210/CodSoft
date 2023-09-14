@@ -78,10 +78,8 @@ export const UserDetail = ({ ele, index, obj }) => {
             <div className="dob">
                 {ele.dateOfBirth}
             </div>
-            <div className="contact">
-                <div>{ele.contact.emailAddress}</div>
-                <div>{'+'+ele.contact.phones[0].countryCallingCode + ' ' + ele.contact.phones[0].number}</div>
-            </div>
+            <div className="contact">{ele.contact.emailAddress}</div>
+            <div className="contact">{'+' + ele.contact.phones[0].countryCallingCode + ' ' + ele.contact.phones[0].number}</div>
             <div className="fare">
                 <div>{obj[index].travelerType}</div>
                 <div>{obj[index].price.currency + ' ' + obj[index].price.total}</div>

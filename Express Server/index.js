@@ -4,10 +4,46 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const Amadeus = require('amadeus');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const {v4:uuidv4} = require('uuid');
 
 const port = process.env.PORT || 8080;
 
 dotenv.config();
+
+mongoose.set("strictQuery", true);
+try {
+    mongoose.connect(process.env.DBURL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    },
+    );
+} catch (err) {
+    console.log(process.env.DBURL)
+    console.log(err);
+}
+mongoose.connection.on("error", (err) => {
+    console.log("Error in Connection");
+    console.log(err);
+})
+mongoose.connection.once("open", () => {
+    console.log("SuccessFully Connected TO the DB");
+})
+
+const userSchema = {
+    email:String,
+    phone:String,
+    password:String,
+    objId:[String],
+}
+const flightBookingSchema = {
+    _id : String,
+    obj : String,
+}
+
+const User = mongoose.model('User',userSchema);
+const FlightDetail = mongoose.model('FlightDetail',flightBookingSchema);
+
 
 const amadeus = new Amadeus({
     clientId: process.env.apiKey,
@@ -128,9 +164,25 @@ app.post('/flight-confirm', async (req, res) => {
     try {
         // console.log(returnBooking)
         const responseData = await returnBooking.result;
-        console.log("Reponse should be recieved");
-        flightBookingConfirm = responseData;
-        res.json(responseData)
+
+        //saving to mongodb
+        
+        try{
+            let uniqueid = uuidv4();
+            const flightBookingData = new FlightDetail({
+                _id : uniqueid,
+                obj : JSON.stringify(responseData)
+            })
+            await flightBookingData.save();
+            console.log("Saved Successfully");
+            console.log("Reponse should be recieved");
+            flightBookingConfirm = responseData;
+            res.json({key:uniquer, obj:responseData})
+        }catch(e){
+            console.log(e);
+        }
+
+
     }catch(err){
         console.log(err);
         res.status(400).json({ "Error": "Error getting Data" });
