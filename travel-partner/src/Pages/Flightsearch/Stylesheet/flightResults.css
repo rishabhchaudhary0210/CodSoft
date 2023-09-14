@@ -72,6 +72,13 @@
     position: relative;
     font-size: 1.2rem;
 }
+.flight-results-price h3{
+    font-weight: 400;
+}
+.flight-results-price h5{
+    font-weight: 100;
+    
+}
 .flight-results-price>hr{
     position: absolute;
     height: 300px;

@@ -50,7 +50,8 @@ export const FlightResults = ({ ele, dict, button }) => {
             </div>
             <div className={'flight-results-price'}>
                 <hr />
-                {ele.price.currency + ' ' + ele.price.total}
+                {/* <h5>{ele.travelerPricings[0].fareDetailsBySegment[0].cabin}</h5> */}
+                <h3>{ele.price.currency + ' ' + ele.price.total}</h3>
                 {button === true && <button className='flight-results-btn'>Select</button>}
             </div>
         </div >

@@ -2,7 +2,14 @@
 import { useEffect, useState } from "react"
 import { FlightResults } from "../Flightsearch/FlightResults";
 import './Stylesheet/bookingDone.css';
-import {IoCheckmarkDoneCircleOutline} from 'react-icons';
+// import {IoCheckmarkDoneCircleOutline} from 'react-icons/io';
+// import {FaPlaneCircleCheck} from 'react-icons/fa'
+// import {FaRegCircleCheck} from 'react-icons/fa'
+// import {FaPlane} from 'react-icons/fa'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlaneCircleCheck } from '@fortawesome/free-solid-svg-icons'
+
 
 export const BookingDone = () => {
 
@@ -20,47 +27,65 @@ export const BookingDone = () => {
     }, [])
 
     return (
+        (Object.keys(confirmationObj).length === 0) ? <h1>Loading</h1> :
+            Object.keys(confirmationObj).length > 0 &&
+            <div className="booking-done-container">
+                <div className="booking-done-info">
+                    <FontAwesomeIcon className="booking-done-logo" icon={faPlaneCircleCheck} />
+                    <h3>
+                        Booking Confirm
+                    </h3>
+                    <h4>
+                        {'PNR : ' + confirmationObj.data.associatedRecords[0].reference}
+                    </h4>
+                    <h5>
+                        {'Ticketing-ID : ' + confirmationObj.data.id}
+                    </h5>
+                </div>
 
-        Object.keys(confirmationObj).length > 0 &&
-        <div className="booking-done-container">
-            <div className="booking-done-info">
-                <h1>Booking Done Logo</h1>
-                <IoCheckmarkDoneCircleOutline />
-                <h3>
-                    {'PNR : ' + confirmationObj.data.associatedRecords[0].reference}
-                </h3>
-                <h5>
-                    {'Ticketing-ID : ' + confirmationObj.data.id}
-                </h5>
-            </div>  
+                <div>
+                    <h1>Booking Details</h1>
+                    <FlightResults
+                        ele={confirmationObj.data.flightOffers[0]}
+                    />
+                </div>
 
-            <div>
-                <h1>Booking Details</h1>
-                <FlightResults
-                    ele={confirmationObj.data.flightOffers[0]}
-                />
+                <div className="booking-done-trav-container">
+                    <h1>Passenger Details</h1>
+                    {confirmationObj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={confirmationObj.data.flightOffers[0].travelerPricings} />)}
+                </div>
             </div>
-
-            {/* <div className="booking-done-trav-container">
-                    {confirmationObj.da ta.travelers.map(m => <UserDetail key={m.id} ele={m} />)}
-                </div> */}
-        </div>
 
     )
 }
 
-export const UserDetail = ({ ele }) => {
+export const UserDetail = ({ ele, index, obj }) => {
+    console.log("ind = " + index);
+    console.log(obj[index])
     return (
         <div className="user-detail">
-            <div>
-                {ele.name.lastName + ' ' + ele.name.firstName + ' '}{(ele.gender === 'MALE') ? 'MR.' : 'MS.'}
+            <div className="name">
+                <div>
+                    {(ele.gender === 'MALE') ? 'MR.' : 'MS.'}
+                </div>
+                <div>
+                    {ele.name.firstName}
+                </div>
+                <div>
+                    {ele.name.lastName}
+                </div>
             </div>
-            <div>
+            <div className="dob">
                 {ele.dateOfBirth}
             </div>
-            <div>
+            <div className="contact">
                 <div>{ele.contact.emailAddress}</div>
-                <div>{ele.contact.phones[0].countryCallingCode + ' ' + ele.contact.phones[0].number}</div>
+                <div>{'+'+ele.contact.phones[0].countryCallingCode + ' ' + ele.contact.phones[0].number}</div>
+            </div>
+            <div className="fare">
+                <div>{obj[index].travelerType}</div>
+                <div>{obj[index].price.currency + ' ' + obj[index].price.total}</div>
+                <div>{obj[index].fareDetailsBySegment[0].cabin}</div>
             </div>
         </div>
     )

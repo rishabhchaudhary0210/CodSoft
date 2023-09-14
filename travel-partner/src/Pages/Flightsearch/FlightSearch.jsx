@@ -15,6 +15,7 @@ export default function FlightSearch() {
     const [query, setQuery] = useState({});
     const [searchResult, setSearchResult] = useState([]);
     const [show, setShow] = useState(false);
+    const [showloader, setShowloader] = useState(false);
     // const [passenger, setPassenger] = useState({adultCount:0,childCount:0,infantCount:0});
 
     const serializeQuery = (obj) => {
@@ -44,6 +45,7 @@ export default function FlightSearch() {
     useEffect(() => {
 
         const getApiData = async () => {
+            setShowloader(true);
             try {
                 const str = serializeQuery(query);
                 let url = `http://localhost:8080/flight${str}`;
@@ -55,6 +57,7 @@ export default function FlightSearch() {
 
                 setSearchResult(apiData);
                 setShow(true);
+                setShowloader(false);
                 console.log(apiData);
                 if (apiData.Error !== null) {sessionStorage.clear();}
             }
@@ -132,11 +135,15 @@ export default function FlightSearch() {
                     {/* </div> */}
                 </div>
 
-                <button className="flight-search-button" onClick={console.log("Clicked")} type="submit"> <FaSistrix /> Search Flights</button>
+                <button className="flight-search-button" onClick={console.log("Clicked")} type="submit"> <FaSistrix /> <span>Search Flights</span></button>
 
             </form>
 
             {
+                showloader && <h1>Loading</h1>
+            }
+            {
+                
                 show &&
                 <div>
                     {

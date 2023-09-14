@@ -1,6 +1,6 @@
 
 .flight-search-form{
-    background-color: blueviolet;
+    background: rgb(67, 67, 255);
     padding: 25px 40px;
     margin: 10px;
     border-radius: 10px;
@@ -31,18 +31,29 @@
     display: block;
     background-color: #fff;
     margin: 5px auto;
-    height: 45px;
-    padding: 7px 15px;
+    /* height: 45px; */
+    padding: 12px 25px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 10px;
-    font-size: 1.1rem;
+    gap: 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
     border: none;
     outline: none;
     cursor: pointer;
+    box-shadow: 5px 5px 2px black;
+    transition: all 0.1s ease;
+    /* outline: 3px solid darkblue;
+    outline-offset: -5px; */
 }
-
+.flight-search-form .flight-search-button:hover{
+    background-color: rgb(209, 209, 209);
+} 
+.flight-search-form .flight-search-button:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
 .flight-search-link-tag{
     text-decoration: none; 
 }

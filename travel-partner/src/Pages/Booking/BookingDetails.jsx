@@ -106,7 +106,7 @@ export const BookingDetails = () => {
                     <h3>Kindly ensure all the details are correct filled and are as per Government issued IDs.</h3>
                 </div>
                 {flightObject.data.flightOffers[0].travelerPricings.map(ele =>
-                    <form key={ele.travelerId} className='user-info-form' action="" onSubmit={(e) => handleInfoSubmit(e, ele.travelerId)}>
+                    <form key={ele.travelerId} className='user-info-form' action="" onSubmit={(e) => handleInfoSubmit(e, ele.travelerId)} >
                         <h4>{ele.travelerId + '. ' + ele.travelerType}</h4>
                         <UserInfoForm passAgeGroup={ele.travelerType}/>
                         <div className="form-buttons">

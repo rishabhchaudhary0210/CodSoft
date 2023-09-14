@@ -1,14 +1,19 @@
 
 .booking-done-container{
     text-align: center;
+    background-color: #fff;
+    padding: 25px 0;
+}
+.booking-done-container .booking-done-info .booking-done-logo{
+    color: rgb(0, 255, 85);
+    font-size: 2.8rem;
 }
 .booking-done-container .booking-done-info{
-    width: 50%;
+    width: 100%;
     align-items: center;
-    background-color: #fff;
     margin: 15px auto;
     padding: 45px 40px;
-    border: 2px solid darkblue;
+    /* border: 2px solid darkblue; */
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -18,11 +23,61 @@
     margin: 0;
 }
 .booking-done-container .booking-done-info h3{
-    font-size: 2rem;
+    font-size: 2.2rem;
+    color: darkblue;
 }
-.booking-done-container .booking-done-info h5{
+.booking-done-container .booking-done-info h4{
     font-size: 1.5rem;
+    color: #677483;
+    margin-bottom: 0;
+}
+
+.booking-done-container .booking-done-info h5{
+    font-size: 1rem;
+    color: #677483;
 }
 
 .user-detail{
+    /* border:2px solid red; */
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: fit-content;
+    padding:25px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.user-detail .name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.user-detail .dob{
+    color: #5d6670;
+    
+} 
+
+.user-detail .contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    color: #5d6670;
+}
+
+.user-detail .fare{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+    color: #677483;
 }
