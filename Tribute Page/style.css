@@ -21,8 +21,10 @@ header {
 nav ul {
     list-style: none;
     text-align: center;
-    background-color: #333;
+    background-color: #afafaf;
+    color: black;
     padding: 10px;
+    box-shadow: 1px 1px 5px black;
 }
 
 nav ul li {
@@ -32,7 +34,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: black;
     transition: color 0.3s;
 }
 
@@ -88,6 +90,7 @@ p{
 .main-box img{
     height: 400px;
     width: 700px;
+    box-shadow: 2px 2px 8px black;
 }
 
 section .flex-box{
@@ -104,12 +107,12 @@ section div img{
 }
 #last-img{
     height: 250px;
-    width: 900px;
+    width: 1800px;
 }
 li{
     margin: 10px;
 }
 #honour-img{
     width: 400px;
-    height: 250px;
+    height: 300px;
 }
