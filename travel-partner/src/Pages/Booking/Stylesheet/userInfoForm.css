@@ -28,6 +28,9 @@
     padding: 2px 5px;
     margin-top: 5px;
 }
+#phone{
+    padding-left : 48px;
+}
 .react-tel-input .flag-dropdown {
     background:#fff;
     border: none;

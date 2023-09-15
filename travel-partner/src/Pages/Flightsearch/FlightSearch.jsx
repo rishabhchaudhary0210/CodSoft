@@ -6,6 +6,7 @@ import { CountPicker } from "../../Component/CountPicker";
 import { FlightResults } from "./FlightResults";
 import { Link } from "react-router-dom";
 import {FaSistrix} from 'react-icons/fa';
+import { Loader } from "../../Component/Loader";
 
 import './Stylesheet/flightSearch.css';
 // const {originCode, destinationCode, departDate, returnDate, adultCount, childCount} = req.body;
@@ -140,7 +141,7 @@ export default function FlightSearch() {
             </form>
 
             {
-                showloader && <h1>Loading</h1>
+                showloader && <Loader />
             }
             {
                 

@@ -17,6 +17,7 @@
 .count-container input {
     height: 30px;
     border: none;
+    cursor: pointer;
 }
 
 .count-container input[type=text] {

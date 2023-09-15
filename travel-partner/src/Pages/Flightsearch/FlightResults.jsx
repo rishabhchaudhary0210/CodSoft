@@ -10,42 +10,47 @@ export const FlightResults = ({ ele, dict, button }) => {
         >
             <div className='flight-results-single'>
 
-            {
-                
-                ele.itineraries.map(m =>
+                {
 
-                    <div key={m.id} className='flight-results-item'>
+                    ele.itineraries.map(m =>
 
-                        <AirlineDetails
-                            val={m.segments[0].departure}
-                        />
+                        <div key={m.id} className='flight-results-item'>
 
-                        <div className='flight-results-middle-container'>
-                            <h3>{
-                                dict?.carriers[m.segments[0].carrierCode]
-                            }</h3>
+                            {m.segments.map(s =>
+                                <div key={s.id} className='subDiv'>
 
-                            <div> <hr/><FaPlane /> </div>
-                            <h5>
-                                {(m.segments[0].numberOfStops === 0)?'Direct':('Stop : '+m.segments[0].numberOfStops)}
-                            </h5>
-                            <h5>{
-                                m.segments[0].duration?.substring(2)
-                            }</h5>
+                                    <AirlineDetails
+                                        val={s.departure}
+                                    />
 
-                            {/* <h5>{
+                                    <div className='flight-results-middle-container'>
+                                        <h3>{
+                                            dict?.carriers[s.carrierCode]
+                                        }</h3>
+
+                                        <div> <hr /><FaPlane /> </div>
+                                        <h5>
+                                            {(s.numberOfStops === 0) ? 'Direct' : ('Stop : ' +s.numberOfStops)}
+                                        </h5>
+                                        <h5>{
+                                            s.duration?.substring(2)
+                                        }</h5>
+
+                                        {/* <h5>{
                                 dict.aircraft[m.segments[0].aircraft.code]
                             }</h5> */}
+                                    </div>
+
+                                    <AirlineDetails
+                                        val={s.arrival}
+                                    />
+                                </div>
+                            )}
+
+
                         </div>
-
-                        <AirlineDetails
-                            val={m.segments[0].arrival}
-                            />
-
-
-                    </div>
-                )
-            }
+                    )
+                }
 
             </div>
             <div className={'flight-results-price'}>

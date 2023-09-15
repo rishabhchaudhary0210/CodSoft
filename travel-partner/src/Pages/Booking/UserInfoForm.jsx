@@ -66,9 +66,8 @@ export const UserInfoForm = () => {
                     
                     country={'in'}
                     placeholder={"Enter Your Contact No"}
-                    inputProps={{ name: 'phone', id:"phone" }}
+                    inputProps={{ name: 'phone', id:"phone", required:true }}
                     onChange={(e) => console.log(e)}
-                    required
                 />
             </div>
 

@@ -15,7 +15,7 @@ export default function AirportSearch(props) {
     useEffect(() => {
         // setShow(false);
         const getApiData = setTimeout(async () => {
-            if (searchParam.length > 0) {
+            if (searchParam.length > 0 && searchParam.match(/^[A-Za-z]+$/)) {
                 const res = await fetch(`http://localhost:8080/airport-search/${searchParam}`);
                 const apidata = await res.json();
                 setSearchResult(apidata.data);
@@ -54,7 +54,7 @@ export default function AirportSearch(props) {
             {
                 show &&
                 <div className="search-result-container">
-                    {   
+                    {   searchResult !== null > 0 &&
                         searchResult.map(ele =>
                             ((ele.name.startsWith(searchParam) || ele.iataCode.startsWith(searchParam))) &&
                             <div

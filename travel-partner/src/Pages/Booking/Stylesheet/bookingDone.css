@@ -1,7 +1,7 @@
 
 .booking-done-container{
     text-align: center;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 25px 0;
 }
 .booking-done-container .booking-done-info .booking-done-logo{
@@ -37,19 +37,48 @@
     color: #677483;
 }
 
+.booking-done-trav-container{
+    margin-top: 45px;
+}
+
 .user-detail{
     /* border:2px solid red; */
     background-color: #eee;
     border-radius: 5px;
     margin: 10px auto;
-    width: fit-content;
-    padding:25px 10%;
+    width: 75%;
+    padding:25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    /* display: grid;
+    grid-template-areas: "name name fare""dob email phone"; */
     gap: 8px;
 }
+
+.user-detail .subdiv-1{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 5px;
+    border-bottom: 1px solid gray;
+}
+
+
+.user-detail .subdiv-2{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 10px;
+}
+
 
 .user-detail .name{
     display: flex;
@@ -58,16 +87,17 @@
     gap:15px;
     font-size: 1.1rem;
     font-weight: 500;
+    grid-area: name;
 }
 
-.user-detail .dob{
+.user-detail .dob, .user-detail .contact{
+    width: 100%;
     color: #5d6670;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 5px 15px; */
 } 
-
-.user-detail .contact{
-    color: #5d6670;
-}
 
 .user-detail .fare{
     display: flex;
@@ -75,4 +105,13 @@
     align-items: center;
     gap:15px;
     color: #677483;
+    grid-area: fare;
+}
+
+.email{
+    grid-area: email;
+}
+
+.phone{
+    grid-area: phone;
 }

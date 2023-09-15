@@ -1,16 +1,18 @@
 import './App.css'
 
 import FlightSearch from './Pages/Flightsearch/FlightSearch';
-// import { Outlet } from 'react-router';
+import { Navbar } from './Component/Navbar';
+import { Outlet } from 'react-router';
 
 function App() {
 
 
   return (
     <>
-      <FlightSearch />
-      {/* <Outlet /> */}
-    </> 
+      <Navbar />
+      {/* <FlightSearch /> */}
+      <Outlet />
+    </>
   )
 }
 

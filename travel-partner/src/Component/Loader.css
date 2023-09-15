@@ -1,0 +1,46 @@
+
+.loader{
+    border: 5px solid rgba(128, 128, 128, 0.637);
+    animation: rotation 1.3s infinite ease-in-out;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 25px auto;
+    position: relative;
+}
+
+.loader .loader-plane{
+    position: absolute;
+    top: -10px;
+    left: 0;
+    transform: rotate(-40deg);
+    color: darkblue;
+    font-size: 2.4rem;
+}
+
+
+
+@keyframes rotation{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes sa-rotateplane{
+    0%{
+     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+     -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    50%{
+     transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+     -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+    100%{
+     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    } 
+    }

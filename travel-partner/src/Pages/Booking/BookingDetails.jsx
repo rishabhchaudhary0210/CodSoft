@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom"
 import { FlightResults } from "../Flightsearch/FlightResults";
 import { UserInfoForm } from "./UserInfoForm";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
+import { Loader } from "../../Component/Loader";
 import './Stylesheet/bookingDetails.css';
 
 
@@ -14,6 +15,7 @@ export const BookingDetails = () => {
     const [flightObject, setFlightObject] = useState({});
     const [dictionary, setDictionary] = useState({});
     const [infoObject, setInfoObject] = useState([]);
+    const navigate = useNavigate();
 
     const handleFlightRoute = async (obj) => {
 
@@ -85,12 +87,15 @@ export const BookingDetails = () => {
                 body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject })
             })
             const apiData = await response.json();
-
+            const redirectKey = (await apiData.key);
+            console.log(redirectKey)
+            navigate(`/flight-confirm/${redirectKey}`);
             console.log(apiData);
         }
     }
 
     return (
+        (Object.keys(flightObject).length === 0) ? <Loader /> :
         Object.keys(flightObject).length > 0 &&
         <div className="booking-details-container">
             <h1>Booking Details</h1>
@@ -118,9 +123,9 @@ export const BookingDetails = () => {
             </div>
 
             <div className="flight-confirm-button">
-                <Link to={'/flight-confirm'}>
+                {/* <Link to={'/flight-confirm'}> */}
                     <button className='confirm-button' onClick={handleConfirmBooking}>Confirm Booking</button>
-                </Link>
+                {/* </Link> */}
                 <Link to={'/'}>
                     <button className="cancel-button">Cancel</button>
                 </Link>

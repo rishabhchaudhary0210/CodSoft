@@ -176,8 +176,9 @@ app.post('/flight-confirm', async (req, res) => {
             await flightBookingData.save();
             console.log("Saved Successfully");
             console.log("Reponse should be recieved");
+            console.log(uniqueid);
             flightBookingConfirm = responseData;
-            res.json({key:uniquer, obj:responseData})
+            res.json({key:uniqueid})
         }catch(e){
             console.log(e);
         }
@@ -190,7 +191,16 @@ app.post('/flight-confirm', async (req, res) => {
     // res.json({ "trav": travelerInfo, "flight": flightInfo });
 })
 
-app.get('/flight-booking-done', (req, res)=>{
+app.get('/flight-booking-done/:id', (req, res)=>{
+    const {id} = req.params;
+    FlightDetail.findOne({_id:req.params.id},(err,result)=>{
+        if(!err){
+            if(result){
+                console.log("Found");
+                console.log(result);
+            }
+        }
+    })
     res.json(flightBookingConfirm);
 })
 

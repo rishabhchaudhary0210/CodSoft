@@ -2,32 +2,31 @@
 import { useEffect, useState } from "react"
 import { FlightResults } from "../Flightsearch/FlightResults";
 import './Stylesheet/bookingDone.css';
-// import {IoCheckmarkDoneCircleOutline} from 'react-icons/io';
-// import {FaPlaneCircleCheck} from 'react-icons/fa'
-// import {FaRegCircleCheck} from 'react-icons/fa'
-// import {FaPlane} from 'react-icons/fa'
-
+import { Loader } from "../../Component/Loader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaneCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { useParams } from "react-router";
 
 
 export const BookingDone = () => {
 
+    const {id} = useParams();
     const [confirmationObj, setConfirmationObj] = useState({});
 
     useEffect(() => {
         const getApiData = async () => {
             const response = await fetch("http://localhost:8080/flight-booking-done");
             const apiData = await response.json();
-
+            
             setConfirmationObj(apiData);
+            console.log(id);
             console.log(apiData);
         }
         getApiData();
     }, [])
 
     return (
-        (Object.keys(confirmationObj).length === 0) ? <h1>Loading</h1> :
+        (Object.keys(confirmationObj).length === 0) ? <Loader /> :
             Object.keys(confirmationObj).length > 0 &&
             <div className="booking-done-container">
                 <div className="booking-done-info">
@@ -64,26 +63,41 @@ export const UserDetail = ({ ele, index, obj }) => {
     console.log(obj[index])
     return (
         <div className="user-detail">
-            <div className="name">
-                <div>
-                    {(ele.gender === 'MALE') ? 'MR.' : 'MS.'}
+            <div className="subdiv-1">
+
+                <div className="name">
+                    <div>
+                        {(ele.gender === 'MALE') ? 'MR.' : 'MS.'}
+                    </div>
+                    <div>
+                        {ele.name.firstName}
+                    </div>
+                    <div>
+                        {ele.name.lastName}
+                    </div>
                 </div>
-                <div>
-                    {ele.name.firstName}
-                </div>
-                <div>
-                    {ele.name.lastName}
+                <div className="fare">
+                    <div>{obj[index].travelerType}</div>
+                    <div>{obj[index].price.currency + ' ' + obj[index].price.total}</div>
+                    <div>{obj[index].fareDetailsBySegment[0].cabin}</div>
                 </div>
             </div>
-            <div className="dob">
-                {ele.dateOfBirth}
-            </div>
-            <div className="contact">{ele.contact.emailAddress}</div>
-            <div className="contact">{'+' + ele.contact.phones[0].countryCallingCode + ' ' + ele.contact.phones[0].number}</div>
-            <div className="fare">
-                <div>{obj[index].travelerType}</div>
-                <div>{obj[index].price.currency + ' ' + obj[index].price.total}</div>
-                <div>{obj[index].fareDetailsBySegment[0].cabin}</div>
+            <div className="subdiv-2">
+
+                <div className="dob">
+                    <span className="label">
+                        D.O.B. :
+                    </span>
+                    <span className="content">
+                        {ele.dateOfBirth}
+                    </span>
+                </div>
+                <div className="contact email">
+                    <span className="label">Email :</span>
+                    <span className="content">{ele.contact.emailAddress}</span></div>
+                <div className="contact phone">
+                    <span className="label">Phone :</span>
+                    <span className="content">{'+' + ele.contact.phones[0].countryCallingCode + ' ' + ele.contact.phones[0].number}</span></div>
             </div>
         </div>
     )
