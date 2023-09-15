@@ -15,10 +15,10 @@ export const BookingDone = () => {
 
     useEffect(() => {
         const getApiData = async () => {
-            const response = await fetch("http://localhost:8080/flight-booking-done");
+            const response = await fetch("http://localhost:8080/flight-booking-done/"+id);
             const apiData = await response.json();
             
-            setConfirmationObj(apiData);
+            setConfirmationObj(JSON.parse(apiData.obj));
             console.log(id);
             console.log(apiData);
         }
@@ -54,13 +54,11 @@ export const BookingDone = () => {
                     {confirmationObj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={confirmationObj.data.flightOffers[0].travelerPricings} />)}
                 </div>
             </div>
-
     )
 }
 
 export const UserDetail = ({ ele, index, obj }) => {
-    console.log("ind = " + index);
-    console.log(obj[index])
+    
     return (
         <div className="user-detail">
             <div className="subdiv-1">

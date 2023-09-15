@@ -177,6 +177,7 @@ app.post('/flight-confirm', async (req, res) => {
             console.log("Saved Successfully");
             console.log("Reponse should be recieved");
             console.log(uniqueid);
+            arrOfuids.push(uniqueid);
             flightBookingConfirm = responseData;
             res.json({key:uniqueid})
         }catch(e){
@@ -191,17 +192,28 @@ app.post('/flight-confirm', async (req, res) => {
     // res.json({ "trav": travelerInfo, "flight": flightInfo });
 })
 
-app.get('/flight-booking-done/:id', (req, res)=>{
-    const {id} = req.params;
-    FlightDetail.findOne({_id:req.params.id},(err,result)=>{
-        if(!err){
-            if(result){
-                console.log("Found");
-                console.log(result);
-            }
-        }
-    })
-    res.json(flightBookingConfirm);
+app.get('/flight-booking-done/:id', async (req, res)=>{
+    try{
+        const details = await FlightDetail.findOne({_id:req.params.id});
+        res.json(details);
+    }
+    catch(err){
+        console.log(err)
+    }
+    // console.log(details)
+})
+
+let arrOfuids = ['1ba9c4ed-bcb6-4560-84a5-d9496a6e7cf5', '7f714594-7b00-4b3f-8e0b-88ef1394d9cf','f007c323-b61c-45e3-bf60-1eca008ad5d2'];
+app.get('/user-bookings', async (req,res)=>{
+
+    try{
+        const details = await FlightDetail.find({_id:{$in:arrOfuids}});
+        console.log(details);
+        res.json({bookingDetails:details});
+    }
+    catch(err){
+        console.log(err);
+    }
 })
 
 

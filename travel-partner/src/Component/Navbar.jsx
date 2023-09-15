@@ -18,7 +18,9 @@ export const Navbar = () => {
                 <Link to={'/dashboard/id'}>
                     <div className='user-info'>
                         <FontAwesomeIcon icon={faUser} />
-                        UserName
+                        <span>
+                            John Wick
+                        </span>
                     </div>
                 </Link>
             </div>
