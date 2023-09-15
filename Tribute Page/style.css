@@ -72,3 +72,44 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+p{
+    margin: 10px;
+}
+
+.main-box{
+    text-align: center;
+    margin: 25px auto;
+}
+.main-box h1{
+    color: #007ACC;
+    font-size: 2.8rem;
+}
+.main-box img{
+    height: 400px;
+    width: 700px;
+}
+
+section .flex-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section div img{
+    width: 350px;
+    height: 200px;
+    box-shadow: 2px 2px 5px black;
+    margin: 15px;
+}
+#last-img{
+    height: 250px;
+    width: 900px;
+}
+li{
+    margin: 10px;
+}
+#honour-img{
+    width: 400px;
+    height: 250px;
+}
