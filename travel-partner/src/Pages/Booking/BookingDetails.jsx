@@ -19,7 +19,7 @@ export const BookingDetails = () => {
 
     const handleFlightRoute = async (obj) => {
 
-        const response = await fetch('http://localhost:8080/flight-booking', {
+        const response = await fetch('http://localhost:8080/flight/booking-request', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(obj)
@@ -36,7 +36,7 @@ export const BookingDetails = () => {
     useEffect(() => {
 
         const getApiData = async () => {
-            const response = await fetch(`http://localhost:8080/flight${search}`);
+            const response = await fetch(`http://localhost:8080/flight/flight-search${search}`);
             const apiData = await response.json();
 
             setDictionary(apiData.dictionaries);
@@ -81,7 +81,7 @@ export const BookingDetails = () => {
         if (infoObject.length !== flightObject.data.flightOffers[0].travelerPricings.length) {
             alert("Kindly Save User Details Again !!!");
         } else {
-            const response = await fetch("http://localhost:8080/flight-confirm", {
+            const response = await fetch("http://localhost:8080/flight/booking-confirm", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject })

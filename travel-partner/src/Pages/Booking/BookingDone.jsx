@@ -15,7 +15,7 @@ export const BookingDone = () => {
 
     useEffect(() => {
         const getApiData = async () => {
-            const response = await fetch("http://localhost:8080/flight-booking-done/"+id);
+            const response = await fetch("http://localhost:8080/flight/booking-display/"+id);
             const apiData = await response.json();
             
             setConfirmationObj(JSON.parse(apiData.obj));
