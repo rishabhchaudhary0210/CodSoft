@@ -8,11 +8,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { Navbar } from './Component/Navbar.jsx'
 import { BookingDetails } from './Pages/Booking/BookingDetails.jsx';
 import { BookingDone } from './Pages/Booking/BookingDone.jsx';
 import FlightSearch from './Pages/Flightsearch/FlightSearch.jsx'
 import { Dashboard } from './Pages/User/Dashboard.jsx';
+import { SignUp } from './Pages/User/SignUp.jsx';
+import { Login } from './Pages/User/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,15 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/:id',
         element: <Dashboard />
-      }
+      },
+      {
+        path:'/signup',
+        element: <SignUp />
+      },
+      {
+        path:'/login',
+        element: <Login />
+      },
     ]
   },
   
