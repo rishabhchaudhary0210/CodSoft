@@ -14,6 +14,7 @@ import FlightSearch from './Pages/Flightsearch/FlightSearch.jsx'
 import { Dashboard } from './Pages/User/Dashboard.jsx';
 import { SignUp } from './Pages/User/SignUp.jsx';
 import { Login } from './Pages/User/Login.jsx';
+import { ForgotPassword } from './Pages/User/ForgotPassword.jsx';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path:'/login',
         element: <Login />
+      },
+      {
+        path:'/forgotpassword',
+        element: <ForgotPassword />
       },
     ]
   },

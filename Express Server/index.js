@@ -9,17 +9,24 @@ dotenv.config();
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const connectToMongo = require('./Connection');
 
 const app = express();
 
 
 app.use(morgan('tiny'));
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials:  true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
+    // const a = req.cookies();
+    console.log(req.cookies);
     res.send("Server Started");
 })
 

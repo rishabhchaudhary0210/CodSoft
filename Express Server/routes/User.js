@@ -8,47 +8,60 @@ const validator = require('validator'); // to check for errors
 const UserDetail = require('./../models/UserDetail');
 const FlightDetail = require('./../models/FlightDetail');
 
-
-router.post('sign-up', async (req, res) => {
-    const { email, phone, password } = req.body;
+router.post('/sign-up', async (req, res) => {
+    const { name, email, phone, password } = req.body;
+    console.log("Req");
     try {
         let user = await UserDetail.findOne({ email });
-        res.status(400).json({ 'error': 'This email is already registered' });
+        if(user){
+            res.status(400).json({ 'error': 'This email is already registered' });
+            return;
+        }
+        
         const hashedPass = await bcrypt.hash(password, 12);
-
         user = await UserDetail.create({
+            name:name,
             email: email,
             password: hashedPass,
             phone: phone,
             bookingID: [],
         })
+        const payload = { email: user.email, _id: user._id }
+        const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
 
+        console.log(user);
+        console.log(token);
+        res.cookie('jwt',token, {httpOnly:true});
+        res.json({'success':'Signed Up Successfully'});
         //figure out jwt credentials
     }
     catch (err) {
         console.log(err);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({'error':"Internal Server Error"});
     }
 })
 
-router.post('log-in', async (req, res) => {
+router.post('/log-in', async (req, res) => {
     const { email, password } = req.body;
     try {
         let user = await UserDetail.findOne({ email });
         if (!user) {
-            req.status(400).json({ 'error': 'Invalid Credentials' });
+            return res.status(400).json({ 'error': 'Invalid Credentials' });
         }
         let passCompare = await bcrypt.compare(password, user.password);
         if (!passCompare) {
-            req.status(400).json({ 'error': 'Invalid Credentials' });
+            return res.status(400).json({ 'error': 'Invalid Credentials' });
         }
 
         //figure out jwt here
-
+        const payload = {email:user.email, _id:user._id};
+        const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
+        res.cookie('jwt',token,{httpOnly:true});
+        res.json({'success':'Logged In Successfully'});
     }
     catch (err) {
         console.log(err);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({'error':"Internal Server Error"});
     }
 })
 

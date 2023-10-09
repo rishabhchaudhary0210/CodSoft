@@ -1,6 +1,6 @@
 
 .login-form-container{
-    margin: 20px auto;
+    margin: 3vh auto;
     padding: 25px 15px;
     /* margin-top: 0px; */
     width: 60%;
@@ -12,6 +12,12 @@
     justify-content: center;
     align-items: center;
 
+}
+
+.login-form-container h1{
+    font-size: 1.8rem;
+    color: darkslateblue;
+    letter-spacing: 5px;
 }
 
 .login-form-container form{
@@ -38,8 +44,15 @@
     transition: all 0.2s ease;
     color: gray;
 }
+.login-form-container .form-input.password span{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #bdbdbd;
+}
 .login-form-container .form-input input:focus + label, .login-form-container .form-input input:not(:placeholder-shown)~label{
-    top:-10px;
+    top:-17px;
     left: 0;
 }
 #phone-label{
@@ -47,8 +60,12 @@
     top:12px
 }
 
+.login-form-container .form-input input:focus{
+    border: 1px solid #dddddd;
+}
+
 .react-tel-input .selected-flag{
-    background-color: #f7f7f7;
+    background-color: #dddddd;
     
 }
 
@@ -73,5 +90,45 @@
 }
 
 .login-form-container form .login-btn{
+    display:block;
+    margin: 10px auto;
+    padding: 8px 35px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: darkslateblue;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.login-form-container form .login-btn:hover{
+    background-color: rgb(49, 35, 145);
+}
+
+.login-form-container p {
+    color: gray;
+    margin: 5px auto;
+    width: 70%;
+    text-align: center;
+}
+.login-form-container p a{
+    color: blue;
+    text-decoration: none;
+}
+
+@media screen and (max-width:800px) {
+    .login-form-container{
+        margin-top: 8vh;
+        width: 75%;
+    }
+}
+@media screen and (max-width:590px) {
+    .login-form-container{
+        margin-top: 8vh;
+        width: 85%;
+    }
+    .login-form-container p {
+        width: 90%;
+    }
 }
