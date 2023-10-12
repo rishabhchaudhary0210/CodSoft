@@ -1,39 +1,119 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import './CountPicker.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
-export const CountPicker = (props) => {
-  const [count, setCount] = useState(Number(props.val) || props.min);
+export const CountPicker = () => {
+  const [adultCount, setAdultCount] = useState(1);
+  const [childCount, setChildCount] = useState(0);
+  const [infantCount, setInfantCount] = useState(0);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  //Logic to detect click outside dropdown in order to close it if users clicks outside
+  const newRef = useRef(null);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  });
+
+  const handleOutsideClick = (e)=>{
+    if (newRef.current && !newRef.current.contains(e.target)) {
+      setShowDropdown(false);
+    }
+  }
 
   return (
-    <div className="count-container">
-      <label htmlFor={props.name}>{props.label} <div>{props.subTitle}</div> </label>
-      
-      <div>
-        <input 
-          type="button" 
-          value="-" 
-          onClick={() => {setCount(count - 1)}} 
-          disabled={count == 0} 
-        />
-        
-        <input 
-          type="text" 
-          min={props.min} 
-          name={props.name} 
-          id={props.name} 
-          value={count} 
-          required={props.req} 
-          max={props.max}
-        />
-        
-        <input 
-          type="button" 
-          value="+" 
-          onClick={() => setCount(count + 1)} 
-          disabled={count == 9} 
-        />
+    <div className='counter-box' ref={newRef}>
+      <div className="count-header" onClick={() => setShowDropdown(!showDropdown)}>
+        <p>{`Adult : ${adultCount}, Children : ${childCount}, Infants : ${infantCount}`}</p> <span >{!showDropdown?<FontAwesomeIcon icon={faCaretDown}/>:<FontAwesomeIcon icon={faCaretUp}/>}</span>
       </div>
-    </div>
+      {<div className={`count-dropdown ${showDropdown? 'active' : ''}`}>
+        <div className="count-container">
+          <label htmlFor={'adultCount'}>Adults<div>{'>12 years'}</div> </label>
+          {/* <CountPicker name="adultCount" val={query?.adultCount} label="Adults" subTitle="(>12 years)" change={(n)=>setAdultCount(n)} placeholder="Enter Adult Count" req={true} min={1} max={9} /> */}
+          <div>
+            <input
+              type="button"
+              value="-"
+              onClick={() => { setAdultCount(adultCount - 1) }}
+              disabled={adultCount === 1}
+            />
+            <input
+              type="text"
+              min={1}
+              name={'adultCount'}
+              id={'adultCount'}
+              value={adultCount}
+              required={true}
+              max={9}
+              onChange={(e) => { setAdultCount(e.target.value) }}
+            />
+            <input
+              type="button"
+              value="+"
+              onClick={() => { setAdultCount(adultCount + 1) }}
+              disabled={adultCount === 9}
+            />
+          </div>
+        </div>
+        <div className="count-container">
+          <label htmlFor={'childCount'}>Children <div>{'2-12 years'}</div> </label>
+          <div>
+            {/* <CountPicker name="childCount" val={query?.childCount} label="Children" subTitle=" (2 - 12 years)" change={(n)=>setChildCount(n)} placeholder="Enter Child Count" min={0} max={adultCount === 0 ? 0 : 9} /> */}
+            <input
+              type="button"
+              value="-"
+              onClick={() => { setChildCount(childCount - 1) }}
+              disabled={childCount === 0}
+            />
+            <input
+              type="text"
+              min={0}
+              name={'childCount'}
+              id={'childCount'}
+              value={childCount}
+              max={9}
+              onChange={(e) => { setChildCount(e.target.value) }}
+            />
+            <input
+              type="button"
+              value="+"
+              onClick={() => { setChildCount(childCount + 1) }}
+              disabled={childCount === 9}
+            />
+          </div>
+        </div>
+        <div className="count-container">
+          <label htmlFor={'infantCount'}>{'Infants'} <div>{'<2 years'}</div> </label>
+          {/* <CountPicker name="infantCount" val={query?.infantCount} label="Infants " subTitle="(<2 years)" change={(n)=>setInfantCount(n)} placeholder="Enter Infant Count" min={0} max={adultCount} /> */}
+          <div>
+            <input
+              type="button"
+              value="-"
+              onClick={() => { setInfantCount(infantCount - 1) }}
+              disabled={infantCount === 0}
+            />
+            <input
+              type="text"
+              min={0}
+              name={'infantCount'}
+              id={'infantCount'}
+              value={infantCount}
+              max={adultCount}
+              onChange={(e) => { setInfantCount(e.target.value) }}
+            />
+            <input
+              type="button"
+              value="+"
+              onClick={() => { setInfantCount(infantCount + 1) }}
+              disabled={infantCount === adultCount}
+            />
+          </div>
+        </div>
+      </div>
+      }    </div>
   )
 }
