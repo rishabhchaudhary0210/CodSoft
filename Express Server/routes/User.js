@@ -8,6 +8,8 @@ const validator = require('validator'); // to check for errors
 const UserDetail = require('./../models/UserDetail');
 const FlightDetail = require('./../models/FlightDetail');
 
+
+
 router.post('/sign-up', async (req, res) => {
     const { name, email, phone, password } = req.body;
     console.log("Req");
@@ -17,7 +19,6 @@ router.post('/sign-up', async (req, res) => {
             res.status(400).json({ 'error': 'This email is already registered' });
             return;
         }
-        
         const hashedPass = await bcrypt.hash(password, 12);
         user = await UserDetail.create({
             name:name,
@@ -31,8 +32,7 @@ router.post('/sign-up', async (req, res) => {
 
         console.log(user);
         console.log(token);
-        res.cookie('jwt',token, {httpOnly:true});
-        res.json({'success':'Signed Up Successfully'});
+        res.cookie('jwt',token, {maxAge:24*60*60*1000,httpOnly:true}).json({'success':'Signed Up Successfully'});
         //figure out jwt credentials
     }
     catch (err) {
@@ -56,8 +56,7 @@ router.post('/log-in', async (req, res) => {
         //figure out jwt here
         const payload = {email:user.email, _id:user._id};
         const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
-        res.cookie('jwt',token,{httpOnly:true});
-        res.json({'success':'Logged In Successfully'});
+        res.cookie('jwt',token,{maxAge:24*60*60*1000,httpOnly:true}).json({'success':'Logged In Successfully'});
     }
     catch (err) {
         console.log(err);
@@ -65,13 +64,22 @@ router.post('/log-in', async (req, res) => {
     }
 })
 
-// router.post('forgot-password', (req, res)=>{
+// router.post('/forgot-password', (req, res)=>{
 
 // })
 
-//router.get('get-user', (req, res)=>{})
+router.get('/get-user', async (req, res)=>{
+    const token = req.cookies.jwt;
+    const checkToken = await jwt.verify(token, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', (err, decoded)=>{
+        if(!err){
+            return res.json({'success':'User Logged In Successfully'});
+        }else{
+            return res.json({'error':'User cannot be verified'});
+        }
+    });
+})
 
-
+//change name and make it to get details of users bookings
 router.get('/booking-display', async (req, res) => {
 
     try {

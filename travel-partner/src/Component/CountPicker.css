@@ -6,7 +6,7 @@
 
 .count-header{
     font-size: 1.3rem;
-    padding: 13px 0;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -15,9 +15,11 @@
     cursor: pointer;
 }
 .count-dropdown{
-    transition: all 0.3s;
     height: 0;
     visibility: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 .count-dropdown.active{
     height: 100%;
@@ -29,7 +31,7 @@
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    padding: 10px 0;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -55,4 +57,11 @@
     width: 40px;
     border-radius: 10px;
     font-size: 1.2rem;
+}
+
+@media screen and (max-width:465px) {
+    .count-header{
+        font-size: 1rem;
+        /* padding: 15px 0; */
+    }
 }

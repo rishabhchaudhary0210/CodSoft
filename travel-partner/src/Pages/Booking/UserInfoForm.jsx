@@ -63,11 +63,9 @@ export const UserInfoForm = () => {
             <div className='label-input-container'>
                 <label htmlFor="phone">Contact No</label>
                 <PhoneInput
-                    
                     country={'in'}
                     placeholder={"Enter Your Contact No"}
                     inputProps={{ name: 'phone', id:"phone", required:true }}
-                    onChange={(e) => console.log(e)}
                 />
             </div>
 

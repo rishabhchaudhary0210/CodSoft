@@ -18,6 +18,7 @@
     font-size: 1.8rem;
     color: darkslateblue;
     letter-spacing: 5px;
+    text-align: center;
 }
 
 .login-form-container form{

@@ -15,12 +15,25 @@ export const BookingDone = () => {
 
     useEffect(() => {
         const getApiData = async () => {
-            const response = await fetch("http://localhost:8080/flight/booking-display/"+id);
-            const apiData = await response.json();
-            
-            setConfirmationObj(JSON.parse(apiData.obj));
-            console.log(id);
-            console.log(apiData);
+            try{
+                const response = await fetch("http://localhost:8080/flight/booking-display/"+id, {
+                    credentials:'include'
+                });
+                const apiData = await response.json();
+                if(apiData.obj !== null){
+                    console.log("onj presen");
+                    setConfirmationObj(JSON.parse(apiData.obj));
+                }
+                else{
+                    console.log("obj no presen");
+                    setConfirmationObj(apiData);
+                }
+                console.log(id);
+                console.log(apiData);
+            }
+            catch(err){
+                console.log(err);
+            }
         }
         getApiData();
     }, [])

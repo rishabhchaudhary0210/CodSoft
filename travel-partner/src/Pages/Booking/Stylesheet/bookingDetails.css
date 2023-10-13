@@ -20,6 +20,7 @@
     color: gray;
     font-weight: 100;
     margin-top: 0;
+    padding: 5px 12px;
 }
 .user-info-form{
     width: 55%;
@@ -91,4 +92,27 @@
 
 .flight-confirm-button .cancel-button{
     background-color: yellow;
+}
+
+@media screen and (max-width:800px) {
+    .user-info-form{
+        width: 70%;
+    }
+}
+@media screen and (max-width:530px) {
+    .user-info-form{
+        width: 92%;
+    }
+}
+@media screen and (max-width:400px) {
+    .user-info-form{
+        padding: 25px 25px;
+    }
+    .flight-confirm-button{
+        flex-direction: column;
+        gap:15px;
+    }
+    .flight-confirm-button button{
+        min-width: 220px;
+    }
 }

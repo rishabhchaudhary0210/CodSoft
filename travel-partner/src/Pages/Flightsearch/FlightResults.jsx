@@ -12,7 +12,7 @@ export const FlightResults = ({ ele, dict, button }) => {
 
                 {
 
-                    ele.itineraries.map(m =>
+                    ele.itineraries.map((m, index) =>
 
                         <div key={m.id} className='flight-results-item'>
 
@@ -46,8 +46,7 @@ export const FlightResults = ({ ele, dict, button }) => {
                                     />
                                 </div>
                             )}
-
-
+                            {(index !== ele.itineraries.length-1)? <hr />:null}
                         </div>
                     )
                 }

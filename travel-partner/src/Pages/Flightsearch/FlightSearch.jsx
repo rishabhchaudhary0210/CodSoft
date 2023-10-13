@@ -46,7 +46,9 @@ export default function FlightSearch() {
 
                 // console.log(url);
 
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    credentials:'include'
+                });
                 const apiData = await response.json();
 
                 setSearchResult(apiData);

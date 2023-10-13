@@ -16,7 +16,9 @@ export default function AirportSearch(props) {
         // setShow(false);
         const getApiData = setTimeout(async () => {
             if (searchParam.length > 0 && searchParam.match(/^[A-Za-z]+$/)) {
-                const res = await fetch(`http://localhost:8080/flight/airport-search/${searchParam}`);
+                const res = await fetch(`http://localhost:8080/flight/airport-search/${searchParam}`,{
+                    credentials:'include'
+                });
                 const apidata = await res.json();
                 setSearchResult(apidata.data);
                 setShow(true);

@@ -31,6 +31,7 @@
     background-color: white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    z-index: 20;
 }
 
 .search-result-container .search-item{

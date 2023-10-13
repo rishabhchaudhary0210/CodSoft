@@ -22,7 +22,8 @@ export const BookingDetails = () => {
         const response = await fetch('http://localhost:8080/flight/booking-request', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(obj)
+            body: JSON.stringify(obj),
+            credentials:'include'
         })
         const apiData = await response.json();
         setFlightObject(apiData);
@@ -36,7 +37,9 @@ export const BookingDetails = () => {
     useEffect(() => {
 
         const getApiData = async () => {
-            const response = await fetch(`http://localhost:8080/flight/flight-search${search}`);
+            const response = await fetch(`http://localhost:8080/flight/flight-search${search}`,{
+                credentials:'include'
+            });
             const apiData = await response.json();
 
             setDictionary(apiData.dictionaries);
@@ -84,7 +87,8 @@ export const BookingDetails = () => {
             const response = await fetch("http://localhost:8080/flight/booking-confirm", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject })
+                body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject }),
+                credentials:'include'
             })
             const apiData = await response.json();
             const redirectKey = (await apiData.key);

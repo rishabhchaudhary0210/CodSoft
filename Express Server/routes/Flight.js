@@ -1,13 +1,25 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+
 const FlightDetail = require('./../models/FlightDetail');
+const UserDetail = require('./../models/UserDetail');
 
 const Amadeus = require('amadeus');
-
 const amadeus = new Amadeus({
     clientId: process.env.apiKey,
     clientSecret: process.env.apiSecret
 });
+
+function verifyLogin(token){
+    return jwt.verify(token, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c',async (err, decode)=>{
+        if(!err){
+            return await decode;
+        }
+        console.log(err);
+        return false;
+    })
+}
 
 router.get(`/airport-search/:parameter`, async (req, res) => {
     const parameter = req.params.parameter;
@@ -64,10 +76,6 @@ router.get("/flight-search", async (req, res) => {
 router.post("/booking-request", async (req, res) => {
 
     const inputFlight = await req.body;
-    // console.log(inputFlight);
-    // inputFlight[0].price.total='1231';
-    // inputFlight[0].price.grandTotal='1231';
-    // inputFlight[0].price.base='1231';
     const responsePricing = await amadeus.shopping.flightOffers.pricing
         .post(
             JSON.stringify({
@@ -93,6 +101,7 @@ router.post("/booking-request", async (req, res) => {
 router.post('/booking-confirm', async (req, res) => {
     const { flightInfo, travelerInfo } = req.body;
     // console.log(travelerInfo);
+    try {
     const returnBooking = await amadeus.booking.flightOrders
         .post(
             JSON.stringify({
@@ -103,24 +112,30 @@ router.post('/booking-confirm', async (req, res) => {
                 },
             })
         )
-        .catch(x => res.json(x))
-    try {
-        // console.log(returnBooking)
+    // console.log(returnBooking)
         const responseData = await returnBooking.result;
 
         //saving to mongodb
-
-
-        // let uniqueid = uuidv4();
         const flightBookingData = await FlightDetail.create({
             obj: JSON.stringify(responseData)
         })
         console.log(flightBookingData._id);
-    
+        
+        const token = req.cookies.jwt;
+        const checkLogin = await verifyLogin(token);
+        console.log(checkLogin);
+        if(checkLogin!==null && checkLogin !== false){
+            // const user = await UserDetail.findOne({_id:checkLogin._id});
+            // const { bookingID } = user;
+            // bookingID.push(flightBookingData._id);
+            const temp = await UserDetail.findOneAndUpdate({_id:checkLogin._id},{$push:{bookingID:flightBookingData._id}});
+            console.log(temp);
+        }
+
         res.json({ key: flightBookingData._id })
 
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
         res.status(400).json({ "Error": "Error getting Data" });
     }
 })

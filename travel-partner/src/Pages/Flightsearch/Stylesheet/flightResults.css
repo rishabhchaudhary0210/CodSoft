@@ -103,3 +103,41 @@
     transform: scale(1.01);
     transition: all 0.2s;
 }
+
+@media screen and (max-width:1000px) {
+    .flight-results-middle-container {
+        width:30%;
+    }
+    .flight-results-price {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .flight-results-container{
+        width: 88%;
+    }
+    .flight-results-item .subDiv{
+        font-size: 88%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .flight-results-container {
+        width: 95%;
+        padding: 25px 0;
+        font-size: 80%;
+    }
+    .flight-results-price{
+        font-size: 90%;
+    }
+    .flight-results-price button{
+        padding: 8px 12px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .flight-results-item {
+        flex-direction: column;
+    }
+}

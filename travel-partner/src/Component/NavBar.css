@@ -11,6 +11,9 @@ nav{
 nav img{
     /* height: 100px; */
     width: 180px;
+    position: absolute;
+    top: 13px;
+    left: 10px;
 }
 
 .user-login-container{
@@ -39,3 +42,4 @@ nav img{
     background-color: #eee;
 }
 .user-login-container .user-info{
+}
