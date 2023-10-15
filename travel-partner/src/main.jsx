@@ -15,6 +15,7 @@ import { Dashboard } from './Pages/User/Dashboard.jsx';
 import { SignUp } from './Pages/User/SignUp.jsx';
 import { Login } from './Pages/User/Login.jsx';
 import { ForgotPassword } from './Pages/User/ForgotPassword.jsx';
+import { Home } from './Pages/Home/Home.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
+        element: <Home />
+      },
+      {
+        path:'/flights',
         element: <FlightSearch />
       },
       {

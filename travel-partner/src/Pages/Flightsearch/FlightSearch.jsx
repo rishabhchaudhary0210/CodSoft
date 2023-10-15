@@ -90,8 +90,7 @@ export default function FlightSearch() {
         }
     }
     return (
-        <div>
-
+        <div className="flight-search-container">
             <form action="" onSubmit={handleFormSubmit} className="flight-search-form">
 
                 <div className="airport-searchBar-container">

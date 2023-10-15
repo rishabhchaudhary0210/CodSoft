@@ -1,15 +1,17 @@
 import logo from '../assets/travl partner-2.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './NavBar.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react';
+import { useState} from 'react';
 
 export const Navbar = () => {
     const [isAuth, setIsAuth] = useState(false);
+    const location = useLocation();
+
     return (
-        <nav>
+        <nav className={(location.pathname === '/') ? 'onHome' : ''}>
             <Link to={'/'}>
                 <img src={logo} alt="IMAGE" />
             </Link>

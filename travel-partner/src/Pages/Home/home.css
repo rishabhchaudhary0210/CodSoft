@@ -1,0 +1,106 @@
+
+.home-container{
+    
+}
+
+.home-header-container{
+    background: url('./../../assets/johny-greenbg.jpg') no-repeat;
+    background-size:cover;
+    width: 100vw;
+    height: 100vh;
+    padding: 35px 55px;
+    display: grid;
+}
+.home-header-container .header{
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 70px;
+}
+.home-header-container .title{
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    transform: translateX(11px);
+    font-size: 6.5rem;
+    font-weight: 600;
+    letter-spacing: 1.8rem;
+    place-self:end;
+    /* background: linear-gradient(to right, silver 0, white 10%, grey 20%);
+    background-position: 0; 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear; */
+    color: #fff;
+}
+@keyframes shine {
+    0%{background-position: 0;}
+    100%{background-position: 100%;}
+}
+.home-header-container .flight-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    padding: 20px 25px;
+    background: #ffffff4d;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    justify-self: end;
+    position: relative;
+    z-index: 8;
+}
+.home-header-container .flight-link::before{
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.575);
+    color: blue;
+    z-index: -3;
+    transition: all 0.2s;
+}
+.home-header-container .flight-link:hover::before{
+    width: 100%;
+}
+.home-service-container{
+    height: 400px;
+    width: 100%;
+    margin:50px 0;
+    padding: 25px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:35px;
+}
+.home-service-container .service-box{
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgba(104, 104, 104, 0.61);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.home-service-container .service-box img{
+    width: 200px;
+    height: 200px;
+}
+.home-service-container .service-box p{
+    font-size: 1.2rem;
+    color: gray;
+}

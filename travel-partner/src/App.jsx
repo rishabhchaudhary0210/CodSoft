@@ -2,6 +2,7 @@ import './App.css'
 
 import FlightSearch from './Pages/Flightsearch/FlightSearch';
 import { Navbar } from './Component/Navbar';
+import { Footer } from './Component/Footer';
 import { Outlet } from 'react-router';
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <FlightSearch /> */}
       <Outlet />
+      <Footer />
     </>
   )
 }
