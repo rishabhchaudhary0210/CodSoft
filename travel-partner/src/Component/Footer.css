@@ -33,4 +33,21 @@ footer .footer-copy{
     text-align: center;
     color: silver;
     font-size: 1.3rem;
+    margin-top: 25px;
+    font-weight: 300;
+}
+
+@media screen and (max-width:675px) {
+    footer .list-container{
+        flex-direction: column;
+    }
+    footer .list-container .list-items-container {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+@media screen and (max-width:420px) {
+    footer{
+        padding: 25px;
+    }
 }

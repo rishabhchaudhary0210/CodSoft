@@ -25,7 +25,10 @@ nav img{
 }
 
 .user-login-container{
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .user-login-container .login-button{
@@ -34,7 +37,7 @@ nav img{
 .user-login-container a{
     text-decoration: none;
 }
-.user-login-container .login-button, .user-login-container .user-info{
+.user-login-container .user-info{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,10 +47,27 @@ nav img{
     /* color: darkblue; */
     border: 1px solid #677483;
     border-radius: 25px;
-    padding: 10px 17px;
+    padding: 8px 15px;
 }
 .user-login-container .login-button:hover, .user-login-container .user-info:hover{
     background-color: #eee;
 }
 .user-login-container .user-info{
+}
+nav.onHome .user-login-container .user-info{
+    color: #fff;
+    border: 1px solid #ffffffb6;
+}
+nav.onHome .user-login-container .user-info:hover{
+    background-color: #c9c9c9a4;
+}
+@media screen and (max-width:700px) {
+    nav{
+        padding: 0 20px;
+    }
+}
+@media screen and (max-width:550px) {
+    nav{
+        padding: 0 10px;
+    }
 }

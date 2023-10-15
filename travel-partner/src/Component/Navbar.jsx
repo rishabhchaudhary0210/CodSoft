@@ -17,20 +17,15 @@ export const Navbar = () => {
             </Link>
             {isAuth ?
                 <div className='user-login-container'>
-                    {/* <div className='login-button'>
-                    LogIN
-                </div> */}
-                    <Link to={'/dashboard/id'}>
-                        <div className='user-info'>
+                    <Link to={'/dashboard/id'} className='user-info'>
                             <FontAwesomeIcon icon={faUser} /> <span> John Wick </span>
-                        </div>
                     </Link>
                 </div>
                 :
-                <div>
-                    <Link to={'/signup'}>SignUp</Link>
+                <div className='user-login-container'>
+                    <Link to={'/signup'} className='user-info'>SignUp</Link>
                     or
-                    <Link to={'login'}>LogIn</Link>
+                    <Link to={'login'} className='user-info'>LogIn</Link>
                 </div>
             }
         </nav>
