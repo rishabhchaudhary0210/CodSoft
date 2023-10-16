@@ -22,7 +22,7 @@ export const AuthContextProvider = ({children})=>{
         const checkUserLogin = async ()=>{
             try{
                 
-                const response = await fetch('http://localhost:8080/user/check-user',{
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/check-user`,{
                     credentials:"include"
                 })
                 const data = await response.json();

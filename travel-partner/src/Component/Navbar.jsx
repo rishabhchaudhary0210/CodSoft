@@ -14,7 +14,7 @@ export const Navbar = () => {
 
     const HandleLogOut = async ()=>{
         console.log('locou click');
-        const response = await fetch('http://localhost:8080/user/log-out', {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/log-out`, {
             credentials:'include'
         })
         dispatch({type:'LOGOUT'});

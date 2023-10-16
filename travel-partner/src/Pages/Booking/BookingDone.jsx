@@ -16,7 +16,7 @@ export const BookingDone = () => {
     useEffect(() => {
         const getApiData = async () => {
             try{
-                const response = await fetch("http://localhost:8080/flight/booking-display/"+id, {
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-display/`+id, {
                     credentials:'include'
                 });
                 const apiData = await response.json();

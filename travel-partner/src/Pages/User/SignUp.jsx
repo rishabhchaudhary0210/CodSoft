@@ -33,7 +33,7 @@ export const SignUp = () => {
             phone: e.target.phone.value,
             password: e.target.password.value
         }
-        const res = await fetch('http://localhost:8080/user/sign-up', {
+        const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/sign-up`, {
             method: 'POST',
             body: JSON.stringify(user),
             credentials: 'include',
@@ -57,7 +57,7 @@ export const SignUp = () => {
     return (
         <div className='login-form-container'>
             <h1>SIGN UP</h1>
-            <form onSubmit={HandleUserSignUp} action="http://localhost:8080/user/sign-up" method='POST'>
+            <form onSubmit={HandleUserSignUp} method='POST'>
                 <div className='form-input'>
                     <input type="text" id="name" name='name' required placeholder="Enter Your Name" />
                     <label htmlFor="name">Name</label>

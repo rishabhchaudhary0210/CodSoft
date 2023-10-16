@@ -16,6 +16,7 @@
     font-weight: 700;
     color: #fff;
     margin-top: 70px;
+    overflow: visible;
 }
 .home-header-container .title{
     text-align: center;

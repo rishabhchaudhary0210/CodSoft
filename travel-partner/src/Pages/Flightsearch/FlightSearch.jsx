@@ -42,7 +42,7 @@ export default function FlightSearch() {
             setShowloader(true);
             try {
                 const str = serializeQuery(query);
-                let url = `http://localhost:8080/flight/flight-search${str}`;
+                let url = `${import.meta.env.VITE_SERVER_URL}/flight/flight-search${str}`;
 
                 // console.log(url);
 

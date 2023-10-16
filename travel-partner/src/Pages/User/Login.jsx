@@ -18,7 +18,7 @@ export const Login = () => {
             email: e.target.email.value,
             password: e.target.password.value
         }
-        const res = await fetch('http://localhost:8080/user/log-in', {
+        const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/log-in`, {
             method: 'POST',
             body: JSON.stringify(user),
             credentials: 'include',

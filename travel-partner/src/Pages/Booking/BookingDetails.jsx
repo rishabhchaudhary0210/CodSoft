@@ -19,7 +19,7 @@ export const BookingDetails = () => {
 
     const handleFlightRoute = async (obj) => {
 
-        const response = await fetch('http://localhost:8080/flight/booking-request', {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-request`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(obj),
@@ -37,7 +37,7 @@ export const BookingDetails = () => {
     useEffect(() => {
 
         const getApiData = async () => {
-            const response = await fetch(`http://localhost:8080/flight/flight-search${search}`,{
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/flight-search${search}`,{
                 credentials:'include'
             });
             const apiData = await response.json();
