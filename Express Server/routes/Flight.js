@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const FlightDetail = require('./../models/FlightDetail');
 const UserDetail = require('./../models/UserDetail');
 
@@ -12,7 +15,7 @@ const amadeus = new Amadeus({
 });
 
 function verifyLogin(token){
-    return jwt.verify(token, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c',async (err, decode)=>{
+    return jwt.verify(token, process.env.JWT_SECRET,async (err, decode)=>{
         if(!err){
             return await decode;
         }

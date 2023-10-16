@@ -1,10 +1,11 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 const port = process.env.PORT || 8080;
 
-dotenv.config();
 
 const cors = require('cors');
 const morgan = require('morgan');
@@ -13,7 +14,6 @@ const cookieParser = require('cookie-parser');
 const connectToMongo = require('./Connection');
 
 const app = express();
-
 
 app.use(morgan('tiny'));
 app.use(cors({

@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const nodeMailer = require('nodemailer');//to send mails for forgot password
-const validator = require('validator'); // to check for errors
+// const nodeMailer = require('nodemailer');//to send mails for forgot password
+// const validator = require('validator'); // to check for errors
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 const UserDetail = require('./../models/UserDetail');
 const FlightDetail = require('./../models/FlightDetail');
-
 
 
 router.post('/sign-up', async (req, res) => {
@@ -27,11 +29,11 @@ router.post('/sign-up', async (req, res) => {
             bookingID: [],
         })
         const payload = { _id: user._id, name:user.name }
-        const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
 
         console.log(user);
         console.log(token);
-        res.cookie('jwt',token, {maxAge:24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload});
+        res.cookie('jwt',token, {maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload});
         //figure out jwt credentials
     }
     catch (err) {
@@ -54,8 +56,8 @@ router.post('/log-in', async (req, res) => {
 
         //figure out jwt here
         const payload = {_id:user._id, name:user.name};
-        const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
-        res.cookie('jwt',token,{maxAge:24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload});
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
+        res.cookie('jwt',token,{maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload});
     }
     catch (err) {
         console.log(err);
@@ -74,7 +76,7 @@ router.get('/log-out',(req, res)=>{
 
 router.get('/check-user', (req, res)=>{
     const token = req.cookies.jwt;
-    const checkToken = jwt.verify(token, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', async (err, decoded)=>{
+    const checkToken = jwt.verify(token, process.env.JWT_SECRET, async (err, decoded)=>{
         if(err){
             return res.status(400).json({error:'User cannot be verified'});
         }
@@ -90,7 +92,7 @@ router.get('/booking-details/:id', async (req, res) => {
         if(!user){
             return res.status(400).json({error:'Error finding user details.'});
         }
-        
+        const { bookingID } = user;
         const details = await FlightDetail.find({ _id: { $in: bookingID } });
         if(details.length === 0) {
             return res.status(400).json({error:'Oops! No results found.'});
@@ -99,6 +101,7 @@ router.get('/booking-details/:id', async (req, res) => {
     }
     catch (err) {
         res.status(400).json({error:'Error finding Details'})
+        console.log(err);
     }
 })
 
