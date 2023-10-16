@@ -1,17 +1,19 @@
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './StyleSheet/signup.css';
 import { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
+import { useAuthContext } from '../../Hooks/useAuthContext';
 
 export const SignUp = () => {
-
+    const { dispatch } = useAuthContext();
     const phoneLabel = useRef();
     const [showPassword, setShowPassword] = useState(false);
     const [signupError, setSingupError] = useState('');
+    const navigate = useNavigate();
 
     const HandlePhoneFocusIn = () => {
         phoneLabel.current.style.top = '-18px';
@@ -23,7 +25,6 @@ export const SignUp = () => {
             phoneLabel.current.style.left = '50px';
         }
     }
-
     const HandleUserSignUp = async (e) => {
         e.preventDefault();
         const user = {
@@ -41,7 +42,11 @@ export const SignUp = () => {
             },
         })
         const data = await res.json();
-        console.log(data);
+        if(res.ok){
+            console.log('Signup success', data);
+            dispatch({type:'LOGIN', payload:data.user});
+            navigate('/');
+        }
         if(data.error !== null){
             setSingupError(data.error);
             console.log("Error recieved");

@@ -1,6 +1,9 @@
 .flight-search-container{
     min-height: 110vh;
 }
+.flight-search-container *{
+    overflow: visible;
+}
 .flight-search-form{
     background: rgb(67, 67, 255);
     padding: 25px 40px;

@@ -7,11 +7,12 @@
     border-radius: 50%;
     margin: 25px auto;
     position: relative;
+    overflow:visible;
 }
 
 .loader .loader-plane{
     position: absolute;
-    top: -10px;
+    top: -12px;
     left: 0;
     transform: rotate(-40deg);
     color: darkblue;

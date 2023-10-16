@@ -2,3 +2,7 @@
 body{
     background-color: #f6f6f9;
 }
+
+.app-container{
+    min-height: 100vh;
+}

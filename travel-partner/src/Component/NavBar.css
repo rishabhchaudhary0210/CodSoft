@@ -30,10 +30,6 @@ nav img{
     align-items: center;
     gap: 8px;
 }
-
-.user-login-container .login-button{
-
-}
 .user-login-container a{
     text-decoration: none;
 }
@@ -49,7 +45,14 @@ nav img{
     border-radius: 25px;
     padding: 8px 15px;
 }
-.user-login-container .login-button:hover, .user-login-container .user-info:hover{
+.user-login-container .user-info.user-logout{
+    border: none;
+    cursor: pointer;
+}
+.user-login-container .user-info.user-logout:hover{
+    text-decoration: underline;
+}
+ .user-login-container .user-info:hover{
     background-color: #eee;
 }
 .user-login-container .user-info{
@@ -57,8 +60,12 @@ nav img{
 nav.onHome .user-login-container .user-info{
     color: #fff;
     border: 1px solid #ffffffb6;
+} 
+nav.onHome .user-login-container .user-info.user-info.user-logout{
+    background: transparent;
+    border:none
 }
-nav.onHome .user-login-container .user-info:hover{
+nav.onHome .user-login-container .user-info:hover, nav.onHome .user-login-container .user-info.user-logout:hover{
     background-color: #c9c9c9a4;
 }
 @media screen and (max-width:700px) {

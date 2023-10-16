@@ -1,25 +1,37 @@
 import logo from '../assets/travl partner-2.png'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { useState} from 'react';
+
+import { useAuthContext } from '../Hooks/useAuthContext';
 
 export const Navbar = () => {
-    const [isAuth, setIsAuth] = useState(false);
     const location = useLocation();
+    const { user, dispatch } = useAuthContext();
+    const navigate = useNavigate();
+
+    const HandleLogOut = async ()=>{
+        console.log('locou click');
+        const response = await fetch('http://localhost:8080/user/log-out', {
+            credentials:'include'
+        })
+        dispatch({type:'LOGOUT'});
+        navigate('/');
+    }
 
     return (
         <nav className={(location.pathname === '/') ? 'onHome' : ''}>
             <Link to={'/'}>
                 <img src={logo} alt="IMAGE" />
             </Link>
-            {isAuth ?
+            {user !== null ?
                 <div className='user-login-container'>
-                    <Link to={'/dashboard/id'} className='user-info'>
-                            <FontAwesomeIcon icon={faUser} /> <span> John Wick </span>
+                    <Link to={`/dashboard/${user?._id}`} className='user-info'>
+                            <FontAwesomeIcon icon={faUser} /> <span> {user?.name} </span>
                     </Link>
+                    <button className='user-info user-logout' onClick={HandleLogOut}>Logout</button>
                 </div>
                 :
                 <div className='user-login-container'>

@@ -1,6 +1,7 @@
 // import homeBg from '../../assets/johny-greenbg.jpg';
 import './home.css'
-import planeService from '../../assets/airplane-takeoff.png';
+// import planeService from '../../assets/airplane-takeoff.png';
+import planeService from '../../assets/large-airplane.png';
 import compareService from '../../assets/money-balance-scale.jpg';
 import priceService from '../../assets/realistic-label.png';
 import { useEffect, useRef, useState } from 'react';

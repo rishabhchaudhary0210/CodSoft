@@ -16,8 +16,7 @@ router.post('/sign-up', async (req, res) => {
     try {
         let user = await UserDetail.findOne({ email });
         if(user){
-            res.status(400).json({ 'error': 'This email is already registered' });
-            return;
+            return res.status(400).json({ error: 'This email is already registered' });
         }
         const hashedPass = await bcrypt.hash(password, 12);
         user = await UserDetail.create({
@@ -27,17 +26,17 @@ router.post('/sign-up', async (req, res) => {
             phone: phone,
             bookingID: [],
         })
-        const payload = { email: user.email, _id: user._id }
+        const payload = { _id: user._id, name:user.name }
         const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
 
         console.log(user);
         console.log(token);
-        res.cookie('jwt',token, {maxAge:24*60*60*1000,httpOnly:true}).json({'success':'Signed Up Successfully'});
+        res.cookie('jwt',token, {maxAge:24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload});
         //figure out jwt credentials
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({'error':"Internal Server Error"});
+        res.status(400).json({error:"Internal Server Error"});
     }
 })
 
@@ -54,9 +53,9 @@ router.post('/log-in', async (req, res) => {
         }
 
         //figure out jwt here
-        const payload = {email:user.email, _id:user._id};
+        const payload = {_id:user._id, name:user.name};
         const token = jwt.sign(payload, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', { expiresIn:7*24*60*60 });
-        res.cookie('jwt',token,{maxAge:24*60*60*1000,httpOnly:true}).json({'success':'Logged In Successfully'});
+        res.cookie('jwt',token,{maxAge:24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload});
     }
     catch (err) {
         console.log(err);
@@ -64,31 +63,42 @@ router.post('/log-in', async (req, res) => {
     }
 })
 
+router.get('/log-out',(req, res)=>{
+    res.clearCookie('jwt');
+    res.end();
+})
+
 // router.post('/forgot-password', (req, res)=>{
 
 // })
 
-router.get('/get-user', async (req, res)=>{
+router.get('/check-user', (req, res)=>{
     const token = req.cookies.jwt;
-    const checkToken = await jwt.verify(token, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', (err, decoded)=>{
-        if(!err){
-            return res.json({'success':'User Logged In Successfully'});
-        }else{
-            return res.json({'error':'User cannot be verified'});
+    const checkToken = jwt.verify(token, '&Vi%33pG2mD51xMo%OUOTo$ZWOa3TYt328tcjXtW9&hn%AOb9quwaZaRMf#f&44c', async (err, decoded)=>{
+        if(err){
+            return res.status(400).json({error:'User cannot be verified'});
         }
+        return res.status(200).json({success:'User Logged In Successfully', user:decoded});
     });
 })
 
 //change name and make it to get details of users bookings
-router.get('/booking-display', async (req, res) => {
-
+router.get('/booking-details/:id', async (req, res) => {
+    const userId = req.params.id;
     try {
-        const details = await FlightDetail.find({ _id: { $in: arrOfuids } });
-        console.log(details);
+        const user = await UserDetail.findOne({_id:userId});
+        if(!user){
+            return res.status(400).json({error:'Error finding user details.'});
+        }
+        
+        const details = await FlightDetail.find({ _id: { $in: bookingID } });
+        if(details.length === 0) {
+            return res.status(400).json({error:'Oops! No results found.'});
+        }
         res.json({ bookingDetails: details });
     }
     catch (err) {
-        console.log(err);
+        res.status(400).json({error:'Error finding Details'})
     }
 })
 

@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { AuthContextProvider } from './Context/AuthContext.jsx';
 
 import { BookingDetails } from './Pages/Booking/BookingDetails.jsx';
 import { BookingDone } from './Pages/Booking/BookingDone.jsx';
@@ -22,55 +23,56 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <div>Error Recieved</div>,
-    children:[
+    children: [
       {
-        path:'/',
+        path: '/',
         element: <Home />
       },
       {
-        path:'/flights',
+        path: '/flights',
         element: <FlightSearch />
       },
       {
-        path:"/flight-booking/:id",
-        element:<BookingDetails />,
+        path: "/flight-booking/:id",
+        element: <BookingDetails />,
         errorElement: <div>Booking Details error</div>
       },
       {
-        path:"/test",
+        path: "/test",
         element: <h1>App Working Fine !!!</h1>,
         errorElement: <div>Errorrrrrrr!!!</div>
       },
       {
-        path:"/flight-confirm/:id",
+        path: "/flight-confirm/:id",
         element: <BookingDone />,
         errorElement: <div>Confirmation Error</div>
       },
       {
-        path:'/dashboard/:id',
+        path: '/dashboard/:id',
         element: <Dashboard />
       },
       {
-        path:'/signup',
+        path: '/signup',
         element: <SignUp />
       },
       {
-        path:'/login',
+        path: '/login',
         element: <Login />
       },
       {
-        path:'/forgotpassword',
+        path: '/forgotpassword',
         element: <ForgotPassword />
       },
     ]
   },
-  
+
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <Navbar /> */}
-    <RouterProvider router={router}/>
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </React.StrictMode>,
 )

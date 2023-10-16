@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './StyleSheet/signup.css';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
-
+import {useAuthContext} from '../../Hooks/useAuthContext'
 
 export const Login = () => {
-
+    const { dispatch } = useAuthContext();
     const [showPassword, setShowPassword] = useState(false);
     const [loginError, setLoginError] = useState('');
+    const navigate = useNavigate();
 
     const HandleUserLogIn = async (e) => {
         e.preventDefault();
@@ -26,7 +27,11 @@ export const Login = () => {
             },
         })
         const data = await res.json();
-        console.log(data);
+        if(res.ok){
+            console.log('login Response Success',data);
+            dispatch({type:'LOGIN', payload:data.user});
+            navigate('/');
+        }
         if(data.error !== null){
             setLoginError(data.error);
             console.log("Error recieved");

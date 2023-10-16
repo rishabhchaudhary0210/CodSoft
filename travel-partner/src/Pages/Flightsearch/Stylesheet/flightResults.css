@@ -12,7 +12,7 @@
     height: 100%;
     min-height: 150px;
     box-shadow: 1px 1px 5px darkslategray;
-    overflow: hidden;
+    overflow: hidden !important; 
 }
 
 .flight-results-single{
@@ -71,6 +71,7 @@
     height: 100%;
     position: relative;
     font-size: 1.2rem;
+    overflow: visible;
 }
 .flight-results-price h3{
     font-weight: 400;
