@@ -16,9 +16,7 @@ export const Dashboard = () => {
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/booking-details/${id}`, {
         credentials: 'include'
       });
-      // const response = await fetch('http://localhost:8080/user/get-user',{
-      //   credentials:'include'
-      // });
+    
       const apiData = await response.json();
 
       if (!response.ok) {

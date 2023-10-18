@@ -84,7 +84,7 @@ export const BookingDetails = () => {
         if (infoObject.length !== flightObject.data.flightOffers[0].travelerPricings.length) {
             alert("Kindly Save User Details Again !!!");
         } else {
-            const response = await fetch("http://localhost:8080/flight/booking-confirm", {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-confirm`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject }),

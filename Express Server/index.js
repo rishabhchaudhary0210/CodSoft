@@ -16,6 +16,7 @@ const connectToMongo = require('./Connection');
 const app = express();
 
 app.use(morgan('tiny'));
+app.set("trust proxy", 1);
 app.use(cors({
     origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://travelpartner.vercel.app'],
     credentials:  true,
