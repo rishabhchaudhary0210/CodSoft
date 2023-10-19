@@ -45,6 +45,7 @@ export const SignUp = () => {
         if(res.ok){
             console.log('Signup success', data);
             dispatch({type:'LOGIN', payload:data.user});
+            localStorage.setItem('jwt', data.token);
             navigate('/');
         }
         if(data.error !== null){

@@ -30,6 +30,7 @@ export const Login = () => {
         if(res.ok){
             console.log('login Response Success',data);
             dispatch({type:'LOGIN', payload:data.user});
+            localStorage.setItem('jwt', data.token);
             navigate('/');
         }
         if(data.error !== null){

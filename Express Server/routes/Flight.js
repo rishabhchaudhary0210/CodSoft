@@ -102,7 +102,7 @@ router.post("/booking-request", async (req, res) => {
 
 
 router.post('/booking-confirm', async (req, res) => {
-    const { flightInfo, travelerInfo } = req.body;
+    const { flightInfo, travelerInfo, restoken } = req.body;
     // console.log(travelerInfo);
     try {
     const returnBooking = await amadeus.booking.flightOrders
@@ -124,13 +124,10 @@ router.post('/booking-confirm', async (req, res) => {
         })
         console.log(flightBookingData._id);
         
-        const token = req.cookies.jwt;
+        const token = req.cookies.jwt || restoken;
         const checkLogin = await verifyLogin(token);
         console.log(checkLogin);
         if(checkLogin!==null && checkLogin !== false){
-            // const user = await UserDetail.findOne({_id:checkLogin._id});
-            // const { bookingID } = user;
-            // bookingID.push(flightBookingData._id);
             const temp = await UserDetail.findOneAndUpdate({_id:checkLogin._id},{$push:{bookingID:flightBookingData._id}});
             console.log(temp);
         }

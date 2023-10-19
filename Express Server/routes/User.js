@@ -33,7 +33,7 @@ router.post('/sign-up', async (req, res) => {
 
         console.log(user);
         console.log(token);
-        res.cookie('jwt',token, {maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload});
+        res.cookie('jwt',token, {maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload, token:token});
         //figure out jwt credentials
     }
     catch (err) {
@@ -57,7 +57,7 @@ router.post('/log-in', async (req, res) => {
         //figure out jwt here
         const payload = {_id:user._id, name:user.name};
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
-        res.cookie('jwt',token,{maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload});
+        res.cookie('jwt',token,{maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload, token:token});
     }
     catch (err) {
         console.log(err);
@@ -74,8 +74,8 @@ router.get('/log-out',(req, res)=>{
 
 // })
 
-router.get('/check-user', (req, res)=>{
-    const token = req.cookies.jwt;
+router.get('/check-user/:id', (req, res)=>{
+    const token = req.cookies.jwt || req.params.id;
     const checkToken = jwt.verify(token, process.env.JWT_SECRET, async (err, decoded)=>{
         if(err){
             return res.status(400).json({error:'User cannot be verified'});

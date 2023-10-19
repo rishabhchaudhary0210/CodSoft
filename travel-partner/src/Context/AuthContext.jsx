@@ -21,8 +21,8 @@ export const AuthContextProvider = ({children})=>{
     useEffect(()=>{
         const checkUserLogin = async ()=>{
             try{
-                
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/check-user`,{
+                const token = localStorage.getItem('jwt');
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/check-user/${token}`,{
                     credentials:"include"
                 })
                 const data = await response.json();

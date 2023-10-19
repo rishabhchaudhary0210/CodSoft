@@ -18,6 +18,7 @@ export const Navbar = () => {
             credentials:'include'
         })
         dispatch({type:'LOGOUT'});
+        localStorage.removeItem('jwt');
         navigate('/');
     }
 

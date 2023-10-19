@@ -87,7 +87,7 @@ export const BookingDetails = () => {
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-confirm`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject }),
+                body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject, token:localStorage.getItem('jwt') }),
                 credentials:'include'
             })
             const apiData = await response.json();
