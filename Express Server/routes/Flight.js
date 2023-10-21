@@ -124,19 +124,35 @@ router.post('/booking-confirm', async (req, res) => {
         })
         console.log(flightBookingData._id);
         
-        const token = req.cookies.jwt || restoken;
+        const token =  restoken || req.cookies.jwt;
+        console.log('res = ',restoken);
+
         const checkLogin = await verifyLogin(token);
-        console.log(checkLogin);
+        console.log("checkLogin = ", checkLogin);
+        
         if(checkLogin!==null && checkLogin !== false){
             const temp = await UserDetail.findOneAndUpdate({_id:checkLogin._id},{$push:{bookingID:flightBookingData._id}});
-            console.log(temp);
+            console.log('obj',temp);
         }
 
-        res.json({ key: flightBookingData._id })
+        res.status(200).json({ key: flightBookingData._id })
 
     } catch (err) {
         console.log(err.message);
         res.status(400).json({ "Error": "Error getting Data" });
+    }
+})
+
+router.get('/manage-booking/:orderId', async (req,res)=>{
+    try{
+        const { orderId } = req.params;
+        const order = await amadeus.booking.flightOrder(orderId).get()
+        const details = await order.body;
+        // console.log(details);
+        res.status(200).json(details);
+    }
+    catch(err){
+        res.status(400).json({error:'Error getting data'});
     }
 })
 

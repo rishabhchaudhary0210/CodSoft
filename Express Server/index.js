@@ -21,10 +21,6 @@ app.use(cors({
     origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://travelpartner.vercel.app'],
     credentials:  true,
 }));
-    // app.use((req, res, next) => {
-    //     res.header('Access-Control-Allow-Origin', '*');
-    //     next();
-    //   });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());

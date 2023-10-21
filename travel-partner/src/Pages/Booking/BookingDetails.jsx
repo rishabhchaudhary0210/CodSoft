@@ -48,6 +48,8 @@ export const BookingDetails = () => {
         }
         getApiData();
 
+        // console.log("token = ",localStorage.getItem('jwt'));
+
     }, []);
 
 
@@ -87,14 +89,19 @@ export const BookingDetails = () => {
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-confirm`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject, token:localStorage.getItem('jwt') }),
+                body: JSON.stringify({ flightInfo: flightObject.data.flightOffers, travelerInfo: infoObject, restoken:localStorage.getItem('jwt') }),
                 credentials:'include'
             })
             const apiData = await response.json();
             const redirectKey = (await apiData.key);
-            console.log(redirectKey)
-            navigate(`/flight-confirm/${redirectKey}`);
+            console.log(redirectKey);
             console.log(apiData);
+            if(response.ok){
+                navigate(`/flight-confirm/${redirectKey}`);
+            }else{
+                alert('Error Booking Flight! Please try again');
+                navigate(-1);
+            }
         }
     }
 
