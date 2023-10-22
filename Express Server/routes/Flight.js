@@ -158,11 +158,14 @@ router.get('/manage-booking/:orderId', async (req,res)=>{
 
 router.get('/delete-booking/:orderId', async (req,res)=>{
     try{
-        const { orderId } = req.params;
+        const { orderId  } = req.params;
+        const { userID, flightID } = req.query;
         const order = await amadeus.booking.flightOrder(orderId).delete();
         const del = await order?.body;
-
-        console.log('Dele = ', del);
+        // console.log("Del = ",del);
+        if(userID && flightID ){
+            const user = await UserDetail.findOneAndUpdate({_id:userID}, {$pull:{bookingID:flightID}})
+        }
 
         res.status(200).json({success:"Booking deleted successfully"});
     }

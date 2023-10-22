@@ -49,7 +49,7 @@ export const Dashboard = () => {
                 return (
                   obj.data.travelers.map((m, index) =>
                     <Link
-                      to={`/manage-booking/${obj.data.id}`}
+                      to={{pathname:`/manage-booking/${obj.data.id}`,search:`?userId=${user?._id}&flightdbId=${ele._id}`}}
                       key={m.id}
                       className='link'
                     >

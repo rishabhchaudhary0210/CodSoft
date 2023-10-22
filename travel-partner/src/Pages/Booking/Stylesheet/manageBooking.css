@@ -40,3 +40,10 @@
     background-color: rgb(211, 211, 211);
     text-decoration: underline;
 }
+.manage-booking-container .error-container{
+    width: 100vw;
+    font-size: 4rem;
+    color: rgb(161, 161, 161);
+    padding: 50px 70px;
+    text-align: center;
+}
