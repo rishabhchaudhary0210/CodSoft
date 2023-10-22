@@ -41,7 +41,13 @@ export const BookingDone = () => {
     return (
         (Object.keys(confirmationObj).length === 0) ? <Loader /> :
             Object.keys(confirmationObj).length > 0 &&
-            <div className="booking-done-container">
+            <BookingDisplay  confirmationObj={confirmationObj} />
+    )
+}
+
+export const BookingDisplay = ({confirmationObj})=>{
+    return (
+        <div className="booking-done-container">
                 <div className="booking-done-info">
                     <FontAwesomeIcon className="booking-done-logo" icon={faPlaneCircleCheck} />
                     <h3>

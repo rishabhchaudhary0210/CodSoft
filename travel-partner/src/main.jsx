@@ -17,6 +17,7 @@ import { SignUp } from './Pages/User/SignUp.jsx';
 import { Login } from './Pages/User/Login.jsx';
 import { ForgotPassword } from './Pages/User/ForgotPassword.jsx';
 import { Home } from './Pages/Home/Home.jsx';
+import { ManageBooking } from './Pages/Booking/ManageBooking.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "/flight-confirm/:id",
         element: <BookingDone />,
         errorElement: <div>Confirmation Error</div>
+      },
+      {
+        path: '/manage-booking/:id',
+        element: <ManageBooking />
       },
       {
         path: '/dashboard/:id',

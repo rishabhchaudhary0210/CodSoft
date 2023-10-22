@@ -156,6 +156,21 @@ router.get('/manage-booking/:orderId', async (req,res)=>{
     }
 })
 
+router.get('/delete-booking/:orderId', async (req,res)=>{
+    try{
+        const { orderId } = req.params;
+        const order = await amadeus.booking.flightOrder(orderId).delete();
+        const del = await order?.body;
+
+        console.log('Dele = ', del);
+
+        res.status(200).json({success:"Booking deleted successfully"});
+    }
+    catch(err){
+        res.status(400).json({error:'Error deleting data'});
+    }
+})
+
 router.get('/booking-display/:id', async (req, res) => {
     try {
         const details = await FlightDetail.findOne({ _id: req.params.id });

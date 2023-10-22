@@ -3,6 +3,7 @@ import { UserDetail } from '../Booking/BookingDone';
 import { Loader } from '../../Component/Loader';
 import './StyleSheet/dashBoard.css';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 
 export const Dashboard = () => {
@@ -16,17 +17,17 @@ export const Dashboard = () => {
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/booking-details/${id}`, {
         credentials: 'include'
       });
-    
+
       const apiData = await response.json();
 
       if (!response.ok) {
         setDashboardError(apiData?.error);
       }
-      if(response.ok){
+      if (response.ok) {
         setDashboardError(null);
+        setBookingDetails(apiData.bookingDetails);
       }
 
-      setBookingDetails(apiData.bookingDetails);
       console.log(apiData);
     }
     getApiData();
@@ -45,7 +46,20 @@ export const Dashboard = () => {
               bookingDetails?.map(ele => {
                 const obj = JSON.parse(ele.obj);
                 console.log(obj);
-                return obj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={obj.data.flightOffers[0].travelerPricings} />)
+                return (
+                  obj.data.travelers.map((m, index) =>
+                    <Link
+                      to={`/manage-booking/${obj.data.id}`}
+                      key={m.id}
+                      className='link'
+                    >
+                      <UserDetail
+                        index={index}
+                        ele={m}
+                        obj={obj.data.flightOffers[0].travelerPricings}
+                      />
+                    </Link>
+                  ))
               })
           }
         </div>

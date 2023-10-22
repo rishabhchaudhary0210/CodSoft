@@ -39,6 +39,13 @@ export const Home = () => {
           <h2 ref={titleRef} className='title'>TRAVEL PARTNER</h2>
         </div>
 
+        <div className="manage-booking-link">
+          <span>
+            Click here to view or update your booking details.
+          </span>
+          <Link to={'/manage-booking/search'} className='link'>Manage Booking</Link>
+        </div>
+
         <div className='home-service-container'>
           <div className="service-box">
             <img src={planeService} alt="plane" />

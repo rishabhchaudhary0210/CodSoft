@@ -1,0 +1,42 @@
+
+.search-booking-details{
+    width: 100vw;
+    margin: 0 auto;
+    padding: 40px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(62, 62, 223);
+}
+.search-booking-details input{
+    width: 55%;
+    height: 60px;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+}
+.search-booking-details input::placeholder{
+    font-size: 1.2rem;
+}
+.search-booking-details .link{
+    width: 15%;
+    height: 60px;
+    padding: 10px 15px;
+    font-size: 1.3rem;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: black;
+}
+.search-booking-details .link:hover{
+    background-color: rgb(211, 211, 211);
+    text-decoration: underline;
+}

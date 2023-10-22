@@ -6,6 +6,7 @@
 .home-header-container{
     background: url('./../../assets/johny-greenbg.jpg') no-repeat;
     background-size:cover;
+    background-position: center;
     width: 100vw;
     height: 100vh;
     padding: 35px 55px;
@@ -74,6 +75,37 @@
 .home-header-container .flight-link:hover::before, .hotel-info-container .hotel-link:hover::before{
     width: 100%;
 }
+.manage-booking-link{
+    width: 95vw;
+    margin: 0px auto;
+    margin-top: 50px;
+    padding: 25px 30px;
+    border-radius: 10px;
+    background-color:midnightblue;
+    /* background: linear-gradient(to right,  ,cornflowerblue); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+.manage-booking-link span{
+    font-size: 1.5rem;
+    color: white;
+}
+.manage-booking-link .link{
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.manage-booking-link .link:hover{
+    text-decoration: underline;
+    outline: 2px solid gray;
+    outline-offset: -2px;
+}
 .home-service-container{
     height: 450px;
     width: 100%;
@@ -88,6 +120,7 @@
     height: 100%;
     width: 100%;
     border: 1px solid rgba(104, 104, 104, 0.61);
+    box-shadow: 0px 2px 3px grey;
     background-color: #fff;
     border-radius: 10px;
     padding: 25px 25px;
@@ -98,7 +131,7 @@
     gap: 25px;
 }
 .home-service-container .service-box img{
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 .home-service-container .service-box p{
@@ -106,9 +139,10 @@
     color: gray;
 }
 .home-container .hotel-info-container{
-    background: url('./../../assets/hotel-bg2.jpg') no-repeat;
-    background-size: cover;
-    width: 90vw;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)) , url('/src/assets/hotel-bg2.jpg') no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 95vw;
     height: 600px;
     border-radius: 15px;
     margin: 50px auto;
@@ -116,6 +150,10 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    transition: all 0.5s ease;
+}
+.home-container .hotel-info-container:hover{
+    background-size: 105%;
 }
 .home-container .hotel-info-container h1{
     width: 70%;
@@ -138,7 +176,7 @@
         padding: 25px 15px;
     }
     .home-service-container .service-box img{
-        width: 180px;
+        width: 100%;
         height: 180px;
     }
 }
@@ -174,6 +212,14 @@
     .home-service-container{
         padding: 25px 25px;
     }
+    .manage-booking-link{
+        flex-direction: column;
+        
+    }
+    .manage-booking-link .link{
+        width: 100%;
+    }
+
 }
 @media screen and (max-width:450px) {
     .home-container .hotel-info-container{
