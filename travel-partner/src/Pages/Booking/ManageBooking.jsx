@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { BookingDisplay } from "./BookingDone";
 import { Loader } from "../../Component/Loader";
-import { useAuthContext } from "../../Hooks/useAuthContext";
 
 import './Stylesheet/manageBooking.css';
 

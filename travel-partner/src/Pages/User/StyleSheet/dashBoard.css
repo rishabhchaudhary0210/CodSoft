@@ -23,3 +23,105 @@
     margin-top: 50px;
     font-size: 3rem;
 }
+.link{
+    text-decoration: none;
+}
+.flight-details-container{
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 25px 30px;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px black;
+}
+.flight-details-container .flight-itr-box{
+    font-size: 1.5rem;
+    color: black;
+}
+.flight-details-container .flight-itr-box .flight-seg-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+.flight-details-container .flight-itr-box .flight-seg-box .airport-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.flight-details-container .flight-itr-box .flight-seg-box .airport-box span{
+    text-align: left;
+    font-size: 1.1rem;
+    color: #677483;
+}
+.flight-details-container .flight-itr-box .flight-seg-box span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flight-details-container .flight-itr-box .flight-seg-box span hr{
+    width: 150px;
+}
+.flight-details-container .flight-trav-box{
+    border-top: 1px solid #999999;
+    padding-top: 15px;
+    font-size: 1.3rem;
+    color: #677483;
+}
+.flight-details-container .flight-trav-box h3{
+    text-align: left;
+    margin: 10px auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 70%;
+}
+.flight-details-container .flight-trav-box .trav-info-box{
+    width: 70%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: around;
+}
+
+@media screen and (max-width:800px) {
+    .flight-details-container .flight-trav-box .trav-info-box {
+        width: 90%;
+    }
+    .flight-details-container .flight-trav-box h3{
+        width: 90%;
+    }
+}
+@media screen and (max-width:650px) {
+    .flight-details-container{
+        width: 90vw;
+    }
+}
+@media screen and (max-width:500px) {
+    .flight-details-container .flight-itr-box{
+        font-size: 1.2rem;
+    }
+    .flight-details-container .flight-itr-box .flight-seg-box span hr{
+        width: 100px;
+    }
+    .flight-details-container .flight-itr-box .flight-seg-box .airport-box span{
+        font-size: 0.9rem;
+    }
+    .flight-details-container .flight-trav-box{
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width:500px) {
+    .flight-details-container{
+        padding: 25px 15px;
+    }
+    .flight-details-container .flight-itr-box .flight-seg-box span hr{
+        width: 80px;
+    }
+}
+
