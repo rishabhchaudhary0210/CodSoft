@@ -15,7 +15,7 @@ export const ManageBooking = () => {
     const [searchParam, setSearchParam] = useState("");
     const [showLoader, setShowLoader] = useState(false);
     const [confirmationObj, setConfirmationObj] = useState({});
-    const { id } = useParams();
+    let { id } = useParams();
     const navigate = useNavigate();
 
     const userId = new URLSearchParams(location.search)?.get('userId');
@@ -24,7 +24,8 @@ export const ManageBooking = () => {
     useEffect(() => {
         const getApiData = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/manage-booking/${id}`, {
+                const url = `${import.meta.env.VITE_SERVER_URL}/flight/manage-booking/${encodeURIComponent(id)}`;
+                const response = await fetch(url, {
                     credentials: 'include'
                 })
                 const apiData = await response.json();
@@ -67,7 +68,7 @@ export const ManageBooking = () => {
     return (
         <div className="manage-booking-container">
             <div className="search-booking-details">
-                <input type="text" onChange={e => setSearchParam(e.target.value)} placeholder="Enter Booking ID" value={searchParam} />
+                <input type="text" onChange={e =>setSearchParam(e.target.value)} placeholder="Enter Booking ID" value={searchParam} />
                 <Link to={`/manage-booking/${searchParam}`} className='link'> <FaSistrix />  Search Details</Link>
             </div>
             {showLoader && <Loader />}
@@ -76,9 +77,9 @@ export const ManageBooking = () => {
                 <div className="booking-details-container">
                     <BookingDisplay confirmationObj={confirmationObj} />
                     <div className="cancel-booking-container">
-                        <button onClick={HandleBookingDelete}> <FontAwesomeIcon icon={faTrash} /> Cancel Booking </button>
-                        <Link to='/home' className="link">
-                            <button> Home </button>
+                        <button onClick={HandleBookingDelete} className="cancel-btn"> <FontAwesomeIcon icon={faTrash} /> Cancel Booking </button>
+                        <Link to='/' className="link">
+                            <button className="home-btn"> Home </button>
                         </Link>
                     </div>
                 </div>

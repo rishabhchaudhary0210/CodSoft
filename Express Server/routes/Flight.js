@@ -37,7 +37,7 @@ router.get(`/airport-search/:parameter`, async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(400).json({ "Error": "Error getting Data" });
+        res.status(400).json({ "Error": "Error getting Data" ,err});
     }
     // console.log(apiData);
 });
@@ -69,7 +69,7 @@ router.get("/flight-search", async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(400).json({ "Error": "Error getting Data" });
+        res.status(400).json({ "Error": "Error getting Data" , err});
     }
     // console.log(apiData);
 })
@@ -94,7 +94,7 @@ router.post("/booking-request", async (req, res) => {
         res.json(JSON.parse(responseData));
     } catch (err) {
         console.log(err);
-        res.status(400).json({ "Error": "Error getting Data" });
+        res.status(400).json({ "Error": "Error getting Data" , err});
     }
     // res.json(inputFlight);
 })
@@ -139,20 +139,20 @@ router.post('/booking-confirm', async (req, res) => {
 
     } catch (err) {
         console.log(err.message);
-        res.status(400).json({ "Error": "Error getting Data" });
+        res.status(400).json({ "Error": "Error getting Data" , err});
     }
 })
 
 router.get('/manage-booking/:orderId', async (req,res)=>{
     try{
         const { orderId } = req.params;
-        const order = await amadeus.booking.flightOrder(orderId).get()
+        const order = await amadeus.booking.flightOrder(encodeURIComponent(orderId)).get()
         const details = await order.body;
         // console.log(details);
         res.status(200).json(details);
     }
     catch(err){
-        res.status(400).json({error:'Error getting data'});
+        res.status(400).json({error:'Error getting data', err});
     }
 })
 
@@ -160,7 +160,7 @@ router.get('/delete-booking/:orderId', async (req,res)=>{
     try{
         const { orderId  } = req.params;
         const { userID, flightID } = req.query;
-        const order = await amadeus.booking.flightOrder(orderId).delete();
+        const order = await amadeus.booking.flightOrder(decodeURIComponent(orderId)).delete();
         const del = await order?.body;
         // console.log("Del = ",del);
         if(userID && flightID ){
@@ -170,7 +170,7 @@ router.get('/delete-booking/:orderId', async (req,res)=>{
         res.status(200).json({success:"Booking deleted successfully"});
     }
     catch(err){
-        res.status(400).json({error:'Error deleting data'});
+        res.status(400).json({error:'Error deleting data', err});
     }
 })
 

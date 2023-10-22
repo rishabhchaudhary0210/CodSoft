@@ -47,3 +47,73 @@
     padding: 50px 70px;
     text-align: center;
 }
+.booking-details-container .cancel-booking-container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+.booking-details-container .cancel-booking-container button{
+    padding: 15px 45px;
+    font-size: 1.2rem;
+    outline: none;
+    margin: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.booking-details-container .cancel-booking-container .cancel-btn{
+    background-color: midnightblue;
+    border: 2px solid black;
+    color: white;
+}
+.booking-details-container .cancel-booking-container .home-btn{
+    background:rgba(240, 240, 240, 0.603);
+    color: midnightblue;
+    border: 2px solid midnightblue;
+}
+.booking-details-container .cancel-booking-container button:hover{
+    filter: brightness(0.8);
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width:1300px){
+    .search-booking-details .link{
+        width: 20%;
+    }
+}
+@media screen and (max-width:1000px){
+    .search-booking-details .link{
+        width: 30%;
+    }
+}
+@media screen and (max-width:660px){
+    .search-booking-details .link{
+        width: 35%;
+    }
+}
+@media screen and (max-width:570px){
+    .search-booking-details .link{
+        width: 45%;
+    }
+    .search-booking-details input{
+        width: 55%;
+    }
+}
+@media screen and (max-width:460px){
+    .search-booking-details .link{
+        width: 35%;
+        font-size: 1rem;
+    }
+    .search-booking-details input{
+        width: 65%;
+    }
+}
+@media screen and (max-width:450px){
+    .booking-details-container .cancel-booking-container{
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+}

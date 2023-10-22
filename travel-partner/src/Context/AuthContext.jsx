@@ -26,7 +26,7 @@ export const AuthContextProvider = ({children})=>{
                     credentials:"include"
                 })
                 const data = await response.json();
-                console.log(data);
+                
                 if(response.ok){
                     dispatch({type:'LOGIN', payload:data.user});
                 }
@@ -37,9 +37,6 @@ export const AuthContextProvider = ({children})=>{
         }
         checkUserLogin();
     },[])
-    console.log('AuthContext', state);
-    console.log('User', state?.user);
-    console.log('Name', state?.user?.name);
 
     return (
         <AuthContext.Provider value={{...state, dispatch}}>
