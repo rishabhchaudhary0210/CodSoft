@@ -5,8 +5,10 @@ import { faPlane } from '@fortawesome/free-solid-svg-icons'
 
 export const Loader = () => {
   return (
-    <div className='loader'>
+    <div className='loader-container'>
+      <div className='loader'>
         <FontAwesomeIcon className='loader-plane' icon={faPlane} />
+      </div>
     </div>
   )
 }

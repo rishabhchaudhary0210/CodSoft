@@ -4,18 +4,17 @@ nav{
     box-shadow: 1px 1px 5px black;
     height: 85px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    z-index: 15;
+    justify-content: flex-end;
+    padding-right: 20px;
+    z-index: 100;
 }
-nav.onHome{
+/* nav.onHome{
     position: absolute;
     top: 0;
     background: transparent;
-    /* backdrop-filter: blur(15px); */
+    backdrop-filter: blur(15px);
     box-shadow: none;
-}
+} */
 nav img{
     /* height: 100px; */
     width: 180px;
@@ -57,7 +56,7 @@ nav img{
 }
 .user-login-container .user-info{
 }
-nav.onHome .user-login-container .user-info{
+/* nav.onHome .user-login-container .user-info{
     color: #fff;
     border: 1px solid #ffffffb6;
 } 
@@ -67,10 +66,70 @@ nav.onHome .user-login-container .user-info.user-info.user-logout{
 }
 nav.onHome .user-login-container .user-info:hover, nav.onHome .user-login-container .user-info.user-logout:hover{
     background-color: #c9c9c9a4;
+} */
+
+nav .nav-button-container{
+    display: none;
 }
+nav .nav-item-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    z-index: 100;
+}
+nav .nav-item-container .nav-links-container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+}
+nav .nav-item-container .nav-links-container a{
+    text-decoration: none;
+    color: #677483;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+nav .nav-item-container .nav-links-container a:hover{
+    color: blueviolet;
+}
+
 @media screen and (max-width:700px) {
     nav{
         padding: 0 20px;
+    }
+}
+@media screen and (max-width:650px) {
+    nav .nav-item-container{
+        width: 0;
+    }
+    nav.active .nav-item-container{
+        width: 20rem;
+    }
+    nav .nav-button-container{
+        display: block;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        z-index: 200;
+        font-size: 1.5rem;
+        color: #677483;
+    }
+    nav .nav-item-container{
+        transition: all 0.3s ease;
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        /* flex-direction: column;
+        align-items: center; */
+    }
+    nav .nav-item-container, nav .nav-item-container .nav-links-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 45px;
     }
 }
 @media screen and (max-width:550px) {

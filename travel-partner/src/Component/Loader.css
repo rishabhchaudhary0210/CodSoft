@@ -1,11 +1,21 @@
 
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    margin: 0 auto;
+    padding: 40px 0;
+    overflow: hidden !important;
+}
+
 .loader{
     border: 5px solid rgba(128, 128, 128, 0.637);
     animation: rotation 1.3s infinite ease-in-out;
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    margin: 25px auto;
+    /* margin: 25px 0; */
     position: relative;
     overflow:visible;
 }
