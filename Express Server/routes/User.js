@@ -47,11 +47,11 @@ router.post('/log-in', async (req, res) => {
     try {
         let user = await UserDetail.findOne({ email });
         if (!user) {
-            return res.status(400).json({ 'error': 'Invalid Credentials' });
+            return res.status(400).json({ error: 'Invalid Credentials' });
         }
         let passCompare = await bcrypt.compare(password, user.password);
         if (!passCompare) {
-            return res.status(400).json({ 'error': 'Invalid Credentials' });
+            return res.status(400).json({ error: 'Invalid Credentials' });
         }
 
         //figure out jwt here
@@ -61,7 +61,7 @@ router.post('/log-in', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({'error':"Internal Server Error"});
+        res.status(500).json({error:"Internal Server Error"});
     }
 })
 
@@ -78,7 +78,7 @@ router.get('/check-user/:id', (req, res)=>{
     const token = req.cookies.jwt || req.params.id;
     const checkToken = jwt.verify(token, process.env.JWT_SECRET, async (err, decoded)=>{
         if(err){
-            return res.status(400).json({error:'User cannot be verified'});
+            return res.status(400).json({error:'Please Login Again'});
         }
         return res.status(200).json({success:'User Logged In Successfully', user:decoded});
     });
