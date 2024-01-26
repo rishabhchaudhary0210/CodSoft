@@ -6,6 +6,9 @@ import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
 import {useAuthContext} from '../../Hooks/useAuthContext'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Login = () => {
     const { dispatch } = useAuthContext();
     const [showPassword, setShowPassword] = useState(false);
@@ -30,11 +33,13 @@ export const Login = () => {
         if(res.ok){
             console.log('login Response Success',data);
             dispatch({type:'LOGIN', payload:data.user});
+            toast.success("Logged in successfully !")
             localStorage.setItem('jwt', data.token);
             navigate('/');
         }
         if(data.error !== null){
             setLoginError(data.error);
+            toast.error(data.error);
             console.log("Error recieved");
             return;
         }
@@ -43,6 +48,7 @@ export const Login = () => {
 
     return (
         <div className='login-form-container'>
+            <ToastContainer />
             <h1>LOG IN</h1>
             <form onSubmit={HandleUserLogIn} action="" method='POST'>
                 <div className='form-input'>

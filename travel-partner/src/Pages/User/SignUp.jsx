@@ -8,6 +8,9 @@ import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
 import { useAuthContext } from '../../Hooks/useAuthContext';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const SignUp = () => {
     const { dispatch } = useAuthContext();
     const phoneLabel = useRef();
@@ -42,14 +45,16 @@ export const SignUp = () => {
             },
         })
         const data = await res.json();
-        if(res.ok){
+        if (res.ok) {
             console.log('Signup success', data);
-            dispatch({type:'LOGIN', payload:data.user});
+            dispatch({ type: 'LOGIN', payload: data.user });
+            toast.success("Sign-up Successful !");
             localStorage.setItem('jwt', data.token);
             navigate('/');
         }
-        if(data.error !== null){
+        if (data.error !== null) {
             setSingupError(data.error);
+            toast.error(data.error);
             console.log("Error recieved");
             return;
         }
@@ -57,6 +62,7 @@ export const SignUp = () => {
     }
     return (
         <div className='login-form-container'>
+            <ToastContainer />
             <h1>SIGN UP</h1>
             <form onSubmit={HandleUserSignUp} method='POST'>
                 <div className='form-input'>
