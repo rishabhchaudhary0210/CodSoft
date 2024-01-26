@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 import { FaSistrix } from 'react-icons/fa';
 import { Loader } from "../../Component/Loader";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './Stylesheet/flightSearch.css';
 // const {originCode, destinationCode, departDate, returnDate, adultCount, childCount} = req.body;
 
@@ -71,10 +74,11 @@ export default function FlightSearch() {
         setShow(false);
         console.log(eve.target);
         if (eve.target.childCount.value.toString() > 0 && eve.target.adultCount.value.toString() == 0) {
-            alert("Children under 18 years of age cannot travel without Adult supervision")
+            // alert("Children under 18 years of age cannot travel without Adult supervision")
+            toast.warn("Children under 18 years of age cannot travel without Adult supervision")
         }
         else if (eve.target.adultCount.value.toString() < eve.target.infantCount.value.toString()) {
-            alert("Number of Infant passengers cannot be less than less than Adults")
+            toast.warn("Number of Infant passengers cannot be less than less than Adults")
         }
         else {
             setQuery({
@@ -91,6 +95,7 @@ export default function FlightSearch() {
     }
     return (
         <div className="flight-search-container">
+           `<ToastContainer />
             <form action="" onSubmit={handleFormSubmit} className="flight-search-form">
 
                 <div className="airport-searchBar-container">

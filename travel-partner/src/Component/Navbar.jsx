@@ -74,12 +74,12 @@ export const Navbar = () => {
                     </div>
                     :
                     <div className='user-login-container'>
-                        <Link to={'/signup'} className='user-info'
+                        <Link to={'login'} className='user-info login' onClick={() => setToggleNavbar(false)}>
+                            LogIn</Link>
+                        or
+                        <Link to={'/signup'} className='user-info signup'
                             onClick={() => setToggleNavbar(false)}>
                             SignUp</Link>
-                        or
-                        <Link to={'login'} className='user-info' onClick={() => setToggleNavbar(false)}>
-                            LogIn</Link>
                     </div>
                 }
             </div>

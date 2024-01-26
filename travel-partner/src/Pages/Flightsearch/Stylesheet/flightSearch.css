@@ -5,7 +5,8 @@
     overflow: visible;
 }
 .flight-search-form{
-    background: rgb(67, 67, 255);
+    /* background: rgb(67, 67, 255); */
+    background: midnightblue;
     padding: 25px 40px;
     margin: 10px;
     border-radius: 10px;

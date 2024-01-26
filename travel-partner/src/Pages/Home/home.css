@@ -110,7 +110,9 @@
     margin-top: 50px;
     padding: 30px 30px;
     border-radius: 10px;
-    background-color: midnightblue;
+    /* background-color: midnightblue; */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 2px 5px black;
     /* background: linear-gradient(to right,  ,cornflowerblue); */
     display: flex;
     justify-content: space-between;
@@ -120,12 +122,15 @@
 
 .manage-booking-link span {
     font-size: 1.5rem;
-    color: white;
+    color: rgb(39, 39, 39);
+
 }
 
 .manage-booking-link .link {
-    background-color: white;
-    color: black;
+    /* background-color: white;
+    color: black; */
+    background-color: midnightblue;
+    color: white;
     text-decoration: none;
     text-align: center;
     font-size: 1.4rem;

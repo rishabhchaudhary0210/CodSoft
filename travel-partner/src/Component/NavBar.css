@@ -38,11 +38,23 @@ nav img{
     justify-content: center;
     gap: 7px;
     font-size: 1.1rem;
-    color: #677483;
+    /* color: #677483; */
+    color: darkslateblue;
     /* color: darkblue; */
-    border: 1px solid #677483;
+    /* border: 1px solid #677483; */
+    border: 1px solid darkslateblue;
     border-radius: 25px;
     padding: 8px 15px;
+}
+.user-login-container .user-info.login{
+
+}
+.user-login-container .user-info.signup{
+    background-color: darkslateblue;
+    color: white;
+}
+.user-login-container .user-info.signup:hover{
+    background-color: rgb(49, 42, 95);
 }
 .user-login-container .user-info.user-logout{
     border: none;
@@ -90,7 +102,7 @@ nav .nav-item-container .nav-links-container a{
     transition: all 0.3s ease;
 }
 nav .nav-item-container .nav-links-container a:hover{
-    color: blueviolet;
+    color: darkslateblue;
 }
 
 @media screen and (max-width:700px) {
