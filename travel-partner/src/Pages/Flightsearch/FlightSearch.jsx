@@ -20,7 +20,7 @@ export default function FlightSearch() {
     const [searchResult, setSearchResult] = useState([]);
     const [show, setShow] = useState(false);
     const [showloader, setShowloader] = useState(false);
- 
+
     const serializeQuery = (obj) => {
         let str = `?originCode=${obj.originCode}&destinationCode=${obj.destinationCode}&departDate=${obj.departDate}&adultCount=${obj.adultCount}&childCount=${obj.childCount}&infantCount=${obj.infantCount}`;
         if (obj.returnDate !== "") {
@@ -50,7 +50,7 @@ export default function FlightSearch() {
                 // console.log(url);
 
                 const response = await fetch(url, {
-                    credentials:'include'
+                    credentials: 'include'
                 });
                 const apiData = await response.json();
 
@@ -93,9 +93,13 @@ export default function FlightSearch() {
             console.log(query);
         }
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
     return (
         <div className="flight-search-container">
-           `<ToastContainer />
+            `<ToastContainer />
             <form action="" onSubmit={handleFormSubmit} className="flight-search-form">
                 <h1>Flight Search</h1>
                 <div className="airport-searchBar-container">
@@ -111,7 +115,7 @@ export default function FlightSearch() {
 
                     <div className="countpicker-input-container">
 
-                        <CountPicker/>
+                        <CountPicker />
 
                     </div>
                 </div>

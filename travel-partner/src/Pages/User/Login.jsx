@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './StyleSheet/signup.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 import { ButtonLoader } from './SignUp';
@@ -57,6 +57,9 @@ export const Login = () => {
 
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
     return (
         <div className='login-form-container'>
             <ToastContainer />
@@ -73,8 +76,8 @@ export const Login = () => {
                         ? <FontAwesomeIcon icon={faEye} /> :
                         <FontAwesomeIcon icon={faEyeSlash} />}</span>
                 </div>
-                <button type='submit' disabled={loading} className='login-btn'> 
-                    {loading ? <ButtonLoader/>: "Log In"} 
+                <button type='submit' disabled={loading} className='login-btn'>
+                    {loading ? <ButtonLoader /> : "Log In"}
                 </button>
             </form>
             <p>

@@ -10,21 +10,11 @@ import { faPlane } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
-  // const titleRef = useRef();
 
-  // const handleScroll = () => {
-  //   const scrollPosition = window.scrollY; // => scroll position
-  //   // setScrolled(window.scrollY);
 
-  //   titleRef.current.style.transform = `translateX(${window.scrollY})`;
-  // };
-  // useEffect(() => {
-  //   handleScroll();
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   return (
     <div className='home-container'>

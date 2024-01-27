@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation} from "react-router";
+import { useParams, useNavigate, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
 import { FaSistrix } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,7 +19,7 @@ export const ManageBooking = () => {
 
     const userId = new URLSearchParams(location.search)?.get('userId');
     const flightdbId = new URLSearchParams(location.search)?.get('flightdbId');
-    
+
     useEffect(() => {
         const getApiData = async () => {
             try {
@@ -33,7 +33,7 @@ export const ManageBooking = () => {
                     setConfirmationObj(JSON.parse(apiData));
                     console.log(JSON.parse(apiData));
                 } else {
-                    setConfirmationObj({error:"OOPS! No data found. \n Recheck booking-id."});
+                    setConfirmationObj({ error: "OOPS! No data found. \n Recheck booking-id." });
                 }
                 // console.log(apiData)
             }
@@ -52,6 +52,9 @@ export const ManageBooking = () => {
         }
     }, [id])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
     const HandleBookingDelete = async () => {
         const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/delete-booking/${confirmationObj.data.id}?userID=${userId}&flightID=${flightdbId}`, {
             credentials: 'include'
@@ -67,7 +70,7 @@ export const ManageBooking = () => {
     return (
         <div className="manage-booking-container">
             <div className="search-booking-details">
-                <input type="text" onChange={e =>setSearchParam(e.target.value)} placeholder="Enter Booking ID" value={searchParam} />
+                <input type="text" onChange={e => setSearchParam(e.target.value)} placeholder="Enter Booking ID" value={searchParam} />
                 <Link to={`/manage-booking/${searchParam}`} className='link'> <FaSistrix />  Search Details</Link>
             </div>
             {showLoader && <Loader />}

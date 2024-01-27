@@ -2,7 +2,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { Link, useNavigate } from 'react-router-dom';
 import './StyleSheet/signup.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
@@ -70,6 +70,10 @@ export const SignUp = () => {
         }
         setLoading(false);
     }
+        
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    })
     return (
         <div className='login-form-container'>
             <ToastContainer />

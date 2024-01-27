@@ -10,74 +10,77 @@ import { useParams } from "react-router";
 
 export const BookingDone = () => {
 
-    const {id} = useParams();
+    const { id } = useParams();
     const [confirmationObj, setConfirmationObj] = useState({});
 
     useEffect(() => {
         const getApiData = async () => {
-            try{
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-display/`+id, {
-                    credentials:'include'
+            try {
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/booking-display/` + id, {
+                    credentials: 'include'
                 });
                 const apiData = await response.json();
-                if(apiData.obj !== null){
+                if (apiData.obj !== null) {
                     console.log("onj presen");
                     setConfirmationObj(JSON.parse(apiData.obj));
                 }
-                else{
+                else {
                     console.log("obj no presen");
                     setConfirmationObj(apiData);
                 }
                 console.log(id);
                 console.log(apiData);
             }
-            catch(err){
+            catch (err) {
                 console.log(err);
             }
         }
         getApiData();
     }, [])
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
     return (
         (Object.keys(confirmationObj).length === 0) ? <Loader /> :
             Object.keys(confirmationObj).length > 0 &&
-            <BookingDisplay  confirmationObj={confirmationObj} />
+            <BookingDisplay confirmationObj={confirmationObj} />
     )
 }
 
-export const BookingDisplay = ({confirmationObj})=>{
+
+export const BookingDisplay = ({ confirmationObj }) => {
     return (
         <div className="booking-done-container">
-                <div className="booking-done-info">
-                    <FontAwesomeIcon className="booking-done-logo" icon={faPlaneCircleCheck} />
-                    <h3>
-                        Booking Confirm
-                    </h3>
-                    <h4>
-                        {'PNR : ' + confirmationObj.data.associatedRecords[0].reference}
-                    </h4>
-                    <h5>
-                        {'Ticketing-ID : ' + confirmationObj.data.id}
-                    </h5>
-                </div>
-
-                <div>
-                    <h1>Booking Details</h1>
-                    <FlightResults
-                        ele={confirmationObj.data.flightOffers[0]}
-                    />
-                </div>
-
-                <div className="booking-done-trav-container">
-                    <h1>Passenger Details</h1>
-                    {confirmationObj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={confirmationObj.data.flightOffers[0].travelerPricings} />)}
-                </div>
+            <div className="booking-done-info">
+                <FontAwesomeIcon className="booking-done-logo" icon={faPlaneCircleCheck} />
+                <h3>
+                    Booking Confirm
+                </h3>
+                <h4>
+                    {'PNR : ' + confirmationObj.data.associatedRecords[0].reference}
+                </h4>
+                <h5>
+                    {'Ticketing-ID : ' + confirmationObj.data.id}
+                </h5>
             </div>
+
+            <div>
+                <h1>Booking Details</h1>
+                <FlightResults
+                    ele={confirmationObj.data.flightOffers[0]}
+                />
+            </div>
+
+            <div className="booking-done-trav-container">
+                <h1>Passenger Details</h1>
+                {confirmationObj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={confirmationObj.data.flightOffers[0].travelerPricings} />)}
+            </div>
+        </div>
     )
 }
 
 export const UserDetail = ({ ele, index, obj }) => {
-    
+
     return (
         <div className="user-detail">
             <div className="subdiv-1">
