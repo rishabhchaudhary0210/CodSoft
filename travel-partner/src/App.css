@@ -6,3 +6,14 @@ body{
 .app-container{
     min-height: 100vh;
 }
+:root{
+    --bg-clr: rgba(255, 183, 67, 0.70);
+    /* --hvr-clr: #ff5e00; */
+    --sec-clr: #e2301c;
+    --hvr-clr: #c7301f;
+    /* --hvr-clr: #f77329; */
+
+    --bg-clr-2:darkslateblue;
+    --sec-clr-2:white;
+    --hvr-clr-2:rgb(56, 47, 112);
+}

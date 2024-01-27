@@ -16,6 +16,7 @@ export const SignUp = () => {
     const phoneLabel = useRef();
     const [showPassword, setShowPassword] = useState(false);
     const [signupError, setSingupError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const HandlePhoneFocusIn = () => {
@@ -30,35 +31,44 @@ export const SignUp = () => {
     }
     const HandleUserSignUp = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const user = {
             name: e.target.name.value,
             email: e.target.email.value,
             phone: e.target.phone.value,
             password: e.target.password.value
         }
-        const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/sign-up`, {
-            method: 'POST',
-            body: JSON.stringify(user),
-            credentials: 'include',
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        const data = await res.json();
-        if (res.ok) {
-            console.log('Signup success', data);
-            dispatch({ type: 'LOGIN', payload: data.user });
-            toast.success("Sign-up Successful !");
-            localStorage.setItem('jwt', data.token);
-            navigate('/');
+        try{
+
+            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/sign-up`, {
+                method: 'POST',
+                body: JSON.stringify(user),
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            const data = await res.json();
+            if (res.ok) {
+                console.log('Signup success', data);
+                dispatch({ type: 'LOGIN', payload: data.user });
+                toast.success("Sign-up Successful !");
+                localStorage.setItem('jwt', data.token);
+                navigate('/');
+            }
+            if (data.error !== null) {
+                setSingupError(data.error);
+                toast.error(data.error);
+                console.log("Error recieved");
+                return;
+            }
+            console.log(user);
         }
-        if (data.error !== null) {
-            setSingupError(data.error);
-            toast.error(data.error);
-            console.log("Error recieved");
-            return;
+        catch(err){
+            console.log(err);
+            toast.error("Sorry, please try again")
         }
-        console.log(user);
+        setLoading(false);
     }
     return (
         <div className='login-form-container'>
@@ -89,11 +99,22 @@ export const SignUp = () => {
                         ? <FontAwesomeIcon icon={faEye} /> :
                         <FontAwesomeIcon icon={faEyeSlash} />}</span>
                 </div>
-                <button type='submit' className='login-btn'>Sign Up</button>
+                <button type='submit' disabled={loading} className='login-btn'> 
+                    {loading ? <ButtonLoader/>: "Sign Up"} 
+                </button>
             </form>
             <p>
                 Already registered ? <Link to="/login">Log-In</Link>
             </p>
+        </div>
+    )
+}
+
+export const ButtonLoader = () => {
+    return (
+        <div className='button-loader'>
+            <div>
+            </div>
         </div>
     )
 }

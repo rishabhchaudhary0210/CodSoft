@@ -39,22 +39,29 @@ nav img{
     gap: 7px;
     font-size: 1.1rem;
     /* color: #677483; */
-    color: darkslateblue;
+    /* color: darkslateblue; */
+    color: var(--bg-clr-2);
     /* color: darkblue; */
     /* border: 1px solid #677483; */
-    border: 1px solid darkslateblue;
-    border-radius: 25px;
+    /* border: 1px solid darkslateblue;*/
+    border: 1px solid var(--bg-clr-2);
+    border-radius: 10px;
     padding: 8px 15px;
 }
 .user-login-container .user-info.login{
 
 }
 .user-login-container .user-info.signup{
-    background-color: darkslateblue;
+    background-color: var(--bg-clr-2);
     color: white;
 }
 .user-login-container .user-info.signup:hover{
-    background-color: rgb(49, 42, 95);
+    /* background-color: #eee; */
+    background-color: var(--hvr-clr-2);
+    color: white;
+}
+.user-login-container .user-info.login:hover{
+    background-color: rgba(235, 235, 235, 0.685);
 }
 .user-login-container .user-info.user-logout{
     border: none;
@@ -63,9 +70,7 @@ nav img{
 .user-login-container .user-info.user-logout:hover{
     text-decoration: underline;
 }
- .user-login-container .user-info:hover{
-    background-color: #eee;
-}
+
 .user-login-container .user-info{
 }
 /* nav.onHome .user-login-container .user-info{
@@ -97,12 +102,13 @@ nav .nav-item-container .nav-links-container{
 }
 nav .nav-item-container .nav-links-container a{
     text-decoration: none;
+    font-weight: 400;
     color: #677483;
     font-size: 1.2rem;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 nav .nav-item-container .nav-links-container a:hover{
-    color: darkslateblue;
+    color: var(--bg-clr-2);
 }
 
 @media screen and (max-width:700px) {

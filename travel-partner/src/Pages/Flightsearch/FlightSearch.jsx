@@ -97,7 +97,7 @@ export default function FlightSearch() {
         <div className="flight-search-container">
            `<ToastContainer />
             <form action="" onSubmit={handleFormSubmit} className="flight-search-form">
-
+                <h1>Flight Search</h1>
                 <div className="airport-searchBar-container">
                     <AirportSearch name="originCode" val={query?.originCode} label="From" placeholder="Origin" req={true} />
 

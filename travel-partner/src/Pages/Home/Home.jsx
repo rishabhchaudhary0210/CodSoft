@@ -30,6 +30,7 @@ export const Home = () => {
     <div className='home-container'>
       <div className='home-header-container'>
         <div className="home-header-subcont">
+
           <h1 className='header'>
             Explore best flight offers to your favourite destinations.
           </h1>

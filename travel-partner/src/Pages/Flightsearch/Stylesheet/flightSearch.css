@@ -6,12 +6,17 @@
 }
 .flight-search-form{
     /* background: rgb(67, 67, 255); */
-    background: midnightblue;
+    /* background: midnightblue; */
+    background-color: var(--bg-clr-2);
     padding: 25px 40px;
     margin: 10px;
     border-radius: 10px;
 }
-
+.flight-search-form h1{
+    margin: 10px 10px;
+    margin-bottom: 25px;
+    color: var(--sec-clr-2);
+}
 .flight-search-form .airport-searchBar-container{
     display: flex;
     justify-content: center;
@@ -36,7 +41,9 @@
 }
 
 .flight-search-form .flight-search-button{
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: var(--sec-clr);
+    color: white;
     margin: 5px auto;
     padding: 12px 25px;
     display: flex;
@@ -48,12 +55,14 @@
     border: none;
     outline: none;
     cursor: pointer;
-    box-shadow: 5px 5px 2px black;
+    /* box-shadow: 5px 5px 2px black; */
+    /* box-shadow: 2px 2px 10px var(--hvr-clr); */
     transition: all 0.1s ease;
     z-index: 1;
 }
 .flight-search-form .flight-search-button:hover{
-    background-color: rgb(209, 209, 209);
+    /* background-color: rgb(209, 209, 209); */
+    background-color: var(--hvr-clr);
 } 
 .flight-search-form .flight-search-button:active {
     transform: translate(3px, 3px);
