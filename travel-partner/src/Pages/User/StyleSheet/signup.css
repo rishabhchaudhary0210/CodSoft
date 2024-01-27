@@ -130,6 +130,7 @@
     width: 100%;
     display: grid;
     place-items: center;
+    overflow: hidden;
 }
 .button-loader div{
     height: 25px;

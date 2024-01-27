@@ -89,7 +89,7 @@ export const Home = () => {
       <div className='hotel-info-container'>
         <h1>Book your relaxing stay here.</h1>
         <h5>Choose from the range of top Hotel Deals and get an amazing room at an even better price.</h5>
-        <Link to='/' className='hotel-link'>Find Rooms</Link>
+        <Link to='/' className='hotel-link'>Coming Soon</Link>
       </div>
     </div>
   )

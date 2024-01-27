@@ -56,14 +56,20 @@ export const ManageBooking = () => {
         window.scrollTo(0, 0);
     })
     const HandleBookingDelete = async () => {
-        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/delete-booking/${confirmationObj.data.id}?userID=${userId}&flightID=${flightdbId}`, {
-            credentials: 'include'
-        })
-        if (response.ok) {
-            navigate('/flights');
+        try{
+
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/delete-booking/${confirmationObj.data.id}?userID=${userId}&flightID=${flightdbId}`, {
+                credentials: 'include'
+            })
+            if (response.ok) {
+                navigate('/flights');
+            }
+            else {
+                alert('Error cancelling flight. Please try again');
+            }
         }
-        else {
-            alert('Error cancelling flight. Please try again');
+        catch(err){
+            console.log(err);
         }
     }
 

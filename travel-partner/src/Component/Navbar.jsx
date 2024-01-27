@@ -27,7 +27,7 @@ export const Navbar = () => {
             dispatch({ type: 'LOGOUT' });
             localStorage.removeItem('jwt');
             console.log("log out succes");
-            // navigate('/');
+            navigate('/');
         }
         else {
             toast.error("Error Logging Out");

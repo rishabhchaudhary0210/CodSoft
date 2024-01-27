@@ -11,17 +11,23 @@ export default function AirportSearch(props) {
     const [searchParam, setSearchParam] = useState(props.val || "");
     const [searchResult, setSearchResult] = useState([]);
     const [show, setShow] = useState(false);
+    const [listClick, setListClick] = useState(false);
 
     useEffect(() => {
         // setShow(false);
         const getApiData = setTimeout(async () => {
-            if (searchParam.length > 0 && searchParam.match(/^[A-Za-z]+$/)) {
-                const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/airport-search/${searchParam}`,{
-                    credentials:'include'
-                });
-                const apidata = await res.json();
-                setSearchResult(apidata.data);
-                setShow(true);
+            if (!listClick && searchParam.length > 0 && searchParam.match(/^[A-Za-z]+$/)) {
+                try{
+                    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/flight/airport-search/${searchParam}`,{
+                        credentials:'include'
+                    });
+                    const apidata = await res.json();
+                    setSearchResult(apidata.data);
+                    setShow(true);
+                }
+                catch(err){
+                    console.log(err);
+                }
                 // console.log(apidata.data);
             }
         }, 500)
@@ -31,6 +37,7 @@ export default function AirportSearch(props) {
 
     const handleInputChange = (e) => {
         setShow(false);
+        setListClick(false);
         setSearchParam(e.target.value.toString().toUpperCase());
         // console.log(searchParam);
     }
@@ -38,6 +45,7 @@ export default function AirportSearch(props) {
     const handleListClick = (val) => {
         setSearchParam(val);
         setShow(false);
+        setListClick(true);
     }
     const option = (props.label === 'From')? <FaPlaneDeparture/>:<FaPlaneArrival/>
     return (
@@ -69,8 +77,8 @@ export default function AirportSearch(props) {
                                     <h5>{ele.name}</h5>
                                 </div>
                                 <div>
-                                    <h7>{ele.address.cityName}</h7>
-                                    <h7>{ele.address.countryName}</h7>
+                                    <h6>{ele.address.cityName}</h6>
+                                    <h6>{ele.address.countryName}</h6>
                                 </div>
                             </div>
                         )
