@@ -29,8 +29,17 @@
     box-shadow: 1px 0px 10px black;
     border-top-right-radius: 99999px;
     border-bottom-right-radius:99999px;
+    animation: incoming 0.8s ease-in-out;
 }
 
+@keyframes incoming {
+    from{
+        transform: translateX(-1000px);
+    }
+    to{
+        tranform: translateX(0) ;
+    }
+}
 .home-header-container .header {
     font-size: 3rem;
     font-weight: 700;
@@ -39,39 +48,23 @@
     color: var(--sec-clr);
     margin-top: 20px;
     overflow: visible;
+    animation: opacityAnimate 1.6s ease-in-out;
+    /* animation-delay: ; */
 }
-
-.home-header-container .title {
-    text-align: center;
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    transform: translateX(11px);
-    font-size: 6.5rem;
-    font-weight: 600;
-    letter-spacing: 1.8rem;
-    place-self: end;
-    /* background: linear-gradient(to right, silver 0, white 10%, grey 20%);
-    background-position: 0; 
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear; */
-    color: #fff;
-}
-
-@keyframes shine {
-    0% {
-        background-position: 0;
+@keyframes opacityAnimate {
+    from{
+        transform: translateY(20px);
+        opacity: 0;
     }
-
-    100% {
-        background-position: 100%;
+    to{
+        transform: translateY(0px);
+        opacity: 1;
     }
 }
-
 .home-header-container .flight-link {
     background-color: var(--sec-clr);
+    animation: opacityAnimate 1.6s ease-in-out;
+    /* animation-delay: 0.8s; */
 }
 
 .hotel-info-container .hotel-link {
