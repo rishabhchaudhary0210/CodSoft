@@ -29,9 +29,10 @@
     box-shadow: 1px 0px 10px black;
     border-top-right-radius: 99999px;
     border-bottom-right-radius:99999px;
+}
+.animate-incoming{
     animation: incoming 0.8s ease-in-out;
 }
-
 @keyframes incoming {
     from{
         transform: translateX(-1000px);
@@ -48,8 +49,10 @@
     color: var(--sec-clr);
     margin-top: 20px;
     overflow: visible;
-    animation: opacityAnimate 1.6s ease-in-out;
     /* animation-delay: ; */
+}
+.animate-opacity{
+    animation: opacityAnimate 1.6s ease-in-out;
 }
 @keyframes opacityAnimate {
     from{
@@ -63,7 +66,6 @@
 }
 .home-header-container .flight-link {
     background-color: var(--sec-clr);
-    animation: opacityAnimate 1.6s ease-in-out;
     /* animation-delay: 0.8s; */
 }
 
