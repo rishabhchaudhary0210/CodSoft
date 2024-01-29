@@ -68,7 +68,9 @@ export const SignUp = () => {
             console.log(err);
             toast.error("Sorry, please try again")
         }
-        setLoading(false);
+        finally{
+            setLoading(false);
+        }
     }
         
     useEffect(()=>{

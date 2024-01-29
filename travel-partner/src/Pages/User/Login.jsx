@@ -53,7 +53,9 @@ export const Login = () => {
             console.log(err);
             toast.error("Sorry, please try again")
         }
-        setLoading(false);
+        finally{
+            setLoading(false);
+        }
 
     }
 

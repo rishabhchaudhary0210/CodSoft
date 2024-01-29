@@ -39,6 +39,8 @@ app.use('/flight',require('./routes/Flight'));
 
 app.use('/user', require('./routes/User'));
 
+app.use("/hotel", require('./routes/Hotel'));
+
 const start = async ()=>{
     try {
         await connectToMongo(process.env.MONGO_URI);
