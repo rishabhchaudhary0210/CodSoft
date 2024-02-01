@@ -12,6 +12,7 @@ const getHotelHeader = ()=>{
     //required to create a sha256 (as per configuration of api)
     const dataToHash = process.env.hotelApiKey + process.env.hotelApiSecret + currentTimestamp;
     const hashedValue = crypto.createHash('sha256').update(dataToHash).digest('hex');
+    console.log(hashedValue);
     return {
         "Api-key": process.env.hotelApiKey,
         "X-Signature": hashedValue,
@@ -25,7 +26,7 @@ const getHotelHeader = ()=>{
 // myHeaders.append("Accept-Encoding", "gzip");
 // myHeaders.append("Content-Type", "application/json");
 
-router.get('/list', async (req, res) => {
+router.get('/list/:city', async (req, res) => {
     console.log("REquest HIT");
     const body = JSON.stringify({
         "stay": {
@@ -40,7 +41,7 @@ router.get('/list', async (req, res) => {
             }
         ],
         "destination": {
-            "code": "BOM"
+            "code": req.params.city
         }
     })
     const header = getHotelHeader();
@@ -52,7 +53,7 @@ router.get('/list', async (req, res) => {
     });
     const data = await response.json();
     res.json(data);
-    console.log(data);
+    // console.log(data);
     }
     catch(err){
         console.log(err);
