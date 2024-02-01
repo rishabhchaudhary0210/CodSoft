@@ -26,7 +26,7 @@ const getHotelHeader = ()=>{
 // myHeaders.append("Accept-Encoding", "gzip");
 // myHeaders.append("Content-Type", "application/json");
 
-router.get('/list/:city', async (req, res) => {
+router.get('/list', async (req, res) => {
     console.log("REquest HIT");
     const body = JSON.stringify({
         "stay": {
@@ -41,25 +41,186 @@ router.get('/list/:city', async (req, res) => {
             }
         ],
         "destination": {
-            "code": req.params.city
+            // "code": req.params.city
+            "code": "NYC",
         }
+        // "hotels": {
+        //     "hotel": [
+        //         1,
+        //         373757,
+        //         2,3,4
+        //     ]
+        // }
     })
-    const header = getHotelHeader();
     try{
-    const response = await fetch("https://api.test.hotelbeds.com/hotel-api/1.0/hotels",{
-        method:"POST",
-        headers:header,
-        body:body,  
-    });
-    const data = await response.json();
-    res.json(data);
-    // console.log(data);
+        const response = await fetch("https://api.test.hotelbeds.com/hotel-api/1.0/hotels",{
+            method:"POST",
+            headers:getHotelHeader(),
+            body:body,  
+        });
+        const data = await response.json();
+        res.status(200).json(data);
     }
     catch(err){
         console.log(err);
-        res.json({error:err});
+        res.status(400).json({error:err});
     }
 })
 
-console.log("From Hotel js")
+router.get("/content", async (req,res)=>{
+    try{
+        //more query params destinationCode countryCode
+        const response = await fetch("https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&language=ENG&from=1&to=10&useSecondaryLanguage=false", {
+            headers:getHotelHeader(),
+        })
+        const data = await response.json();
+        res.status(200).json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).json({error:err});
+    }
+})
+//for one particular hotel
+router.get("/content/:hotelCode", async (req, res)=>{
+    try{
+        const response = await fetch(`https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels/${req.params.hotelCode}/details?language=ENG&useSecondaryLanguage=False`, {
+            headers:getHotelHeader(),
+        })
+        const data = await response.json();
+        res.status(200).json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).json({error:err});
+    }
+})
+router.get("/countries", async (req,res)=>{
+    try{
+        //more query params         codes(for specifying country)
+        const response = await fetch("https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/countries?fields=all&language=ENG&from=1&to=1000", {
+            headers:getHotelHeader(),
+        })
+        const data = await response.json();
+        res.status(200).json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).json({error:err});
+    }
+})
+router.get("/destinations", async (req,res)=>{
+    //countryCodes<-specific country or list EU,US          codes (specific destination)
+    try{
+        const response = await fetch("https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/destinations?fields=all&language=ENG&from=1&to=1000&useSecondaryLanguage=false&countryCodes=IN", {
+            headers : getHotelHeader(),
+        })
+        const data = await response.json();
+        res.status(200).json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).json({error:err});
+    }
+})
+router.get("/booking", async (req, res)=>{
+    const body = JSON.stringify({
+        "holder": {
+          "name": "HolderFirstName",
+          "surname": "HolderLastName"
+        },
+        "rooms": [
+          {
+            "rateKey": "20240615|20240616|W|254|124294|DBL.KG-1|FIT FEE EXCL|RO||1~1~0||N@06~~208fc~610579379~N~~~NOR~5E61595510E640D170679833178100AAUK00000810000000001208fc",
+            "paxes": [
+            //   {
+            //     "roomId": 1,
+            //     "type": "AD",
+            //     "name": "First Adult Name",
+            //     "surname": "Surname"
+            //   },
+              {
+                "roomId": 1,
+                "type": "AD",
+                "name": "Second Adult Name",
+                "surname": "Surname"
+              }
+            ]
+          },
+        //   {
+        //     "rateKey": "20240615|20240616|W|254|124294|DBL.KG-1|FIT FEE EXCL|RO||1~1~0||N@06~~208fc~610579379~N~~~NOR~5E61595510E640D170679833178100AAUK00000810000000001208fc",
+        //     "paxes": [
+        //       {
+        //         "roomId": 1,
+        //         "type": "AD",
+        //         "name": "Third Adult Name",
+        //         "surname": "Surname"
+        //       },
+        //       {
+        //         "roomId": 1,
+        //         "type": "CH",
+        //         "name": "First Child Name",
+        //         "surname": "Surname"
+        //       }
+        //     ]
+        //   }
+        ],
+        "clientReference": "IntegrationAgency",
+        "remark": "Booking remarks are to be written here.",
+        "tolerance": 2,
+        // "paymentData": {
+        //     "paymentCard": {
+        //         "cardHolderName": "CardHolderName",
+        //         "cardType": "VI",
+        //         "cardNumber": "4444333322221111",
+        //         "expiryDate": "0320",
+        //         "cardCVC": "123"
+        //     },
+        //     "contactData": {
+        //         "email": "integration@hotelbeds.com",
+        //         "phoneNumber": "654654654"
+        //     },
+        //     "billingAddress": {
+        //         "address1": "Cambridge Science Park",
+        //         "address2": "Milton Road",
+        //         "city": "Cambridge",
+        //         "state": "Cambridgeshire",
+        //         "postalCode": "CB4 0FZ",
+        //         "countryCode": "GB"
+        //     },
+        //     "webPartner": "1",
+        //     "device": {
+        //         "id": "abcd",
+        //         "ip": "123.12.12.12.21"
+        //     }
+        // }
+      });
+      
+    try{
+        const response = await fetch("https://api.test.hotelbeds.com/hotel-api/1.2/bookings",{
+            method: 'POST',
+            headers: getHotelHeader(),
+            body: body,
+          })
+          const data = await response.json();
+          res.status(200).json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).json({error:err});
+    }
+})
+router.get("/booking/:bookingRef", async (req,res)=>{
+    try{
+        const response = await fetch(`https://api.test.hotelbeds.com/hotel-api/1.2/bookings/${req.params.bookingRef}`, {
+            headers:getHotelHeader(),
+        })
+        const data = await response.json();
+        res.status(200).json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(200).json({error:err});
+    }
+})
 module.exports = router;
