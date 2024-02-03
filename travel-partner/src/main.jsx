@@ -18,6 +18,8 @@ import { Login } from './Pages/User/Login.jsx';
 import { ForgotPassword } from './Pages/User/ForgotPassword.jsx';
 import { Home } from './Pages/Home/Home.jsx';
 import { ManageBooking } from './Pages/Booking/ManageBooking.jsx';
+import HotelSearch from './Pages/Hotel/HotelSearch.jsx'
+import HotelDisplay from './Pages/Hotel/HotelDisplay.jsx'
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
         path: '/forgotpassword',
         element: <ForgotPassword />
       },
+      {
+        path: '/hotel',
+        element: <HotelSearch />
+      },
+      {
+        path: '/hotel-display',
+        element: <HotelDisplay />
+      }
     ]
   },
 
