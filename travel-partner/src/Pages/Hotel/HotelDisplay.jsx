@@ -1,44 +1,47 @@
 /* eslint-disable react/prop-types */
 import { obj1 } from "./Data/UniContent"
 import './Stylesheet/HotelDisplay.css';
+import './Stylesheet/DisplayComponents.css';
 const hotelImageUrl = import.meta.env.VITE_HOTEL_IMAGE;
-
+// const obj1 = obj2;
 const HotelDisplay = () => {
     const rating = Number(obj1?.hotel?.categoryGroup?.code?.at(-1));
 
-
     return (
-        <div className="hotel-display-contaier">
-            <ImageHolder images={obj1?.hotel?.images} />
-            <div>
-                <h1>{obj1?.hotel?.name?.content}</h1>
-                <div className="star-container">
-                    {
-                        rating && rating <= 5 &&
-                        Array(rating)?.map((m, i) =>
-                            <IconStarFill key={i} />
-                        )
-                        +
-                        Array(5 - rating)?.map((m, i) =>
-                            <IconStar key={i * 10} />
-                        )
-                    }
-                </div>
-                <div className="address">
-                    <p>
-                        {obj1?.hotel?.address?.number + ', ' + obj1?.hotel?.address?.street}
+        <div className="hotel-display-container">
+            <div className="hotel-display-subcont">
+                <ImageHolder images={obj1?.hotel?.images} />
+                <div className="box">
+
+                    <h1>{obj1?.hotel?.name?.content}</h1>
+                    <div className="star-container">
+                        {
+                            rating && rating <= 5 &&
+                            Array(rating)?.map((m, i) =>
+                                "hello  "
+                            )
+                            +
+                            Array(5 - rating)?.map((m, i) =>
+                                <IconStar key={i * 10} />
+                            )
+                        }
+                    </div>
+                    <div className="address">
+                        <p>
+                            {obj1?.hotel?.address?.number + ', ' + obj1?.hotel?.address?.street}
+                        </p>
+                        <p>
+                            {obj1?.hotel?.city?.content + ', ' + obj1?.hotel?.state?.name}
+                        </p>
+                    </div>
+                    {/* Add Link to booking */}
+                    <a href="#">Book Hotel</a>
+                    <p className="description">
+                        {obj1?.hotel?.description?.content}
                     </p>
-                    <p>
-                        {obj1?.hotel?.city?.content + ', ' + obj1?.hotel?.state?.name}
-                    </p>
                 </div>
-                {/* Add Link to booking */}
-                <a href="#">Book Hotel</a>
-                <p className="description">
-                    {obj1?.hotel?.description?.content}
-                </p>
             </div>
-            <div className="">
+            <div className="input-holder">
                 <h2>Enter dates to check room availability</h2>
                 <div className="input-container">
                     <div>
@@ -63,11 +66,14 @@ const HotelDisplay = () => {
                 </div>
             </div>
             <div className="rooms-container">
-                {
-                    obj1?.hotel?.rooms?.map((room, index) => 
-                        <RoomContainer room={room} obj1={obj1?.hotel} key={index+'r'}/>
-                    )
-                }
+                <h2>Rooms</h2>
+                <div>
+                    {
+                        obj1?.hotel?.rooms?.map((room, index) =>
+                            <RoomContainer room={room} obj1={obj1?.hotel} key={index + 'r'} />
+                        )
+                    }
+                </div>
             </div>
             <div className="location-container">
                 <LocationHolder locations={obj1?.hotel?.interestPoints} />
@@ -86,7 +92,6 @@ const ImageHolder = (props) => {
         }
         return a?.type?.code.localeCompare(b?.type?.code);
     })
-    console.log("IMG URL", images)
 
     return (
         <div className="image-holder">
@@ -95,7 +100,7 @@ const ImageHolder = (props) => {
                     <div key={index + 'i'}>
                         {/* {console.log("obj ==" , image, hotelImageUrl)} */}
                         <h3>{image?.type?.description?.content}</h3>
-                        <img src={hotelImageUrl + image?.path} alt="imgs" />
+                        <img src={hotelImageUrl + 'bigger/' + image?.path} alt="imgs" />
                     </div>
 
                 )
@@ -107,13 +112,17 @@ const ImageHolder = (props) => {
 const RoomContainer = (props) => {
 
     const getRoomPathName = (roomCode) => {
-        console.log(roomCode)
-        const foundObj = props?.obj1?.images?.find(item => item?.roomCode === roomCode);
-        return foundObj ? hotelImageUrl + foundObj.path : hotelImageUrl + props?.obj1?.images[0]?.path;
+        //getting specific image of room
+        let foundObj = props?.obj1?.images?.find(item => item?.roomCode === roomCode);
+        if (foundObj) return hotelImageUrl + foundObj.path;
+        //if image not found so get random room image
+        foundObj = props?.obj1?.images?.filter(item => item?.type?.code === "HAB")
+        console.log(foundObj)
+        let rand = Math.floor(Math.random() * foundObj?.length)
+        if (foundObj) return hotelImageUrl + foundObj[rand].path
     }
     return (
         <div className="room-box">
-            <h2>Rooms</h2>
             <div className="img-container">
                 <img src={getRoomPathName(props?.room?.roomCode)} alt="room-img" />
             </div>
@@ -157,9 +166,9 @@ const LocationHolder = (props) => {
     return (
         <div className="location-holder">
             <h2>Nearby Locations</h2>
-            <div>
+            <div className="point-container">
                 {props?.locations?.map((loc, index) =>
-                    <div key={index * 2}>
+                    <div key={index * 2} className="points">
                         <h3>{loc?.poiName}</h3>
                         <h5>{Number(loc?.distance) / 1000 + " km"}</h5>
                     </div>
@@ -180,7 +189,7 @@ const ContactHolder = (props) => {
             </div>
             <div className="phone">
                 <h4>Phones</h4>
-                <div>
+                <div className="phone-cont">
                     {
                         props?.phones?.map((phone, index) =>
                             <div key={index * 10}>

@@ -18,7 +18,7 @@ const HotelSearch = () => {
           <input type="text" id="destination" />
         </div>
       </div>
-      <div>
+      <div className="result-container">
         {
           content?.hotels?.map((hotel,index) => 
             <HotelResult hotel={hotel} key={index}/>

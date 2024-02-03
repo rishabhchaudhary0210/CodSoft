@@ -2362,7 +2362,7 @@ export const obj1 = {
     }
 }
 
-const obj2 = {
+export const obj2 = {
     "auditData": {
         "processTime": "111",
         "timestamp": "2024-02-01 14:04:56.788",

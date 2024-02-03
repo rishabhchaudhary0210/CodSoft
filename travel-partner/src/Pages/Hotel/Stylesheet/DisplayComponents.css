@@ -1,0 +1,103 @@
+.image-holder{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+}
+.image-holder div{
+    flex-shrink: 0;
+    height: 100%;
+    width: 100%;
+}
+.image-holder div img{
+    height: 350px;
+    width: 100%;
+
+}
+
+
+.room-box{
+    height: 100%;
+    width: max-content;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 0px 15px;
+    flex-shrink: 0;
+}
+.room-box .img-container{
+    
+}
+.room-box .img-container img{
+    width: 22vw;
+    height: 230px;
+}
+.room-box .info{
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.room-box .info h4{
+    
+}
+.room-box .info .pax{
+}
+.room-box .info .pax p{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.room-box .info .pax p span{
+
+}
+
+
+.location-holder{
+   height: 100%;
+   width: 100%;
+}
+.location-holder h2{
+    font-size: 1.8rem;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+.location-holder .point-container{
+    padding: 0px 25px;
+}
+.location-holder .point-container .points{
+    display: flex;
+    align-items: center;
+    gap: ;
+}
+.location-holder .point-container .points h3{
+
+}
+.location-holder .point-container .points h5{
+
+}
+
+
+.contact-holder{
+    
+}
+.contact-holder h2{
+    font-size: 1.8rem;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+.contact-holder .email, .contact-holder .phone{
+    padding: 0px 25px;
+    display: flex;
+}
+.contact-holder .email h4, .contact-holder .phone h4{
+
+}
+.contact-holder .email h5, .contact-holder .phone h5{
+
+}
+.contact-holder .phone .phone-cont{
+    
+}
+.contact-holder .phone .phone-cont div{
+
+}

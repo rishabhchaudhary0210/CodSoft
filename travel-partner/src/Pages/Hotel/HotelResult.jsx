@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-
+import './Stylesheet/HotelResult.css';
 
 const HotelResult = (props)=>{
-  console.log(props?.hotel)
+
+  //getting general view img of hotel
     let ImageUrl = props?.hotel?.images?.filter(obj=>obj?.imageTypeCode === "GEN");
     ImageUrl = ImageUrl?.slice()?.sort((a,b)=>b?.order-a?.order)
-    console.log(ImageUrl)
   
     const rating = Number(props?.hotel?.categoryGroupCode.at(-1));
   
