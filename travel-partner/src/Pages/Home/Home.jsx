@@ -46,12 +46,12 @@ export const Home = () => {
   return (
     <div className='home-container'>
       <div ref={headerRef} className='home-header-container'>
-        <div className={`home-header-subcont ${headerVisible ? 'animate-incoming' : ''}`}>
+        <div className={`home-header-subcont animate ${headerVisible ? 'animate-incoming' : ''}`}>
 
-          <h1 className={`header ${headerVisible ? 'animate-opacity' : ''}`}>
+          <h1 className={`header animate ${headerVisible ? 'animate-opacity' : ''}`}>
             Explore best flight offers to your favourite destinations.
           </h1>
-          <Link to='/flights' className={`flight-link ${headerVisible ? 'animate-opacity' : ''}`}>
+          <Link to='/flights' className={`flight-link animate ${headerVisible ? 'animate-opacity' : ''}`}>
             <p>Explore Flights</p>
             <FontAwesomeIcon icon={faPlane} />
           </Link>
@@ -59,27 +59,27 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className={`manage-booking-link  ${serviceVisible ? 'animate-opacity' : ''}`}>
+      <div className={`manage-booking-link animate  ${serviceVisible ? 'animate-opacity' : ''}`}>
         <span>
           Click here to view or update your booking details.
         </span>
         <Link to={'/manage-booking/search'} className={`link`}>Manage Booking</Link>
       </div>
 
-      <div ref={serviceContainerRef} className={`home-service-container ${serviceVisible ? 'animate-opacity' : ''}`}>
-        <div style={{"animationDelay":"0s",'animationDuration':'0.6s'}} className={`service-box ${serviceVisible ? 'animate-opacity' : ''}`}>
+      <div ref={serviceContainerRef} className={`home-service-container animate ${serviceVisible ? 'animate-opacity' : ''}`}>
+        <div style={{"animationDelay":"0s",'animationDuration':'0.6s'}} className={`service-box animate ${serviceVisible ? 'animate-incoming' : ''}`}>
           <img src={planeService} alt="plane" />
           <p>
             Explore the best flight offers from anywhere to everywhere and complete your bookings with our partners.
           </p>
         </div>
-        <div style={{"animationDelay":"0.4s",'animationDuration':'0.6s'}} className={`service-box ${serviceVisible ? 'animate-opacity' : ''}`}>
+        <div style={{"animationDelay":"0.3s",'animationDuration':'0.6s'}} className={`service-box animate ${serviceVisible ? 'animate-incoming' : ''}`}>
           <img src={compareService} alt="compare" />
           <p>
             Compare flight deals from over multiple providers, and choose the cheapest, fastest or greenest tickets.
           </p>
         </div>
-        <div style={{"animationDelay":"0.4ss",'animationDuration':'0.6s'}} className={`service-box ${serviceVisible ? 'animate-opacity' : ''}`}>
+        <div style={{"animationDelay":"0.6s",'animationDuration':'0.6s'}} className={`service-box animate ${serviceVisible ? 'animate-incoming' : ''}`}>
           <img src={priceService} alt="price" />
           <p>
             Find the cheapest month - or even day - to fly, and set up Price Alerts to book when the price is right

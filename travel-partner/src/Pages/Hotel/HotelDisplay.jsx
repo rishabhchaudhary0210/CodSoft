@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { obj1 } from "./Data/UniContent"
+import { obj3 } from "./Data/UniContent"
 import './Stylesheet/HotelDisplay.css';
 import './Stylesheet/DisplayComponents.css';
 const hotelImageUrl = import.meta.env.VITE_HOTEL_IMAGE;
-// const obj1 = obj2;
+const obj1 = obj3;
 const HotelDisplay = () => {
     const rating = Number(obj1?.hotel?.categoryGroup?.code?.at(-1));
 
@@ -61,7 +61,7 @@ const HotelDisplay = () => {
                     </div>
                     <div>
                         <label htmlFor="child">Children</label>
-                        <input type="text" id="Children" />
+                        <input type="text" id="child" />
                     </div>
                 </div>
             </div>
@@ -75,11 +75,15 @@ const HotelDisplay = () => {
                     }
                 </div>
             </div>
-            <div className="location-container">
-                <LocationHolder locations={obj1?.hotel?.interestPoints} />
-            </div>
-            <div className="contact-container">
-                <ContactHolder email={obj1?.hotel?.email} phones={obj1?.hotel?.phones} />
+            <div className="location-wrapper">
+                <div className="location-container">
+                    <h2>Nearby Locations</h2>
+                    <LocationHolder locations={obj1?.hotel?.interestPoints} />
+                </div>
+                <div className="contact-container">
+                    <h2>Hotel Contact</h2>
+                    <ContactHolder email={obj1?.hotel?.email} phones={obj1?.hotel?.phones} />
+                </div>
             </div>
         </div>
     )
@@ -165,7 +169,7 @@ export default HotelDisplay
 const LocationHolder = (props) => {
     return (
         <div className="location-holder">
-            <h2>Nearby Locations</h2>
+
             <div className="point-container">
                 {props?.locations?.map((loc, index) =>
                     <div key={index * 2} className="points">
@@ -182,7 +186,6 @@ const LocationHolder = (props) => {
 const ContactHolder = (props) => {
     return (
         <div className="contact-holder">
-            <h2>Hotel Contact</h2>
             <div className="email">
                 <h4>Email</h4>
                 <h5>{props?.email}</h5>

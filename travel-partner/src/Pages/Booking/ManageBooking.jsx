@@ -23,6 +23,7 @@ export const ManageBooking = () => {
     useEffect(() => {
         const getApiData = async () => {
             try {
+                if(id === "" || id === null) return;
                 const url = `${import.meta.env.VITE_SERVER_URL}/flight/manage-booking/${encodeURIComponent(id)}`;
                 const response = await fetch(url, {
                     credentials: 'include'

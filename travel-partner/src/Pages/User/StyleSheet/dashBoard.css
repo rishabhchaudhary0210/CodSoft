@@ -23,25 +23,41 @@
     margin-top: 50px;
     font-size: 3rem;
 }
-.link{
-    text-decoration: none;
+
+.dashboard-container  .flight-detail-wrapper{
+    height: 100%;
+    padding: 20px 30px;
+    /* display: flex;
+    /* width: 100%; */
+    /* justify-content: flex-start;
+    flex-wrap: wrap;  */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 50px;
 }
 .flight-details-container{
+    height: 100%;
+    overflow: visible;
+    flex-shrink: 0;
     background-color: #fff;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     padding: 25px 30px;
-    width: 70vw;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    /* max-width:420px; */
+    /* display: flex;
+    flex-direction: column; */
+    /* gap: 15px; */
     border-radius: 10px;
     box-shadow: 1px 1px 5px black;
+    display: grid;
+    grid-template-rows: 2fr 1fr 0.5fr;
+
 }
 .flight-details-container .flight-itr-box{
     font-size: 1.5rem;
     color: black;
 }
 .flight-details-container .flight-itr-box .flight-seg-box{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,19 +98,51 @@
     width: 70%;
 }
 .flight-details-container .flight-trav-box .trav-info-box{
-    width: 70%;
+    width: 100%;
     margin: 10px auto;
     display: flex;
     justify-content: space-between;
     align-items: around;
 }
-
+.flight-details-container .link-container{
+    height: 100%;
+    margin-top: 20px;
+    overflow: visible;
+    text-align: right;
+}
+.flight-details-container .link-container .link{
+    text-decoration: none;
+    background-color: rgb(177, 195, 195);
+    color: white;
+    padding: 12px 20px;
+    height: 50px;
+    border-radius: 8px;
+}
+.flight-details-container .link-container .link:hover{
+    filter: brightness(0.8);
+}
+@media screen and (max-width:1500px) {
+    .dashboard-container  .flight-detail-wrapper{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width:1000px) {
+    .flight-details-container .flight-itr-box .flight-seg-box span hr{
+        width: 100px;
+    }
+    .flight-details-container .flight-itr-box .flight-seg-box .airport-box span {
+        font-size: 0.9rem;
+    }
+}
 @media screen and (max-width:800px) {
     .flight-details-container .flight-trav-box .trav-info-box {
         width: 90%;
     }
     .flight-details-container .flight-trav-box h3{
         width: 90%;
+    }
+    .dashboard-container  .flight-detail-wrapper{
+        grid-template-columns: 1fr;
     }
 }
 @media screen and (max-width:650px) {
@@ -103,6 +151,11 @@
     }
 }
 @media screen and (max-width:500px) {
+    .dashboard-container  .flight-detail-wrapper{
+        padding: 20px 2vw;
+        justify-content: center;
+        align-items: center;
+    }
     .flight-details-container .flight-itr-box{
         font-size: 1.2rem;
     }
@@ -115,10 +168,10 @@
     .flight-details-container .flight-trav-box{
         font-size: 1.1rem;
     }
-}
-@media screen and (max-width:500px) {
+
     .flight-details-container{
-        padding: 25px 15px;
+        padding: 25px 5px;
+        margin: 5px auto;
     }
     .flight-details-container .flight-itr-box .flight-seg-box span hr{
         width: 80px;

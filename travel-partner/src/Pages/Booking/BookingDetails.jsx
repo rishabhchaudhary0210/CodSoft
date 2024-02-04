@@ -20,6 +20,7 @@ export const BookingDetails = () => {
     const [dictionary, setDictionary] = useState({});
     const [infoObject, setInfoObject] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [saveForm, setSaveForm] = useState([]);
     const navigate = useNavigate();
 
     const handleFlightRoute = async (obj) => {
@@ -32,7 +33,8 @@ export const BookingDetails = () => {
         })
         const apiData = await response.json();
         setFlightObject(apiData);
-
+        setSaveForm(new Array(apiData?.data?.flightOffers[0]?.travelerPricings?.length).fill(false));
+        console.log(saveForm)
         if (apiData.warnings && apiData.warnings[0].title === "PricingOrFareBasisDiscrepancyWarning") {
             toast.warn("Booking Price Changed ! Kindly Check Before Proceeding")
         }
@@ -58,7 +60,7 @@ export const BookingDetails = () => {
     }, []);
 
 
-    const handleInfoSubmit = (e, travId) => {
+    const handleInfoSubmit = (e, travId, index) => {
         e.preventDefault();
         const obj = {
             id: travId,
@@ -82,6 +84,9 @@ export const BookingDetails = () => {
         // setInfoObject(infoObject.filter(a => a.id !== obj.id))
         const arr = infoObject.filter(a => a.id !== obj.id)
         setInfoObject([...arr, obj])
+        let b = [...saveForm];
+        b[index] = true;
+        setSaveForm(b);
         console.log(infoObject)
     }
 
@@ -116,7 +121,13 @@ export const BookingDetails = () => {
         }
         setLoading(false);
     }
-
+    const HandleFormFocus = (index)=>{
+        console.log("Form focused")
+        let arr = [...saveForm];
+        arr[index] = false;
+        console.log(arr)
+        setSaveForm(arr);
+    }
     return (
         (Object.keys(flightObject).length === 0) ? <Loader /> :
             Object.keys(flightObject).length > 0 &&
@@ -134,12 +145,16 @@ export const BookingDetails = () => {
                         <h1>Passenger Details</h1>
                         <h3>Kindly ensure all the details are correct filled and are as per Government issued IDs.</h3>
                     </div>
-                    {flightObject.data.flightOffers[0].travelerPricings.map(ele =>
-                        <form key={ele.travelerId} className='user-info-form' action="" onSubmit={(e) => handleInfoSubmit(e, ele.travelerId)} >
+                    {flightObject.data.flightOffers[0].travelerPricings.map((ele,index) =>
+                        <form key={ele.travelerId} className='user-info-form' action="" onSubmit={(e) => handleInfoSubmit(e, ele.travelerId, index)} onChange={()=>HandleFormFocus(index)}>
                             <h4>{ele.travelerId + '. ' + ele.travelerType}</h4>
                             <UserInfoForm passAgeGroup={ele.travelerType} />
                             <div className="form-buttons">
-                                <button type="submit">Save</button>
+                                <button type="submit">
+                                    {saveForm[index] && <IconTickCircle/>}
+                                    {saveForm[index] ?  'Saved'
+                                    :"Save"}
+                                </button>
                                 <input type="reset" value="Reset" />
                             </div>
                         </form>
@@ -160,3 +175,14 @@ export const BookingDetails = () => {
     )
 }
 
+function IconTickCircle(props) {
+    return (
+      <svg fill="none" viewBox="0 0 15 15" height="1em" width="1em" {...props}>
+        <path
+          stroke="currentColor"
+          d="M4 7.5L7 10l4-5m-3.5 9.5a7 7 0 110-14 7 7 0 010 14z"
+        />
+      </svg>
+    );
+  }
+  

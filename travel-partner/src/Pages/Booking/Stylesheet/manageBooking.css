@@ -2,12 +2,13 @@
 .search-booking-details{
     width: 100vw;
     margin: 0 auto;
-    padding: 40px 10px;
+    padding: 80px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: rgb(62, 62, 223);
+    /* background-color: rgb(62, 62, 223); */
+    background-color: var(--bg-clr-2);
 }
 .search-booking-details input{
     width: 55%;
@@ -21,6 +22,9 @@
 }
 .search-booking-details input::placeholder{
     font-size: 1.2rem;
+}
+.search-booking-details input:focus{
+    border: 2px solid black;
 }
 .search-booking-details .link{
     width: 15%;

@@ -43,29 +43,30 @@ export const Dashboard = () => {
       {dashboardError === null ?
         <div className='dashboard-container-subdiv'>
           <h5>Here are your recent booking details</h5>
-          {
-            (bookingDetails?.length === 0) ? <Loader /> :
-              bookingDetails?.length > 0 &&
-              bookingDetails?.map(ele => {
-                const obj = JSON.parse(ele.obj);
-                return (
-                  obj.data.travelers.map((m, index) =>
-                    <Link
-                      to={{ pathname: `/manage-booking/${obj.data.id}`, search: `?userId=${user?._id}&flightdbId=${ele._id}` }}
-                      key={m.id}
-                      className='link'
-                    >
-                      <FlightDetails object={obj} />
+          <div className='flight-detail-wrapper'>
+            {
+              (bookingDetails?.length === 0) ? <Loader /> :
+                bookingDetails?.length > 0 &&
+                bookingDetails?.map(ele => {
+                  const obj = JSON.parse(ele.obj);
+                  return (
+                    obj.data.travelers.map((m, index) =>
+                      // <Link
+                      //   to={{ pathname: `/manage-booking/${obj.data.id}`, search: `?userId=${user?._id}&flightdbId=${ele._id}` }}
+                      //   key={m.id}
+                      //   className='link'
+                      // >
+                      <FlightDetails object={obj} flightbId={ele?._id} id={obj?.data?.id} userId={user?._id} key={m?.id} />
 
-                      {/* <UserDetail
-                        index={index}
-                        ele={m}
-                        obj={obj.data.flightOffers[0].travelerPricings}
-                      /> */}
-                    </Link>
-                  ))
-              })
-          }
+                      // {/* // <UserDetail */}
+                      // {/* //   index={index}
+                      // //   ele={m}
+                      // //   obj={obj.data.flightOffers[0].travelerPricings} */}
+                      // {/* </Link>  */}
+                    ))
+                })
+            }
+          </div>
         </div>
         :
         <div className="dashboard-error-container">
@@ -76,7 +77,7 @@ export const Dashboard = () => {
   )
 }
 
-export const FlightDetails = ({ object }) => {
+export const FlightDetails = ({ object, flightbId, id, userId }) => {
   // console.log("OBJEC from new com = ",object)
   // <h1>New COmp</h1>
   return (
@@ -88,7 +89,7 @@ export const FlightDetails = ({ object }) => {
               {console.log("From = ", ele.segments[0])}
               <div className='airport-box'>
                 <p>
-                {ele.segments[0].departure.iataCode}
+                  {ele.segments[0].departure.iataCode}
                 </p>
                 <span>
                   {ele.segments[0].departure.at.substring(0, 10)}
@@ -121,6 +122,13 @@ export const FlightDetails = ({ object }) => {
             </div>
           )
         }
+      </div>
+      <div className='link-container'>
+        <Link
+          to={{ pathname: `/manage-booking/${id}`, search: `?userId=${userId}&flightdbId=${flightbId}` }}
+          className='link'
+        >Manage Booking
+        </Link>
       </div>
     </div>
   );

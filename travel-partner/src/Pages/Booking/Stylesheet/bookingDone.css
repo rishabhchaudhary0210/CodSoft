@@ -40,13 +40,25 @@
 .booking-done-trav-container{
     margin-top: 45px;
 }
-
+.booking-done-trav-container .sub-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 35px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    padding: 15px 50px;
+    margin: 0 auto;
+}
 .user-detail{
+    flex-shrink: 0;
+    flex-grow: 1;
     /* border:2px solid red; */
     background-color: #eee;
     border-radius: 5px;
     margin: 10px auto;
-    width: 75%;
+    width: 48%;
+    max-width:80%;
     padding:25px;
     display: flex;
     flex-direction: column;
@@ -58,9 +70,10 @@
 }
 
 .user-detail .subdiv-1{
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
@@ -128,9 +141,13 @@
 }
 @media screen and (max-width:625px) {
     .user-detail {
-        width: 90%;
+        max-width: 95%;
     }
     .user-detail .subdiv-1{
         flex-direction: column;
+    }
+    .booking-done-trav-container .sub-cont{
+       
+        padding: 15px 20px;
     }
 }

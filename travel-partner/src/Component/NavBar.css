@@ -149,6 +149,17 @@ nav .nav-item-container .nav-links-container a:hover{
 
         gap: 45px;
     }
+    nav .background{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        /* height: 100vh;
+        width: 100vh; */
+        background-color: rgba(0, 0, 0, 0.163);
+        z-index: 10;
+    }
 }
 @media screen and (max-width:550px) {
     nav{

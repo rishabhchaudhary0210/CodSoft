@@ -60,8 +60,8 @@ export const Navbar = () => {
                         Home</Link>}
                     <Link to={'/flights'} className='nav-links' onClick={() => setToggleNavbar(false)}>
                         Flights</Link>
-                    <Link to={'/'} className='nav-links' onClick={() => setToggleNavbar(false)}>
-                        Hotel</Link>
+                    {/* <Link to={'/'} className='nav-links' onClick={() => setToggleNavbar(false)}>
+                        Hotel</Link> */}
                     <Link to={'/manage-booking/search'} className='nav-links' onClick={() => setToggleNavbar(false)}>
                         Manage</Link>
                 </div>
@@ -83,6 +83,7 @@ export const Navbar = () => {
                     </div>
                 }
             </div>
+            {toggleNavbar && <div className="background"></div>}
         </nav>
     )
 }

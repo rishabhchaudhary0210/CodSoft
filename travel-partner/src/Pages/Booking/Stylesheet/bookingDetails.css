@@ -52,6 +52,15 @@
     border: none;
     border-radius: 7px;
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.user-info-form button svg{
+    color: rgb(0, 255, 85);
+    font-size: 1.3rem;
 }
 .user-info-form input[type=reset]{
     background-color: #fff;

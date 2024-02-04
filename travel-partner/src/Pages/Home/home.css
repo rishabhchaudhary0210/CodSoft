@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    /* gap: 35px; */
     /* gap: 25px; */
     /* background-color: rgba(0, 0, 0, 0.28); */
     background-color: #fff;
@@ -30,7 +31,11 @@
     border-top-right-radius: 99999px;
     border-bottom-right-radius:99999px;
 }
-.animate-incoming{
+.animate{
+    visibility: hidden;
+}
+.animate.animate-incoming{
+    visibility: visible;
     animation: incoming 0.8s ease-in-out;
 }
 @keyframes incoming {
@@ -51,12 +56,14 @@
     overflow: visible;
     /* animation-delay: ; */
 }
-.animate-opacity{
+
+.animate.animate-opacity{
+    visibility: visible;
     animation: opacityAnimate 1.6s ease-in-out;
 }
 @keyframes opacityAnimate {
     from{
-        transform: translateY(20px);
+        transform: translateY(30px);
         opacity: 0;
     }
     to{
@@ -194,14 +201,16 @@
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/src/assets/hotel-bg2.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    width: 95vw;
+    width: 100vw;
     /* height: 600px; */
     height: max(600px, 80vh);
-    border-radius: 15px;
-    margin: 50px auto;
+    /* border-radius: 15px; */
+    /* margin: 50px auto; */
+    margin-top: 50px;
     padding: 100px 30px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     gap: 25px;
     transition: all 0.5s ease;
 }
@@ -220,6 +229,7 @@
     font-size: 2.2rem;
     color: white;
     font-weight: 300;
+    width: 80%;
 }
 
 @media screen and (max-width:1060px) {
@@ -237,6 +247,13 @@
     .home-service-container .service-box img {
         width: 100%;
         height: 180px;
+    }
+    .home-container .hotel-info-container h1 {
+        font-size: 3.5rem;
+    }
+    
+    .home-container .hotel-info-container h5 {
+        font-size: 1.5rem;
     }
 }
 
@@ -263,14 +280,18 @@
 
 @media screen and (max-width:640px) {
 
-    .home-header-container .home-header-subcont .header,
-    .home-container .hotel-info-container h1 {
-        font-size: 2rem;
+    .home-header-container .home-header-subcont .header{
+        font-size: 2.2rem;
     }
-
-    .home-header-container .header,
-    .home-container .hotel-info-container h5 {
+    .home-header-container .header{
         font-size: 1.9rem;
+    }
+    .home-container .hotel-info-container h1 {
+        font-size: 2.8rem;
+    }
+    
+    .home-container .hotel-info-container h5 {
+        font-size: 1.5rem;
     }
 }
 
@@ -317,13 +338,14 @@
     .home-container .hotel-info-container h1 {
         width: 90%;
     }
+    .home-header-container .home-header-subcont {
+        width: 95%;
+    }
 }
 @media screen and (max-width:380px) {
-    .home-header-container .home-header-subcont {
-        width: 75%;
-    }
+    
     .home-header-container .home-header-subcont .header{
-        font-size: 1.8rem;
+        font-size: 2rem;
         width: 80%;
     }
 }

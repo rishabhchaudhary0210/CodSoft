@@ -4084,3 +4084,1028 @@ export const obj2 = {
         "ranking": 62
     }
 }
+
+
+export const obj3 = {
+    "hotel":{
+        "code": 902077,
+        "name": {
+        "content": "OYO 79898 Grand Hotel"
+        },
+        "description": {
+        "content": "The OYO 79898 Grand Hotel in Delhi is a budget hotel with standardised amenities. This hotel offers features such as CCTV Cameras, Breakfast and Housekeeping services to make your stay comfortable. It is situated 23 km from Red Fort and is 22 km from India Gate. Special Features The room is furnished with a queen sized bed, an air conditioner, a TV, a coffee/tea maker and a window. There is also a fan to help circulate the air. The hotel offers a wide range of amenities to make you feel at home. There is a laundry service, room service, fire-extinguisher, sanitizer and water purifier in each room. The hotel also provides ticket tour assistance to their guests."
+        },
+        "country": {
+        "code": "IN",
+        "isoCode": "IN",
+        "description": {
+        "content": "India"
+        }
+        },
+        "state": {
+        "code": "IN",
+        "name": "India"
+        },
+        "destination": {
+        "code": "DEL",
+        "name": {
+        "content": "Delhi and NCR"
+        },
+        "countryCode": "IN"
+        },
+        "zone": {
+        "zoneCode": 1,
+        "name": "Delhi",
+        "description": {
+        "content": "Delhi"
+        }
+        },
+        "coordinates": {
+        "longitude": 77.0296705,
+        "latitude": 28.6130092
+        },
+        "category": {
+        "code": "3EST",
+        "description": {
+        "content": "3 STARS"
+        }
+        },
+        "categoryGroup": {
+        "code": "GRUPO3",
+        "description": {
+        "content": "Includes 3-star hotels and rural hotels."
+        }
+        },
+        "chain": {
+        "code": "OYOGR",
+        "description": {
+        "content": "OYO"
+        }
+        },
+        "accommodationType": {
+        "code": "H",
+        "typeMultiDescription": {
+        "content": "Hotel"
+        },
+        "typeDescription": "Hotel"
+        },
+        "boards": [
+        {
+        "code": "RO",
+        "description": {
+        "content": "ROOM ONLY"
+        }
+        }
+        ],
+        "address": {
+        "content": "Dwarka, Dwarka Tehsil, South West Delhi, Delhi, 36 B",
+        "street": "Dwarka, Dwarka Tehsil, South West Delhi, Delhi",
+        "number": "36 B"
+        },
+        "postalCode": "110078",
+        "city": {
+        "content": "Delhi"
+        },
+        "email": "customerservice.ota@oyorooms.com",
+        "phones": [
+        {
+        "phoneNumber": "+0911244588630",
+        "phoneType": "PHONEBOOKING"
+        },
+        {
+        "phoneNumber": "+0911244588630",
+        "phoneType": "PHONEHOTEL"
+        },
+        {
+        "phoneNumber": "+0911244588630",
+        "phoneType": "PHONEMANAGEMENT"
+        },
+        {
+        "phoneNumber": "+911244588630",
+        "phoneType": "FAXNUMBER"
+        }
+        ],
+        "rooms": [
+        {
+        "roomCode": "DBL.AS",
+        "isParentRoom": false,
+        "minPax": 1,
+        "maxPax": 2,
+        "maxAdults": 2,
+        "maxChildren": 1,
+        "minAdults": 1,
+        "description": "DOUBLE CLASSIC",
+        "type": {
+        "code": "DBL",
+        "description": {
+        "content": "DOUBLE"
+        }
+        },
+        "characteristic": {
+        "code": "AS",
+        "description": {
+        "content": "CLASSIC"
+        }
+        },
+        "roomStays": [
+        {
+        "stayType": "BED",
+        "order": "1",
+        "description": "Bed room",
+        "roomStayFacilities": [
+        {
+        "facilityCode": 150,
+        "facilityGroupCode": 61,
+        "description": {
+        "content": "Double bed 131-150 width"
+        },
+        "number": 1
+        }
+        ]
+        }
+        ]
+        }
+        ],
+        "facilities": [
+        {
+        "facilityCode": 70,
+        "facilityGroupCode": 10,
+        "description": {
+        "content": "Total number of rooms"
+        },
+        "order": 1,
+        "indYesOrNo": true,
+        "number": 51,
+        "voucher": false
+        },
+        {
+        "facilityCode": 10,
+        "facilityGroupCode": 20,
+        "description": {
+        "content": "hotel"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 20,
+        "facilityGroupCode": 40,
+        "description": {
+        "content": "Nearest Bus / Metro Stop"
+        },
+        "order": 1,
+        "distance": 1200,
+        "voucher": false
+        },
+        {
+        "facilityCode": 130,
+        "facilityGroupCode": 40,
+        "description": {
+        "content": "Golf course"
+        },
+        "order": 1,
+        "distance": 8300,
+        "voucher": false
+        },
+        {
+        "facilityCode": 295,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Room size (sqm)"
+        },
+        "order": 1,
+        "indYesOrNo": true,
+        "number": 9,
+        "voucher": false
+        },
+        {
+        "facilityCode": 276,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Toiletries"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 261,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Wi-fi"
+        },
+        "order": 1,
+        "indFee": false,
+        "indYesOrNo": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 55,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "TV"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 135,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Mini fridge"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 143,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Tea and coffee making facilities "
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 180,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Individually adjustable air conditioning"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 250,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Wheelchair-accessible"
+        },
+        "order": 1,
+        "indYesOrNo": true,
+        "voucher": false
+        },
+        {
+        "facilityCode": 287,
+        "facilityGroupCode": 60,
+        "description": {
+        "content": "Smoking rooms"
+        },
+        "order": 1,
+        "indYesOrNo": true,
+        "voucher": false
+        },
+        {
+        "facilityCode": 535,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Small pets allowed (under 5 kg)"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 295,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Wheelchair-accessible"
+        },
+        "order": 1,
+        "indYesOrNo": true,
+        "voucher": false
+        },
+        {
+        "facilityCode": 320,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Car park"
+        },
+        "order": 1,
+        "indFee": false,
+        "indYesOrNo": true,
+        "voucher": true
+        },
+        {
+        "facilityCode": 30,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "24-hour reception"
+        },
+        "order": 1,
+        "indYesOrNo": true,
+        "voucher": false
+        },
+        {
+        "facilityCode": 260,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Check-in hour"
+        },
+        "order": 1,
+        "timeFrom": "12:00:00",
+        "timeTo": "00:00:00",
+        "voucher": true
+        },
+        {
+        "facilityCode": 390,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Check-out hour"
+        },
+        "order": 1,
+        "timeFrom": "11:00:00",
+        "timeTo": "11:00:00",
+        "voucher": false
+        },
+        {
+        "facilityCode": 240,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Mobile phone coverage"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 550,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Wi-fi"
+        },
+        "order": 1,
+        "indFee": false,
+        "indYesOrNo": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 500,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Secure parking"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 270,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Room service"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 280,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Laundry service"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 505,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Multilingual staff"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 520,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "24-hour security"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 12,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Smoke detector"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 559,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Luggage room"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 578,
+        "facilityGroupCode": 70,
+        "description": {
+        "content": "Towels and bed linen"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 225,
+        "facilityGroupCode": 71,
+        "description": {
+        "content": "Smoking area"
+        },
+        "order": 1,
+        "indLogic": true,
+        "indFee": false,
+        "voucher": false
+        },
+        {
+        "facilityCode": 35,
+        "facilityGroupCode": 80,
+        "description": {
+        "content": "Continental breakfast"
+        },
+        "order": 1,
+        "indLogic": true,
+        "voucher": false
+        }
+        ],
+        "interestPoints": [
+        {
+        "facilityCode": 10,
+        "facilityGroupCode": 100,
+        "order": 1,
+        "poiName": "Aahuja's Food Point",
+        "distance": "2100"
+        },
+        {
+        "facilityCode": 20,
+        "facilityGroupCode": 100,
+        "order": 1,
+        "poiName": "YO YO BAR",
+        "distance": "7400"
+        },
+        {
+        "facilityCode": 30,
+        "facilityGroupCode": 100,
+        "order": 1,
+        "poiName": "Chambal chowk",
+        "distance": "3200"
+        },
+        {
+        "facilityCode": 40,
+        "facilityGroupCode": 100,
+        "order": 1,
+        "poiName": "Dwarka Sector-12 Market",
+        "distance": "2900"
+        }
+        ],
+        "images": [
+        {
+        "type": {
+        "code": "RES",
+        "description": {
+        "content": "Restaurant"
+        }
+        },
+        "path": "90/902077/902077a_hb_r_001.jpg",
+        "order": 1,
+        "visualOrder": 1
+        },
+        {
+        "type": {
+        "code": "RES",
+        "description": {
+        "content": "Restaurant"
+        }
+        },
+        "path": "90/902077/902077a_hb_r_002.jpg",
+        "order": 2,
+        "visualOrder": 2
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_001.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 1,
+        "visualOrder": 1
+        },
+        {
+        "type": {
+        "code": "RES",
+        "description": {
+        "content": "Restaurant"
+        }
+        },
+        "path": "90/902077/902077a_hb_r_003.jpg",
+        "order": 3,
+        "visualOrder": 3
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_002.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 2,
+        "visualOrder": 2
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_010.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 10,
+        "visualOrder": 10
+        },
+        {
+        "type": {
+        "code": "RES",
+        "description": {
+        "content": "Restaurant"
+        }
+        },
+        "path": "90/902077/902077a_hb_r_004.jpg",
+        "order": 4,
+        "visualOrder": 4
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_003.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 3,
+        "visualOrder": 3
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_010.jpg",
+        "order": 10,
+        "visualOrder": 10
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_012.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 12,
+        "visualOrder": 12
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_011.jpg",
+        "order": 11,
+        "visualOrder": 11
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_011.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 11,
+        "visualOrder": 11
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_012.jpg",
+        "order": 12,
+        "visualOrder": 12
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_014.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 14,
+        "visualOrder": 14
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_013.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 13,
+        "visualOrder": 13
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_008.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 8,
+        "visualOrder": 8
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_009.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 9,
+        "visualOrder": 9
+        },
+        {
+        "type": {
+        "code": "RES",
+        "description": {
+        "content": "Restaurant"
+        }
+        },
+        "path": "90/902077/902077a_hb_r_005.jpg",
+        "order": 5,
+        "visualOrder": 5
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_004.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 4,
+        "visualOrder": 4
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_005.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 5,
+        "visualOrder": 5
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_006.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 6,
+        "visualOrder": 6
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_007.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 7,
+        "visualOrder": 7
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_006.jpg",
+        "order": 6,
+        "visualOrder": 6
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_001.jpg",
+        "order": 1,
+        "visualOrder": 1
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_005.jpg",
+        "order": 5,
+        "visualOrder": 5
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_008.jpg",
+        "order": 8,
+        "visualOrder": 8
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_003.jpg",
+        "order": 3,
+        "visualOrder": 3
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_007.jpg",
+        "order": 7,
+        "visualOrder": 7
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_002.jpg",
+        "order": 2,
+        "visualOrder": 2
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_009.jpg",
+        "order": 9,
+        "visualOrder": 9
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_009.jpg",
+        "order": 9,
+        "visualOrder": 9
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_008.jpg",
+        "order": 8,
+        "visualOrder": 8
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_002.jpg",
+        "order": 2,
+        "visualOrder": 2
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_005.jpg",
+        "order": 5,
+        "visualOrder": 5
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_001.jpg",
+        "order": 1,
+        "visualOrder": 1
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_004.jpg",
+        "order": 4,
+        "visualOrder": 4
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_004.jpg",
+        "order": 4,
+        "visualOrder": 4
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_007.jpg",
+        "order": 7,
+        "visualOrder": 7
+        },
+        {
+        "type": {
+        "code": "GEN",
+        "description": {
+        "content": "General view"
+        }
+        },
+        "path": "90/902077/902077a_hb_a_003.jpg",
+        "order": 3,
+        "visualOrder": 3
+        },
+        {
+        "type": {
+        "code": "COM",
+        "description": {
+        "content": "Lobby"
+        }
+        },
+        "path": "90/902077/902077a_hb_l_006.jpg",
+        "order": 6,
+        "visualOrder": 6
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_016.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 16,
+        "visualOrder": 16
+        },
+        {
+        "type": {
+        "code": "HAB",
+        "description": {
+        "content": "Room"
+        }
+        },
+        "path": "90/902077/902077a_hb_ro_015.jpg",
+        "roomCode": "DBL.AS",
+        "roomType": "DBL",
+        "characteristicCode": "AS",
+        "order": 15,
+        "visualOrder": 15
+        }
+        ],
+        "lastUpdate": "2023-11-22",
+        "ranking": 22
+        }
+        }
+ 

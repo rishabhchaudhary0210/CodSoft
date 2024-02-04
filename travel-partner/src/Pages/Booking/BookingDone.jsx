@@ -73,7 +73,9 @@ export const BookingDisplay = ({ confirmationObj }) => {
 
             <div className="booking-done-trav-container">
                 <h1>Passenger Details</h1>
-                {confirmationObj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={confirmationObj.data.flightOffers[0].travelerPricings} />)}
+                <div className="sub-cont">
+                    {confirmationObj.data.travelers.map((m, index) => <UserDetail index={index} key={m.id} ele={m} obj={confirmationObj.data.flightOffers[0].travelerPricings} />)}
+                </div>
             </div>
         </div>
     )
@@ -87,12 +89,10 @@ export const UserDetail = ({ ele, index, obj }) => {
 
                 <div className="name">
                     <div>
-                        {(ele.gender === 'MALE') ? 'MR.' : 'MS.'}
-                    </div>
-                    <div>
-                        {ele.name.firstName}
-                    </div>
-                    <div>
+                        {(ele.gender === 'MALE') ? 'MR. ' : 'MS. '}
+                   
+                        {ele.name.firstName + ' '}
+                 
                         {ele.name.lastName}
                     </div>
                 </div>
