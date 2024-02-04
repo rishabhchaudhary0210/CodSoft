@@ -3,8 +3,10 @@ const router = express.Router();
 const crypto = require('crypto');
 const fetch = require("node-fetch");
 
+const HotelDetail = require('./../models/HotelDetail');
 
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const getHotelHeader = ()=>{
@@ -30,27 +32,28 @@ router.get('/list', async (req, res) => {
     console.log("REquest HIT");
     const body = JSON.stringify({
         "stay": {
-            "checkIn": "2024-06-15",
-            "checkOut": "2024-06-16"
+            "checkIn": "2024-03-15",
+            "checkOut": "2024-03-20"
         },
         "occupancies": [
             {
-                "rooms": 1,
-                "adults": 1,
+                "rooms": 3,
+                "adults": 5,
                 "children": 0
             }
         ],
-        "destination": {
-            // "code": req.params.city
-            "code": "NYC",
+        // "destination": {
+        //     // "code": req.params.city
+        //     "code": "DEL",
+        // },
+        "hotels": {
+            "hotel": [
+                1,
+                373757,
+                902077,
+                // 2,3,4
+            ]
         }
-        // "hotels": {
-        //     "hotel": [
-        //         1,
-        //         373757,
-        //         2,3,4
-        //     ]
-        // }
     })
     try{
         const response = await fetch("https://api.test.hotelbeds.com/hotel-api/1.0/hotels",{
@@ -70,14 +73,26 @@ router.get('/list', async (req, res) => {
 router.get("/content", async (req,res)=>{
     try{
         //more query params destinationCode countryCode
-        const response = await fetch("https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&language=ENG&from=1&to=10&useSecondaryLanguage=false", {
+        const response = await fetch("https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&language=ENG&from=1&to=20&useSecondaryLanguage=false&destinationCode=DEL", {
             headers:getHotelHeader(),
         })
         const data = await response.json();
+
+        data?.hotels?.forEach(element => {
+            // try{
+            //     const hotelObj = HotelDetail.create({
+            //         hotelId:element.code,
+            //         obj:JSON.stringify(element)
+            //     })
+            // }
+            // catch(e){
+            //     console.log("error");
+            // }
+        });
         res.status(200).json(data);
     }
     catch(err){
-        console.log(err);
+        console.log("error");
         res.status(400).json({error:err});
     }
 })
