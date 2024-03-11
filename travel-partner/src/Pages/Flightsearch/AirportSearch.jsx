@@ -65,7 +65,7 @@ export default function AirportSearch(props) {
                 show &&
                 <div className="search-result-container">
                     {   searchResult !== null > 0 &&
-                        searchResult.map(ele =>
+                        searchResult?.map(ele =>
                             ((ele.name.startsWith(searchParam) || ele.iataCode.startsWith(searchParam) || ele.address.cityName.startsWith(searchParam))) &&
                             <div
                                 key={ele.iataCode} 

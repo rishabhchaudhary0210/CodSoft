@@ -1,6 +1,5 @@
 
 const mongoose = require('mongoose');
-const { modelName } = require('./models/FlightDetail');
 
 
 const connectToMongo = () => {

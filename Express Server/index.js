@@ -41,6 +41,8 @@ app.use('/user', require('./routes/User'));
 
 app.use("/hotel", require('./routes/Hotel'));
 
+app.use("/payment", require('./routes/Payment'));
+
 const start = async ()=>{
     try {
         await connectToMongo(process.env.MONGO_URI);

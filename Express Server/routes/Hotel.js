@@ -73,23 +73,36 @@ router.get('/list', async (req, res) => {
 router.get("/content", async (req,res)=>{
     try{
         //more query params destinationCode countryCode
-        const response = await fetch("https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&language=ENG&from=1&to=20&useSecondaryLanguage=false&destinationCode=DEL", {
+        let from = 34000, to = 34010;
+        for(var v=1; v<=173; v++){
+            console.log(`Seeding startted from ${v} = ${from} to ${to}`)
+            const response = await fetch(`https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&language=ENG&from=${from}&to=${to}&useSecondaryLanguage=false`, {
             headers:getHotelHeader(),
         })
         const data = await response.json();
-
+        console.log("returning from content")
+        return res.json(data);
+        console.log("retutrned fail")
         data?.hotels?.forEach(element => {
-            // try{
-            //     const hotelObj = HotelDetail.create({
-            //         hotelId:element.code,
-            //         obj:JSON.stringify(element)
-            //     })
-            // }
-            // catch(e){
-            //     console.log("error");
-            // }
+            try{
+                const find = HotelDetail.findOne({hotelId:element.code});
+                if(find === null){ 
+                    const hotelObj = HotelDetail.create({
+                        hotelId:element.code,
+                        obj:JSON.stringify(element)
+                    })
+                }
+            }
+            catch(e){
+                console.log("error");
+            }
         });
-        res.status(200).json(data);
+        console.log(`Seeding doen from ${from} to ${to}`)
+        from += 1000;
+        to += 1000;
+        // res.status(200).json(data);
+    }   
+        res.status(200).json({success:"done seeding"});
     }
     catch(err){
         console.log("error");

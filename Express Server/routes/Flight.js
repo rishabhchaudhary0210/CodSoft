@@ -26,12 +26,12 @@ function verifyLogin(token){
 
 router.get(`/airport-search/:parameter`, async (req, res) => {
     const parameter = req.params.parameter;
+    try {
     const response = await amadeus.referenceData.locations
         .get({
             keyword: parameter,
             subType: Amadeus.location.airport,
         }).catch(x => console.log(x));
-    try {
         const apiData = await response.body;
         res.json(JSON.parse(apiData));
     }
