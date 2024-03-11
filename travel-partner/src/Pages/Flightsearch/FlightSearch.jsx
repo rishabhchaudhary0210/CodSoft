@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AirportSearch from "./AirportSearch";
 import { DatePicker } from "../../Component/DatePicker";
 import { CountPicker } from "../../Component/CountPicker";
@@ -20,6 +20,7 @@ export default function FlightSearch() {
     const [searchResult, setSearchResult] = useState([]);
     const [show, setShow] = useState(false);
     const [showloader, setShowloader] = useState(false);
+    const resultContainerRef = useRef(null);
 
     const serializeQuery = (obj) => {
         let str = `?originCode=${obj.originCode}&destinationCode=${obj.destinationCode}&departDate=${obj.departDate}&adultCount=${obj.adultCount}&childCount=${obj.childCount}&infantCount=${obj.infantCount}`;
@@ -57,6 +58,10 @@ export default function FlightSearch() {
                 setSearchResult(apiData);
                 setShow(true);
                 setShowloader(false);
+
+                resultContainerRef?.current?.scrollIntoView({
+                    behavior: "smooth", 
+                });
                 console.log(apiData);
             }
             catch (err) {
@@ -95,7 +100,9 @@ export default function FlightSearch() {
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        if(searchResult?.length === 0 || Object.keys(query).length <= 1){
+            window.scrollTo(0, 0);
+        }
     })
     return (
         <div className="flight-search-container">
@@ -130,7 +137,7 @@ export default function FlightSearch() {
             {
 
                 show &&
-                <div>
+                <div ref={resultContainerRef}>
                     {
                         (searchResult.data.length === 0) ?
                             <div className="error-message">
