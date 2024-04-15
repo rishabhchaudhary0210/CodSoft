@@ -36,7 +36,6 @@ export const ManageBooking = () => {
                 } else {
                     setConfirmationObj({ error: "OOPS! No data found. \n Recheck booking-id." });
                 }
-                // console.log(apiData)
             }
             catch (err) {
                 console.log(err);
@@ -49,7 +48,6 @@ export const ManageBooking = () => {
         else {
             getApiData();
             setShowLoader(true);
-            // setSearchParam(id);
         }
     }, [id])
 

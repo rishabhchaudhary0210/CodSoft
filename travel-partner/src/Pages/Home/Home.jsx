@@ -55,7 +55,6 @@ export const Home = () => {
             <p>Explore Flights</p>
             <FontAwesomeIcon icon={faPlane} />
           </Link>
-          {/* <h2 ref={titleRef} className='title'>TRAVEL PARTNER</h2> */}
         </div>
       </div>
 

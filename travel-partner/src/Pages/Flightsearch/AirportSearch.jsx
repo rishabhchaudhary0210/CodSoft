@@ -13,8 +13,7 @@ export default function AirportSearch(props) {
     const [show, setShow] = useState(false);
     const [listClick, setListClick] = useState(false);
 
-    useEffect(() => {
-        // setShow(false);
+    useEffect(() => { 
         const getApiData = setTimeout(async () => {
             if (!listClick && searchParam.length > 0 && searchParam.match(/^[A-Za-z]+$/)) {
                 try{
@@ -27,8 +26,7 @@ export default function AirportSearch(props) {
                 }
                 catch(err){
                     console.log(err);
-                }
-                // console.log(apidata.data);
+                } 
             }
         }, 500)
 
@@ -38,8 +36,7 @@ export default function AirportSearch(props) {
     const handleInputChange = (e) => {
         setShow(false);
         setListClick(false);
-        setSearchParam(e.target.value.toString().toUpperCase());
-        // console.log(searchParam);
+        setSearchParam(e.target.value.toString().toUpperCase()); 
     }
 
     const handleListClick = (val) => {

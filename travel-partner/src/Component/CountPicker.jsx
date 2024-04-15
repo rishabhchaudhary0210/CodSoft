@@ -33,7 +33,6 @@ export const CountPicker = () => {
       {<div className={`count-dropdown ${showDropdown? 'active' : ''}`}>
         <div className="count-container">
           <label htmlFor={'adultCount'}>Adults<div>{'>12 years'}</div> </label>
-          {/* <CountPicker name="adultCount" val={query?.adultCount} label="Adults" subTitle="(>12 years)" change={(n)=>setAdultCount(n)} placeholder="Enter Adult Count" req={true} min={1} max={9} /> */}
           <div>
             <input
               type="button"
@@ -62,7 +61,6 @@ export const CountPicker = () => {
         <div className="count-container">
           <label htmlFor={'childCount'}>Children <div>{'2-12 years'}</div> </label>
           <div>
-            {/* <CountPicker name="childCount" val={query?.childCount} label="Children" subTitle=" (2 - 12 years)" change={(n)=>setChildCount(n)} placeholder="Enter Child Count" min={0} max={adultCount === 0 ? 0 : 9} /> */}
             <input
               type="button"
               value="-"
@@ -88,7 +86,6 @@ export const CountPicker = () => {
         </div>
         <div className="count-container">
           <label htmlFor={'infantCount'}>{'Infants'} <div>{'<2 years'}</div> </label>
-          {/* <CountPicker name="infantCount" val={query?.infantCount} label="Infants " subTitle="(<2 years)" change={(n)=>setInfantCount(n)} placeholder="Enter Infant Count" min={0} max={adultCount} /> */}
           <div>
             <input
               type="button"

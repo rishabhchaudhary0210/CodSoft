@@ -82,7 +82,7 @@ router.get("/content", async (req,res)=>{
         const data = await response.json();
         console.log("returning from content")
         return res.json(data);
-        console.log("retutrned fail")
+
         data?.hotels?.forEach(element => {
             try{
                 const find = HotelDetail.findOne({hotelId:element.code});
@@ -109,6 +109,7 @@ router.get("/content", async (req,res)=>{
         res.status(400).json({error:err});
     }
 })
+
 //for one particular hotel
 router.get("/content/:hotelCode", async (req, res)=>{
     try{
@@ -123,6 +124,7 @@ router.get("/content/:hotelCode", async (req, res)=>{
         res.status(400).json({error:err});
     }
 })
+
 router.get("/countries", async (req,res)=>{
     try{
         //more query params         codes(for specifying country)
@@ -137,6 +139,7 @@ router.get("/countries", async (req,res)=>{
         res.status(400).json({error:err});
     }
 })
+
 router.get("/destinations", async (req,res)=>{
     //countryCodes<-specific country or list EU,US          codes (specific destination)
     try{
@@ -151,6 +154,7 @@ router.get("/destinations", async (req,res)=>{
         res.status(400).json({error:err});
     }
 })
+
 router.get("/booking", async (req, res)=>{
     const body = JSON.stringify({
         "holder": {

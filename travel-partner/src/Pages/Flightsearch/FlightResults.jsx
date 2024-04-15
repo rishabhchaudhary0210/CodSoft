@@ -35,10 +35,6 @@ export const FlightResults = ({ ele, dict, button }) => {
                                         <h5>{
                                             s.duration?.substring(2)
                                         }</h5>
-
-                                        {/* <h5>{
-                                dict.aircraft[m.segments[0].aircraft.code]
-                            }</h5> */}
                                     </div>
 
                                     <AirlineDetails
@@ -54,7 +50,6 @@ export const FlightResults = ({ ele, dict, button }) => {
             </div>
             <div className={'flight-results-price'}>
                 <hr />
-                {/* <h5>{ele.travelerPricings[0].fareDetailsBySegment[0].cabin}</h5> */}
                 <h3>{ele.price.currency + ' ' + ele.price.total}</h3>
                 {button === true && <button className='flight-results-btn'>Select</button>}
             </div>

@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const BookingDetails = () => {
 
-    // const [searchParam] = useSearchParams();
     const { search } = useLocation();
     const { id } = useParams();
     const [flightObject, setFlightObject] = useState({});
@@ -55,7 +54,6 @@ export const BookingDetails = () => {
         }
         getApiData();
         window.scrollTo(0, 0);
-        // console.log("token = ",localStorage.getItem('jwt'));
 
     }, []);
 
@@ -81,7 +79,6 @@ export const BookingDetails = () => {
                 lastName: e.target.lastName.value.toUpperCase(),
             },
         }
-        // setInfoObject(infoObject.filter(a => a.id !== obj.id))
         const arr = infoObject.filter(a => a.id !== obj.id)
         setInfoObject([...arr, obj])
         let b = [...saveForm];

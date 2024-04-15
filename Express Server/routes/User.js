@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-// const nodeMailer = require('nodemailer');//to send mails for forgot password
-// const validator = require('validator'); // to check for errors
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -34,7 +32,6 @@ router.post('/sign-up', async (req, res) => {
         console.log(user);
         console.log(token);
         res.cookie('jwt',token, {maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload, token:token});
-        //figure out jwt credentials
     }
     catch (err) {
         console.log(err);
@@ -54,7 +51,6 @@ router.post('/log-in', async (req, res) => {
             return res.status(400).json({ error: 'Invalid Credentials' });
         }
 
-        //figure out jwt here
         const payload = {_id:user._id, name:user.name};
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
         res.cookie('jwt',token,{maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload, token:token});
@@ -84,7 +80,7 @@ router.get('/check-user/:id', (req, res)=>{
     });
 })
 
-//change name and make it to get details of users bookings
+
 router.get('/booking-details/:id', async (req, res) => {
     const userId = req.params.id;
     try {

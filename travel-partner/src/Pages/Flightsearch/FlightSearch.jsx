@@ -48,8 +48,6 @@ export default function FlightSearch() {
                 const str = serializeQuery(query);
                 let url = `${import.meta.env.VITE_SERVER_URL}/flight/flight-search${str}`;
 
-                // console.log(url);
-
                 const response = await fetch(url, {
                     credentials: 'include'
                 });
@@ -79,7 +77,6 @@ export default function FlightSearch() {
         setShow(false);
         console.log(eve.target);
         if (eve.target.childCount.value.toString() > 0 && eve.target.adultCount.value.toString() == 0) {
-            // alert("Children under 18 years of age cannot travel without Adult supervision")
             toast.warn("Children under 18 years of age cannot travel without Adult supervision")
         }
         else if (eve.target.adultCount.value.toString() < eve.target.infantCount.value.toString()) {

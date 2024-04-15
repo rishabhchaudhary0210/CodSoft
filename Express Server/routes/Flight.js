@@ -39,7 +39,6 @@ router.get(`/airport-search/:parameter`, async (req, res) => {
         console.log(err);
         res.status(400).json({ "Error": "Error getting Data" ,err});
     }
-    // console.log(apiData);
 });
 
 router.get("/flight-search", async (req, res) => {
@@ -64,14 +63,12 @@ router.get("/flight-search", async (req, res) => {
         .catch(x => console.log(x));
     try {
         const apiData = await response.body;
-        // console.log(JSON.parse(apiData));
         res.json(JSON.parse(apiData));
     }
     catch (err) {
         console.log(err);
         res.status(400).json({ "Error": "Error getting Data" , err});
     }
-    // console.log(apiData);
 })
 
 
@@ -96,14 +93,12 @@ router.post("/booking-request", async (req, res) => {
         console.log(err);
         res.status(400).json({ "Error": "Error getting Data" , err});
     }
-    // res.json(inputFlight);
 })
 
 
 
 router.post('/booking-confirm', async (req, res) => {
     const { flightInfo, travelerInfo, restoken } = req.body;
-    // console.log(travelerInfo);
     try {
     const returnBooking = await amadeus.booking.flightOrders
         .post(
@@ -115,7 +110,6 @@ router.post('/booking-confirm', async (req, res) => {
                 },
             })
         )
-    // console.log(returnBooking)
         const responseData = await returnBooking.result;
 
         //saving to mongodb
@@ -148,7 +142,6 @@ router.get('/manage-booking/:orderId', async (req,res)=>{
         const { orderId } = req.params;
         const order = await amadeus.booking.flightOrder(encodeURIComponent(orderId)).get()
         const details = await order.body;
-        // console.log(details);
         res.status(200).json(details);
     }
     catch(err){
@@ -160,9 +153,10 @@ router.get('/delete-booking/:orderId', async (req,res)=>{
     try{
         const { orderId  } = req.params;
         const { userID, flightID } = req.query;
+
         const order = await amadeus.booking.flightOrder(decodeURIComponent(orderId)).delete();
         const del = await order?.body;
-        // console.log("Del = ",del);
+
         if(userID && flightID ){
             const user = await UserDetail.findOneAndUpdate({_id:userID}, {$pull:{bookingID:flightID}})
         }
@@ -182,7 +176,6 @@ router.get('/booking-display/:id', async (req, res) => {
     catch (err) {
         console.log(err)
     }
-    // console.log(details)
 })
 
 module.exports = router;
